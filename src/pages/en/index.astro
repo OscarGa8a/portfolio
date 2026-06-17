@@ -3,8 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
+import Services from '../../components/Services.astro';
+import CaseStudies from '../../components/CaseStudies.astro';
 import ProcessTimeline from '../../components/ProcessTimeline.astro';
 import About from '../../components/About.astro';
+import FinalCta from '../../components/FinalCta.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'en' as const;
@@ -13,7 +16,10 @@ const lang = 'en' as const;
   <Nav lang={lang} />
   <Hero lang={lang} />
   <TrustMetrics lang={lang} />
+  <Services lang={lang} />
+  <CaseStudies lang={lang} />
   <ProcessTimeline lang={lang} />
   <About lang={lang} />
+  <FinalCta lang={lang} />
   <Footer lang={lang} />
 </BaseLayout>
