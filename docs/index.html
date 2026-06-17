@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan David Studio | Freelance Web Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#060B18',
+                        bgSec: '#0E1628',
+                        cardBg: '#101A30',
+                        textMain: '#F8FAFC',
+                        textSec: '#94A3B8',
+                        accBlue: '#38BDF8',
+                        accViolet: '#8B5CF6',
+                        accCyan: '#22D3EE',
+                    },
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.7, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #060B18;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', sans-serif;
+        }
+        
+        /* Language System */
+        html[lang="en"] .lang-es { display: none !important; }
+        html[lang="es"] .lang-en { display: none !important; }
+        
+        /* Reusable Components */
+        .glass-nav {
+            background: rgba(6, 11, 24, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .premium-card {
+            background: #101A30;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .premium-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(34, 211, 238, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #38BDF8, #8B5CF6, #22D3EE);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #38BDF8, #8B5CF6);
+        }
+
+        /* Case Study Accordion details */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: slideDown 0.3s ease-out; }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll reveal base classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accBlue/30 selection:text-textMain">
+
+    <!-- Ambient Background Glows -->
+    <div class="fixed top-0 left-[-10%] w-[500px] h-[500px] bg-accViolet/10 rounded-full blur-[120px] pointer-events-none z-[-1] animate-pulse-glow"></div>
+    <div class="fixed bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-accBlue/10 rounded-full blur-[150px] pointer-events-none z-[-1] animate-pulse-glow" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <!-- Brand -->
+            <a href="#" class="font-sora font-bold text-xl tracking-tight flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-sm shadow-[0_0_15px_rgba(56,189,248,0.3)] group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
+                    <span class="text-white font-bold">JD</span>
+                </div>
+                <span>Juan David <span class="text-textSec font-normal">Studio</span></span>
+            </a>
+            
+            <!-- Links (Desktop) -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-textSec">
+                <a href="#especialidades" class="hover:text-textMain transition-colors"><span class="lang-es">Especialidades</span><span class="lang-en">Specialties</span></a>
+                <a href="#casos" class="hover:text-textMain transition-colors"><span class="lang-es">Casos de éxito</span><span class="lang-en">Case Studies</span></a>
+                <a href="#proceso" class="hover:text-textMain transition-colors"><span class="lang-es">Proceso</span><span class="lang-en">Process</span></a>
+                <a href="#sobre-mi" class="hover:text-textMain transition-colors"><span class="lang-es">Sobre mí</span><span class="lang-en">About</span></a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-4">
+                <button id="langToggle" class="text-xs font-bold text-textSec hover:text-textMain transition-colors bg-white/5 border border-white/10 px-3 py-1.5 rounded-md flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-accCyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span id="langLabel">ES</span>
+                </button>
+                <a href="#contacto" class="hidden md:inline-flex bg-white text-bgMain px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all shadow-lg">
+                    <span class="lang-es">Hablemos</span><span class="lang-en">Let's talk</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 min-h-[90vh]">
+        <!-- Content -->
+        <div class="lg:w-1/2 flex flex-col items-start space-y-8 reveal">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 bg-cardBg border border-white/10 rounded-full px-4 py-2 text-xs font-medium text-accCyan">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accCyan opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-accCyan"></span>
+                </span>
+                <span class="lang-es">Soluciones digitales para negocios reales</span>
+                <span class="lang-en">Digital solutions for real businesses</span>
+            </div>
+            
+            <!-- Headline -->
+            <h1 class="font-sora font-bold text-4xl lg:text-5xl leading-[1.15] tracking-tight max-w-2xl text-white">
+                <span class="lang-es">Desarrollo sitios web, e-commerce, aplicaciones y plataformas digitales para <span class="text-gradient">negocios reales.</span></span>
+                <span class="lang-en">I develop websites, e-commerce, applications and digital platforms for <span class="text-gradient">real businesses.</span></span>
+            </h1>
+            
+            <!-- Paragraph -->
+            <p class="text-lg text-textSec leading-relaxed max-w-xl">
+                <span class="lang-es">Ayudo a emprendedores y empresas a transformar ideas en productos digitales modernos, funcionales y enfocados en resultados.</span>
+                <span class="lang-en">I help entrepreneurs and businesses transform ideas into modern, functional, and results-focused digital products.</span>
+            </p>
+
+            <!-- Supporting Line -->
+            <div class="border-l-2 border-accViolet/50 pl-4 text-sm text-textSec/80 max-w-lg">
+                <span class="lang-es">5 años de experiencia creando soluciones digitales para turismo, comercio electrónico, aplicaciones móviles, gestión deportiva y negocios locales.</span>
+                <span class="lang-en">5 years of experience creating digital solutions for tourism, e-commerce, mobile apps, sports management, and local businesses.</span>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-2">
+                <a href="#casos" class="w-full sm:w-auto text-center bg-white text-bgMain px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                    <span class="lang-es">Ver proyectos</span><span class="lang-en">View projects</span>
+                </a>
+                <a href="#contacto" class="w-full sm:w-auto text-center premium-card px-8 py-3.5 rounded-xl font-semibold text-white">
+                    <span class="lang-es">Hablemos por WhatsApp</span><span class="lang-en">Let's talk on WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Trust Chips -->
+            <div class="flex flex-wrap gap-2.5 pt-4">
+                <span class="text-[11px] uppercase tracking-wider font-semibold bg-bgSec border border-white/5 px-3 py-1.5 rounded-md text-textSec flex items-center gap-1.5"><span class="text-accBlue">✓</span> 5+ años de experiencia</span>
+                <span class="text-[11px] uppercase tracking-wider font-semibold bg-bgSec border border-white/5 px-3 py-1.5 rounded-md text-textSec flex items-center gap-1.5"><span class="text-accViolet">✓</span> Web & mobile apps</span>
+                <span class="text-[11px] uppercase tracking-wider font-semibold bg-bgSec border border-white/5 px-3 py-1.5 rounded-md text-textSec flex items-center gap-1.5"><span class="text-accCyan">✓</span> E-commerce</span>
+                <span class="text-[11px] uppercase tracking-wider font-semibold bg-bgSec border border-white/5 px-3 py-1.5 rounded-md text-textSec flex items-center gap-1.5"><span class="text-accBlue">✓</span> Custom platforms</span>
+                <span class="text-[11px] uppercase tracking-wider font-semibold bg-bgSec border border-white/5 px-3 py-1.5 rounded-md text-textSec flex items-center gap-1.5"><span class="text-accViolet">✓</span> Responsive design</span>
+            </div>
+        </div>
+
+        <!-- Right Visual Composition -->
+        <div class="lg:w-1/2 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center reveal">
+            <!-- Dashboard Mockup -->
+            <div class="absolute w-[90%] h-[280px] premium-card rounded-xl p-2 z-10 shadow-2xl animate-float">
+                <div class="w-full h-full bg-bgMain rounded-lg border border-white/5 overflow-hidden flex flex-col relative">
+                    <div class="h-6 bg-bgSec border-b border-white/5 flex items-center px-4 gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div class="flex-1 p-5 flex gap-5">
+                        <div class="w-1/4 flex flex-col gap-3">
+                            <div class="h-4 w-full bg-white/10 rounded"></div>
+                            <div class="h-3 w-5/6 bg-white/5 rounded mt-4"></div>
+                            <div class="h-3 w-full bg-white/5 rounded"></div>
+                            <div class="h-3 w-4/5 bg-white/5 rounded"></div>
+                        </div>
+                        <div class="w-3/4 flex flex-col gap-4">
+                            <div class="flex gap-4">
+                                <div class="h-20 w-1/3 bg-gradient-to-br from-accBlue/20 to-transparent border border-accBlue/10 rounded-lg"></div>
+                                <div class="h-20 w-1/3 bg-gradient-to-br from-accViolet/20 to-transparent border border-accViolet/10 rounded-lg"></div>
+                                <div class="h-20 w-1/3 bg-white/5 rounded-lg border border-white/5"></div>
+                            </div>
+                            <div class="flex-1 bg-white/5 rounded-lg border border-white/5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Mockup -->
+            <div class="absolute right-[5%] bottom-[5%] w-[140px] h-[280px] bg-cardBg border-[4px] border-[#1E293B] rounded-[2rem] shadow-2xl z-20 animate-float-delayed">
+                <div class="w-full h-full bg-bgMain rounded-[1.7rem] overflow-hidden relative">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-[#1E293B] rounded-b-xl z-30"></div>
+                    <div class="h-1/2 bg-gradient-to-b from-accViolet/10 to-bgMain p-4 pt-10 flex flex-col gap-3">
+                        <div class="h-3 w-1/2 bg-white/20 rounded"></div>
+                        <div class="flex-1 bg-white/5 rounded-xl border border-white/10"></div>
+                    </div>
+                    <div class="h-1/2 p-4 flex flex-col gap-3">
+                        <div class="h-12 w-full bg-white/5 rounded-lg"></div>
+                        <div class="h-12 w-full bg-white/5 rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Metrics Section -->
+    <section class="py-16 bg-bgSec/50 border-y border-white/5 reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 border-l-2 border-accBlue">
+                    <div class="text-3xl font-sora font-bold text-white mb-1">5+ <span class="text-xl font-normal text-textSec lang-es">años</span><span class="text-xl font-normal text-textSec lang-en">years</span></div>
+                    <p class="text-sm text-textSec">
+                        <span class="lang-es">Experiencia desarrollando productos digitales.</span>
+                        <span class="lang-en">Experience developing digital products.</span>
+                    </p>
+                </div>
+                <div class="p-6 border-l-2 border-accViolet">
+                    <div class="text-xl font-sora font-bold text-white mb-2 pt-1">
+                        <span class="lang-es">Proyectos web y móviles</span><span class="lang-en">Web & mobile projects</span>
+                    </div>
+                    <p class="text-sm text-textSec">
+                        <span class="lang-es">Sitios web, apps, tiendas y plataformas.</span>
+                        <span class="lang-en">Websites, apps, stores and platforms.</span>
+                    </p>
+                </div>
+                <div class="p-6 border-l-2 border-accCyan">
+                    <div class="text-xl font-sora font-bold text-white mb-2 pt-1">
+                        <span class="lang-es">Soluciones para negocios</span><span class="lang-en">Business solutions</span>
+                    </div>
+                    <p class="text-sm text-textSec">
+                        <span class="lang-es">Diseño y desarrollo enfocado en objetivos reales.</span>
+                        <span class="lang-en">Design and development focused on real goals.</span>
+                    </p>
+                </div>
+                <div class="p-6 border-l-2 border-white/20">
+                    <div class="text-xl font-sora font-bold text-white mb-2 pt-1">
+                        <span class="lang-es">Diseño responsive</span><span class="lang-en">Responsive design</span>
+                    </div>
+                    <p class="text-sm text-textSec">
+                        <span class="lang-es">Experiencias adaptadas a todos los dispositivos.</span>
+                        <span class="lang-en">Experiences adapted to all devices.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="especialidades" class="py-24 max-w-7xl mx-auto px-6 lg:px-8 reveal">
+        <div class="max-w-3xl mb-16">
+            <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white">
+                <span class="lang-es">Especialidades</span><span class="lang-en">Specialties</span>
+            </h2>
+            <p class="text-textSec text-lg leading-relaxed">
+                <span class="lang-es">Soluciones digitales diseñadas para ayudar a negocios, marcas y emprendedores a vender, reservar, gestionar y crecer con una presencia digital clara y funcional.</span>
+                <span class="lang-en">Digital solutions designed to help businesses, brands, and entrepreneurs sell, book, manage, and grow with a clear and functional digital presence.</span>
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Service 1 -->
+            <div class="premium-card p-8 rounded-2xl group flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-accBlue/10 flex items-center justify-center mb-6 text-accBlue group-hover:bg-accBlue/20 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                </div>
+                <h3 class="font-sora text-xl font-bold mb-3 text-white">
+                    <span class="lang-es">Sitios web profesionales</span><span class="lang-en">Professional Websites</span>
+                </h3>
+                <p class="text-textSec text-sm mb-6 flex-1">
+                    <span class="lang-es">Páginas web modernas, rápidas y adaptadas a cualquier dispositivo para una presencia digital confiable.</span>
+                    <span class="lang-en">Modern, fast, and responsive websites for a reliable digital presence.</span>
+                </p>
+                <ul class="space-y-2 text-sm text-textSec/90 border-t border-white/5 pt-4">
+                    <li class="flex items-start gap-2"><span class="text-accBlue">✓</span> <span class="lang-es">Diseño corporativo a medida</span><span class="lang-en">Custom corporate design</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accBlue">✓</span> <span class="lang-es">Optimización para velocidad y SEO</span><span class="lang-en">Speed and SEO optimization</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accBlue">✓</span> <span class="lang-es">Landing pages de conversión</span><span class="lang-en">Conversion landing pages</span></li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="premium-card p-8 rounded-2xl group flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-accViolet/10 flex items-center justify-center mb-6 text-accViolet group-hover:bg-accViolet/20 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                </div>
+                <h3 class="font-sora text-xl font-bold mb-3 text-white">E-commerce</h3>
+                <p class="text-textSec text-sm mb-6 flex-1">
+                    <span class="lang-es">Tiendas online con catálogo, carrito y experiencia de compra intuitiva preparada para vender.</span>
+                    <span class="lang-en">Online stores with catalogs, carts, and intuitive shopping experiences ready to sell.</span>
+                </p>
+                <ul class="space-y-2 text-sm text-textSec/90 border-t border-white/5 pt-4">
+                    <li class="flex items-start gap-2"><span class="text-accViolet">✓</span> <span class="lang-es">Catálogos estructurados</span><span class="lang-en">Structured catalogs</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accViolet">✓</span> <span class="lang-es">Integración de pasarelas de pago</span><span class="lang-en">Payment gateway integration</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accViolet">✓</span> <span class="lang-es">Experiencia de compra fluida (UX)</span><span class="lang-en">Smooth shopping experience (UX)</span></li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="premium-card p-8 rounded-2xl group flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-accCyan/10 flex items-center justify-center mb-6 text-accCyan group-hover:bg-accCyan/20 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="font-sora text-xl font-bold mb-3 text-white">
+                    <span class="lang-es">Aplicaciones web y móviles</span><span class="lang-en">Web & Mobile Apps</span>
+                </h3>
+                <p class="text-textSec text-sm mb-6 flex-1">
+                    <span class="lang-es">Experiencias digitales para usuarios en web y celular, enfocadas en funcionalidad y diseño limpio.</span>
+                    <span class="lang-en">Digital experiences for users on web and mobile, focused on functionality and clean design.</span>
+                </p>
+                <ul class="space-y-2 text-sm text-textSec/90 border-t border-white/5 pt-4">
+                    <li class="flex items-start gap-2"><span class="text-accCyan">✓</span> <span class="lang-es">Apps nativas e híbridas</span><span class="lang-en">Native and hybrid apps</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accCyan">✓</span> <span class="lang-es">Paneles interactivos (Dashboards)</span><span class="lang-en">Interactive Dashboards</span></li>
+                    <li class="flex items-start gap-2"><span class="text-accCyan">✓</span> <span class="lang-es">Sincronización en tiempo real</span><span class="lang-en">Real-time synchronization</span></li>
+                </ul>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="premium-card p-8 rounded-2xl group flex flex-col h-full">
+                <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6 text-white group-hover:bg-white/20 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <h3 class="font-sora text-xl font-bold mb-3 text-white">
+                    <span class="lang-es">Plataformas a medida</span><span class="lang-en">Custom Platforms</span>
+                </h3>
+                <p class="text-textSec text-sm mb-6 flex-1">
+                    <span class="lang-es">Sistemas a medida para gestionar reservas, usuarios, espacios o procesos internos del negocio.</span>
+                    <span class="lang-en">Custom systems to manage bookings, users, spaces, or internal business processes.</span>
+                </p>
+                <ul class="space-y-2 text-sm text-textSec/90 border-t border-white/5 pt-4">
+                    <li class="flex items-start gap-2"><span class="text-white/80">✓</span> <span class="lang-es">Sistemas de reservas</span><span class="lang-en">Booking systems</span></li>
+                    <li class="flex items-start gap-2"><span class="text-white/80">✓</span> <span class="lang-es">Gestión de usuarios y roles</span><span class="lang-en">User and role management</span></li>
+                    <li class="flex items-start gap-2"><span class="text-white/80">✓</span> <span class="lang-es">Automatización de procesos</span><span class="lang-en">Process automation</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects (Casos de éxito) -->
+    <section id="casos" class="py-24 bg-bgSec/30 border-y border-white/5 reveal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white">
+                    <span class="lang-es">Casos de éxito</span><span class="lang-en">Success Stories</span>
+                </h2>
+                <p class="text-textSec text-lg">
+                    <span class="lang-es">Proyectos reales donde la tecnología resolvió problemas de negocio tangibles.</span>
+                    <span class="lang-en">Real projects where technology solved tangible business problems.</span>
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Case 1: ConectaPlay -->
+                <div class="premium-card rounded-3xl overflow-hidden flex flex-col lg:flex-row">
+                    <!-- Image Placeholder -->
+                    <div class="lg:w-5/12 bg-bgMain relative overflow-hidden flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-r border-white/5">
+                        <div class="w-full aspect-[4/3] bg-cardBg border border-white/10 rounded-xl relative shadow-2xl flex flex-col overflow-hidden">
+                            <div class="h-8 bg-[#1E293B] flex items-center px-3 border-b border-white/5"><div class="w-16 h-3 bg-white/10 rounded"></div></div>
+                            <div class="flex-1 p-4 flex gap-4">
+                                <div class="w-1/3 bg-white/5 rounded-lg border border-white/5"></div>
+                                <div class="w-2/3 flex flex-col gap-2">
+                                    <div class="h-24 bg-accCyan/10 rounded-lg border border-accCyan/20"></div>
+                                    <div class="flex-1 bg-white/5 rounded-lg border border-white/5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center">
+                        <div class="text-xs font-semibold text-accCyan tracking-wider uppercase mb-3">
+                            <span class="lang-es">Plataforma de gestión deportiva</span><span class="lang-en">Sports Management Platform</span>
+                        </div>
+                        <h3 class="font-sora text-2xl lg:text-3xl font-bold mb-4 text-white">ConectaPlay</h3>
+                        <p class="text-textSec mb-6">
+                            <span class="lang-es">Plataforma integral para la gestión de complejos deportivos, reservas en tiempo real y organización de torneos locales.</span>
+                            <span class="lang-en">Comprehensive platform for sports complex management, real-time bookings, and local tournament organization.</span>
+                        </p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <div class="flex flex-col gap-1"><span class="text-white text-sm font-semibold"><span class="lang-es">Características</span><span class="lang-en">Features</span></span><span class="text-xs text-textSec">Reservas en tiempo real<br>Panel administrativo<br>Gestión de pagos</span></div>
+                        </div>
+
+                        <details class="group bg-white/5 border border-white/10 rounded-xl mb-6">
+                            <summary class="p-4 font-semibold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors rounded-xl outline-none">
+                                <span><span class="lang-es">Ver caso de estudio</span><span class="lang-en">View case study</span></span>
+                                <svg class="w-4 h-4 text-accCyan transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </summary>
+                            <div class="p-5 pt-2 text-sm text-textSec space-y-4 border-t border-white/10">
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Problema:</span><span class="lang-en">Problem:</span></strong><span class="lang-es">La gestión de reservas, pagos y disponibilidad se hacía de forma manual, generando errores y fricción para los usuarios.</span><span class="lang-en">Booking management, payments, and availability were handled manually, causing errors and user friction.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Solución:</span><span class="lang-en">Solution:</span></strong><span class="lang-es">Se desarrolló una plataforma que centraliza reservas, gestión operativa y experiencia del usuario en un solo sistema.</span><span class="lang-en">A platform was developed that centralizes bookings, operational management, and user experience in a single system.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Resultado:</span><span class="lang-en">Result:</span></strong><span class="text-accCyan"><span class="lang-es">Una solución digital más eficiente, escalable y alineada con las necesidades del negocio.</span><span class="lang-en">A more efficient, scalable digital solution aligned with business needs.</span></span></div>
+                            </div>
+                        </details>
+
+                        <div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-bgMain bg-white px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
+                                <span class="lang-es">Visitar sitio web</span><span class="lang-en">Visit website</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: DeTour -->
+                <div class="premium-card rounded-3xl overflow-hidden flex flex-col lg:flex-row-reverse">
+                    <div class="lg:w-5/12 bg-bgMain relative overflow-hidden flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-l border-white/5">
+                        <div class="w-48 h-80 bg-cardBg border-[4px] border-[#1E293B] rounded-[2rem] relative shadow-2xl flex flex-col overflow-hidden">
+                            <div class="h-1/2 bg-gradient-to-b from-accViolet/20 to-transparent p-4 flex flex-col gap-2 justify-end"><div class="h-16 w-full bg-white/5 border border-white/10 rounded-lg"></div></div>
+                            <div class="flex-1 p-4 flex flex-col gap-3"><div class="h-10 w-full bg-white/5 rounded-lg"></div><div class="h-10 w-full bg-white/5 rounded-lg"></div></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center">
+                        <div class="text-xs font-semibold text-accViolet tracking-wider uppercase mb-3">
+                            <span class="lang-es">App turística inmersiva</span><span class="lang-en">Immersive Tourism App</span>
+                        </div>
+                        <h3 class="font-sora text-2xl lg:text-3xl font-bold mb-4 text-white">DeTour</h3>
+                        <p class="text-textSec mb-6">
+                            <span class="lang-es">Aplicación móvil para descubrir rutas, experiencias y contenido inmersivo en Cundinamarca mediante geolocalización, realidad aumentada y realidad virtual.</span>
+                            <span class="lang-en">Mobile application to discover routes, experiences, and immersive content in Cundinamarca through geolocation, AR, and VR.</span>
+                        </p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <div class="flex flex-col gap-1"><span class="text-white text-sm font-semibold"><span class="lang-es">Características</span><span class="lang-en">Features</span></span><span class="text-xs text-textSec">Geolocalización<br>AR / VR<br>Experiencia mobile-first</span></div>
+                        </div>
+
+                        <details class="group bg-white/5 border border-white/10 rounded-xl mb-6">
+                            <summary class="p-4 font-semibold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors rounded-xl outline-none">
+                                <span><span class="lang-es">Ver caso de estudio</span><span class="lang-en">View case study</span></span>
+                                <svg class="w-4 h-4 text-accViolet transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </summary>
+                            <div class="p-5 pt-2 text-sm text-textSec space-y-4 border-t border-white/10">
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Problema:</span><span class="lang-en">Problem:</span></strong><span class="lang-es">Los usuarios necesitaban una forma más intuitiva e inmersiva de explorar destinos y experiencias turísticas.</span><span class="lang-en">Users needed a more intuitive and immersive way to explore tourist destinations and experiences.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Solución:</span><span class="lang-en">Solution:</span></strong><span class="lang-es">Se creó una app móvil enfocada en exploración visual, categorías, ubicación y contenido interactivo.</span><span class="lang-en">A mobile app was created focused on visual exploration, categories, location, and interactive content.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Resultado:</span><span class="lang-en">Result:</span></strong><span class="text-accViolet"><span class="lang-es">Una experiencia turística digital más atractiva y fácil de usar.</span><span class="lang-en">A more attractive and easy-to-use digital tourist experience.</span></span></div>
+                            </div>
+                        </details>
+
+                        <div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-bgMain bg-white px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
+                                <span class="lang-es">Ver en Play Store</span><span class="lang-en">View on Play Store</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: Fuera del Molde -->
+                <div class="premium-card rounded-3xl overflow-hidden flex flex-col lg:flex-row">
+                    <div class="lg:w-5/12 bg-bgMain relative overflow-hidden flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-r border-white/5">
+                        <div class="w-full aspect-[4/3] bg-cardBg border border-white/10 rounded-xl relative shadow-2xl flex flex-col overflow-hidden p-4">
+                            <div class="flex justify-between border-b border-white/10 pb-3 mb-4"><div class="w-1/4 h-3 bg-white/20 rounded"></div><div class="w-8 h-8 rounded-full bg-white/10"></div></div>
+                            <div class="grid grid-cols-2 gap-3 flex-1">
+                                <div class="bg-white/5 rounded border border-white/5"></div><div class="bg-white/5 rounded border border-white/5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center">
+                        <div class="text-xs font-semibold text-[#F472B6] tracking-wider uppercase mb-3">
+                            <span class="lang-es">E-commerce creativo</span><span class="lang-en">Creative E-commerce</span>
+                        </div>
+                        <h3 class="font-sora text-2xl lg:text-3xl font-bold mb-4 text-white">Fuera del Molde</h3>
+                        <p class="text-textSec mb-6">
+                            <span class="lang-es">Tienda online de productos personalizables donde los usuarios pueden explorar referencias, personalizar artículos y comprar de forma sencilla.</span>
+                            <span class="lang-en">Online store for customizable products where users can browse, personalize items, and purchase easily.</span>
+                        </p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <div class="flex flex-col gap-1"><span class="text-white text-sm font-semibold"><span class="lang-es">Características</span><span class="lang-en">Features</span></span><span class="text-xs text-textSec">Catálogo<br>Personalización<br>UX de compra</span></div>
+                        </div>
+
+                        <details class="group bg-white/5 border border-white/10 rounded-xl mb-6">
+                            <summary class="p-4 font-semibold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors rounded-xl outline-none">
+                                <span><span class="lang-es">Ver caso de estudio</span><span class="lang-en">View case study</span></span>
+                                <svg class="w-4 h-4 text-[#F472B6] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </summary>
+                            <div class="p-5 pt-2 text-sm text-textSec space-y-4 border-t border-white/10">
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Problema:</span><span class="lang-en">Problem:</span></strong><span class="lang-es">La marca necesitaba una experiencia digital que facilitara mostrar productos personalizables y mejorar la experiencia de compra.</span><span class="lang-en">The brand needed a digital experience that made it easy to showcase customizable products and improve the shopping experience.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Solución:</span><span class="lang-en">Solution:</span></strong><span class="lang-es">Se diseñó una tienda online con mejor estructura, navegación clara y enfoque en personalización.</span><span class="lang-en">An online store was designed with better structure, clear navigation, and a focus on customization.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Resultado:</span><span class="lang-en">Result:</span></strong><span class="text-[#F472B6]"><span class="lang-es">Una experiencia de e-commerce más clara, flexible y alineada con la identidad creativa de la marca.</span><span class="lang-en">A clearer, flexible e-commerce experience aligned with the brand's creative identity.</span></span></div>
+                            </div>
+                        </details>
+
+                        <div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-bgMain bg-white px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
+                                <span class="lang-es">Visitar tienda</span><span class="lang-en">Visit store</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 4: La Locura Bar -->
+                <div class="premium-card rounded-3xl overflow-hidden flex flex-col lg:flex-row-reverse">
+                    <div class="lg:w-5/12 bg-bgMain relative overflow-hidden flex items-center justify-center p-8 border-b lg:border-b-0 lg:border-l border-white/5">
+                        <div class="w-full aspect-[4/3] bg-cardBg border border-white/10 rounded-xl relative shadow-2xl flex flex-col overflow-hidden">
+                            <div class="h-20 bg-gradient-to-b from-yellow-500/20 to-transparent"></div>
+                            <div class="flex-1 p-4 flex flex-col justify-center items-center gap-4">
+                                <div class="w-20 h-20 rounded-full border-4 border-white/10 bg-white/5"></div>
+                                <div class="h-4 w-1/3 bg-white/20 rounded"></div>
+                                <div class="h-8 w-1/2 bg-yellow-500/20 rounded border border-yellow-500/30"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center">
+                        <div class="text-xs font-semibold text-yellow-400 tracking-wider uppercase mb-3">
+                            <span class="lang-es">Web corporativa / negocio local</span><span class="lang-en">Corporate Web / Local Business</span>
+                        </div>
+                        <h3 class="font-sora text-2xl lg:text-3xl font-bold mb-4 text-white">La Locura Bar</h3>
+                        <p class="text-textSec mb-6">
+                            <span class="lang-es">Presencia digital moderna para un bar local, integrando carta, reservas, identidad visual y una experiencia enfocada en atraer nuevos clientes.</span>
+                            <span class="lang-en">Modern digital presence for a local bar, integrating menu, bookings, visual identity, and an experience focused on attracting new clients.</span>
+                        </p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <div class="flex flex-col gap-1"><span class="text-white text-sm font-semibold"><span class="lang-es">Características</span><span class="lang-en">Features</span></span><span class="text-xs text-textSec">Menú digital<br>Reservas<br>Presencia local</span></div>
+                        </div>
+
+                        <details class="group bg-white/5 border border-white/10 rounded-xl mb-6">
+                            <summary class="p-4 font-semibold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors rounded-xl outline-none">
+                                <span><span class="lang-es">Ver caso de estudio</span><span class="lang-en">View case study</span></span>
+                                <svg class="w-4 h-4 text-yellow-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </summary>
+                            <div class="p-5 pt-2 text-sm text-textSec space-y-4 border-t border-white/10">
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Problema:</span><span class="lang-en">Problem:</span></strong><span class="lang-es">El negocio necesitaba comunicar mejor su propuesta, facilitar reservas y ofrecer información clave de forma visual y accesible.</span><span class="lang-en">The business needed to better communicate its proposal, facilitate bookings, and offer key info visually and accessibly.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Solución:</span><span class="lang-en">Solution:</span></strong><span class="lang-es">Se construyó una web comercial moderna con menú, reservas, ubicación y diseño alineado a la identidad del negocio.</span><span class="lang-en">A modern commercial web was built with menu, bookings, location, and a design aligned to the business identity.</span></div>
+                                <div><strong class="text-white block mb-1"><span class="lang-es">Resultado:</span><span class="lang-en">Result:</span></strong><span class="text-yellow-400"><span class="lang-es">Una presencia digital más atractiva y funcional para generar confianza y visitas.</span><span class="lang-en">A more attractive and functional digital presence to generate trust and visits.</span></span></div>
+                            </div>
+                        </details>
+
+                        <div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-bgMain bg-white px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
+                                <span class="lang-es">Visitar sitio web</span><span class="lang-en">Visit website</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Projects -->
+            <div class="mt-16 pt-16 border-t border-white/5">
+                <h3 class="font-sora text-xl font-bold mb-8 text-white">
+                    <span class="lang-es">Más proyectos</span><span class="lang-en">More projects</span>
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="premium-card p-6 rounded-2xl flex items-center justify-between">
+                        <div>
+                            <h4 class="font-sora font-bold text-white mb-1">CIA Vial del Llano</h4>
+                            <p class="text-sm text-textSec"><span class="lang-es">Landing page comercial</span><span class="lang-en">Commercial landing page</span></p>
+                        </div>
+                        <a href="#" class="text-accBlue hover:text-white transition-colors p-2 bg-white/5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                    <div class="premium-card p-6 rounded-2xl flex items-center justify-between">
+                        <div>
+                            <h4 class="font-sora font-bold text-white mb-1">DeTour Cundinamarca Web</h4>
+                            <p class="text-sm text-textSec"><span class="lang-es">Plataforma web turística</span><span class="lang-en">Tourism web platform</span></p>
+                        </div>
+                        <a href="#" class="text-accViolet hover:text-white transition-colors p-2 bg-white/5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section id="proceso" class="py-24 max-w-5xl mx-auto px-6 lg:px-8 reveal">
+        <div class="text-center mb-16">
+            <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white">
+                <span class="lang-es">Metodología de trabajo</span><span class="lang-en">Work Methodology</span>
+            </h2>
+            <p class="text-textSec text-lg max-w-2xl mx-auto">
+                <span class="lang-es">Un proceso estructurado, transparente y orientado a minimizar riesgos y acelerar resultados.</span>
+                <span class="lang-en">A structured, transparent process oriented towards minimizing risks and accelerating results.</span>
+            </p>
+        </div>
+        
+        <div class="relative">
+            <!-- Vertical Line -->
+            <div class="absolute left-[20px] md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[2px] bg-white/5"></div>
+            
+            <div class="space-y-12 relative z-10">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+                    <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end pl-14 md:pl-0">
+                        <h3 class="font-sora text-xl font-bold text-white mb-2"><span class="lang-es">Descubrimiento e idea</span><span class="lang-en">Discovery & Idea</span></h3>
+                        <p class="text-sm text-textSec"><span class="lang-es">Entendemos el negocio, el problema y los objetivos del proyecto.</span><span class="lang-en">We understand the business, the problem, and the project objectives.</span></p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 md:-ml-5 w-10 h-10 rounded-full bg-bgSec border-2 border-white/20 flex items-center justify-center text-sm font-bold text-white shadow-lg">1</div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+                    <div class="md:w-1/2 hidden md:block"></div>
+                    <div class="absolute left-0 md:left-1/2 md:-ml-5 w-10 h-10 rounded-full bg-bgSec border-2 border-accBlue flex items-center justify-center text-sm font-bold text-accBlue shadow-[0_0_15px_rgba(56,189,248,0.2)]">2</div>
+                    <div class="md:w-1/2 md:pl-12 flex flex-col items-start pl-14 md:pl-12">
+                        <h3 class="font-sora text-xl font-bold text-white mb-2"><span class="lang-es">Estructura y arquitectura</span><span class="lang-en">Structure & Architecture</span></h3>
+                        <p class="text-sm text-textSec"><span class="lang-es">Definimos secciones, funcionalidades y la base de la experiencia.</span><span class="lang-en">We define sections, functionalities, and the base of the experience.</span></p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+                    <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end pl-14 md:pl-0">
+                        <h3 class="font-sora text-xl font-bold text-white mb-2"><span class="lang-es">Diseño UI / UX</span><span class="lang-en">UI / UX Design</span></h3>
+                        <p class="text-sm text-textSec"><span class="lang-es">Creamos una interfaz moderna, clara y fácil de usar.</span><span class="lang-en">We create a modern, clear, and easy-to-use interface.</span></p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 md:-ml-5 w-10 h-10 rounded-full bg-bgSec border-2 border-accViolet flex items-center justify-center text-sm font-bold text-accViolet shadow-[0_0_15px_rgba(139,92,246,0.2)]">3</div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+                    <div class="md:w-1/2 hidden md:block"></div>
+                    <div class="absolute left-0 md:left-1/2 md:-ml-5 w-10 h-10 rounded-full bg-bgSec border-2 border-accCyan flex items-center justify-center text-sm font-bold text-accCyan shadow-[0_0_15px_rgba(34,211,238,0.2)]">4</div>
+                    <div class="md:w-1/2 md:pl-12 flex flex-col items-start pl-14 md:pl-12">
+                        <h3 class="font-sora text-xl font-bold text-white mb-2"><span class="lang-es">Desarrollo técnico</span><span class="lang-en">Technical Development</span></h3>
+                        <p class="text-sm text-textSec"><span class="lang-es">Construimos el producto con foco en rendimiento, escalabilidad y calidad.</span><span class="lang-en">We build the product with a focus on performance, scalability, and quality.</span></p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center w-full">
+                    <div class="md:w-1/2 md:pr-12 md:text-right flex flex-col md:items-end pl-14 md:pl-0">
+                        <h3 class="font-sora text-xl font-bold text-white mb-2"><span class="lang-es">Lanzamiento y soporte</span><span class="lang-en">Launch & Support</span></h3>
+                        <p class="text-sm text-textSec"><span class="lang-es">Publicamos, optimizamos y dejamos una base lista para crecer.</span><span class="lang-en">We publish, optimize, and leave a base ready to grow.</span></p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 md:-ml-5 w-10 h-10 rounded-full bg-bgSec border-2 border-green-400 flex items-center justify-center text-sm font-bold text-green-400 shadow-[0_0_15px_rgba(74,222,128,0.2)]">5</div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="py-24 bg-bgSec/30 border-y border-white/5 reveal">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-5/12 flex justify-center">
+                <!-- Profile Placeholder Card -->
+                <div class="relative w-72 h-80 premium-card rounded-[2rem] p-6 flex flex-col items-center justify-center border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-accBlue/20 rounded-full blur-[40px] z-0"></div>
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-accViolet/20 rounded-full blur-[40px] z-0"></div>
+                    
+                    <div class="w-24 h-24 rounded-full bg-gradient-primary flex items-center justify-center text-3xl font-bold text-white mb-6 shadow-xl relative z-10">
+                        JD
+                    </div>
+                    <h3 class="font-sora text-xl font-bold text-white mb-1 relative z-10">Juan David</h3>
+                    <p class="text-sm text-textSec uppercase tracking-widest relative z-10">Studio</p>
+                    
+                    <div class="mt-8 flex gap-3 relative z-10">
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-7/12">
+                <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white">
+                    <span class="lang-es">Soy Juan David</span><span class="lang-en">I am Juan David</span>
+                </h2>
+                <p class="text-textSec text-lg leading-relaxed mb-8">
+                    <span class="lang-es">Desarrollador web y creador de soluciones digitales con 5 años de experiencia construyendo productos para negocios reales. He trabajado en e-commerce, turismo, aplicaciones móviles, plataformas de gestión y sitios web comerciales, combinando desarrollo, diseño responsive y pensamiento estratégico para crear experiencias útiles, funcionales y bien ejecutadas.</span>
+                    <span class="lang-en">Web developer and creator of digital solutions with 5 years of experience building products for real businesses. I have worked on e-commerce, tourism, mobile apps, management platforms, and commercial websites, combining development, responsive design, and strategic thinking to create useful, functional, and well-executed experiences.</span>
+                </p>
+                
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-white/90 shadow-sm"><span class="lang-es">Desarrollo web</span><span class="lang-en">Web Development</span></span>
+                    <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-white/90 shadow-sm"><span class="lang-es">Diseño responsive</span><span class="lang-en">Responsive Design</span></span>
+                    <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-white/90 shadow-sm"><span class="lang-es">Productos digitales</span><span class="lang-en">Digital Products</span></span>
+                    <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-white/90 shadow-sm"><span class="lang-es">Soluciones a medida</span><span class="lang-en">Custom Solutions</span></span>
+                    <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-white/90 shadow-sm"><span class="lang-es">Experiencia freelance</span><span class="lang-en">Freelance Experience</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="contacto" class="py-24 relative reveal">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <div class="premium-card p-12 md:p-16 rounded-[2rem]">
+                <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
+                    <span class="lang-es">¿Tienes una idea o necesitas mejorar tu presencia digital?</span>
+                    <span class="lang-en">Have an idea or need to improve your digital presence?</span>
+                </h2>
+                <p class="text-textSec text-lg mb-10 max-w-2xl mx-auto">
+                    <span class="lang-es">Colaboremos para crear una web, tienda online, aplicación o plataforma que ayude a tu negocio a verse mejor, funcionar mejor y crecer.</span>
+                    <span class="lang-en">Let's collaborate to create a website, online store, application or platform that helps your business look better, function better, and grow.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#" class="bg-white text-bgMain px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.89-4.443 9.893-9.896.002-5.466-4.415-9.898-9.881-9.898-5.452 0-9.887 4.441-9.889 9.896-.001 1.892.518 3.636 1.448 5.187l-1.146 4.194 4.183-1.075zm7.362-7.147c-.328-.164-1.933-.955-2.233-1.064-.302-.109-.523-.164-.744.164-.221.328-.844 1.064-1.035 1.282-.191.218-.383.246-.711.082-.328-.164-1.381-.51-2.628-1.632-.969-.873-1.624-1.951-1.816-2.28-.191-.328-.02-.505.144-.67.149-.148.328-.382.493-.574.164-.191.221-.328.331-.546.111-.218.056-.41-.027-.574-.082-.164-.744-1.794-1.02-2.458-.268-.646-.539-.558-.744-.567-.191-.009-.411-.009-.631-.009-.221 0-.579.082-.881.41-.302.328-1.151 1.121-1.151 2.735 0 1.614 1.178 3.176 1.342 3.395.164.218 2.316 3.535 5.609 4.957 2.213.954 3.018.91 4.148.777 1.296-.153 3.003-1.229 3.424-2.417.421-1.188.421-2.206.295-2.417-.126-.211-.466-.328-.794-.492z"/></svg>
+                        <span class="lang-es">Hablemos por WhatsApp</span><span class="lang-en">Let's talk on WhatsApp</span>
+                    </a>
+                    <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span class="lang-es">Enviar email</span><span class="lang-en">Send email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-bgSec/80 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="text-center md:text-left">
+                    <a href="#" class="font-sora font-bold text-xl tracking-tight flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <div class="w-6 h-6 rounded bg-gradient-primary flex items-center justify-center text-[10px] text-white">JD</div>
+                        <span>Juan David <span class="text-textSec font-normal">Studio</span></span>
+                    </a>
+                    <p class="text-textSec text-sm">Websites · E-commerce · Apps · <span class="lang-es">Plataformas</span><span class="lang-en">Platforms</span></p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-textSec font-medium">
+                    <a href="#especialidades" class="hover:text-white transition-colors"><span class="lang-es">Especialidades</span><span class="lang-en">Specialties</span></a>
+                    <a href="#casos" class="hover:text-white transition-colors"><span class="lang-es">Casos de éxito</span><span class="lang-en">Case Studies</span></a>
+                    <a href="#proceso" class="hover:text-white transition-colors"><span class="lang-es">Proceso</span><span class="lang-en">Process</span></a>
+                    <a href="#sobre-mi" class="hover:text-white transition-colors"><span class="lang-es">Sobre mí</span><span class="lang-en">About</span></a>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-textSec hover:text-white hover:bg-white/10 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-textSec hover:text-white hover:bg-white/10 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center text-sm text-textSec/60 pt-8 border-t border-white/5">
+                &copy; <span id="year"></span> Juan David Studio. <span class="lang-es">Todos los derechos reservados.</span><span class="lang-en">All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Scripts -->
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Language Toggle
+        const langToggleBtn = document.getElementById('langToggle');
+        const langLabel = document.getElementById('langLabel');
+        const htmlTag = document.documentElement;
+
+        langToggleBtn.addEventListener('click', () => {
+            const currentLang = htmlTag.getAttribute('lang');
+            if (currentLang === 'es') {
+                htmlTag.setAttribute('lang', 'en');
+                langLabel.textContent = 'EN';
+            } else {
+                htmlTag.setAttribute('lang', 'es');
+                langLabel.textContent = 'ES';
+            }
+        });
+
+        // Scroll Reveal Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "OG Oscar García Dev" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: OG
+        - generic [ref=e7]: Oscar García Dev
+      - generic [ref=e8]:
+        - link "Especialidades" [ref=e9] [cursor=pointer]:
+          - /url: "#especialidades"
+        - link "Casos de éxito" [ref=e10] [cursor=pointer]:
+          - /url: "#casos"
+        - link "Proceso" [ref=e11] [cursor=pointer]:
+          - /url: "#proceso"
+        - link "Sobre mí" [ref=e12] [cursor=pointer]:
+          - /url: "#sobre-mi"
+      - generic [ref=e13]:
+        - link "Switch to EN" [ref=e14] [cursor=pointer]:
+          - /url: /en/
+          - img [ref=e15]
+          - text: EN
+        - link "Hablemos" [ref=e17] [cursor=pointer]:
+          - /url: "#contacto"
+  - generic [ref=e19]:
+    - generic [ref=e24]: Soluciones digitales para negocios reales
+    - heading "Desarrollo sitios web, e-commerce, aplicaciones y plataformas digitales para negocios reales." [level=1] [ref=e25]
+    - paragraph [ref=e26]: Ayudo a emprendedores y empresas a transformar ideas en productos digitales modernos, funcionales y enfocados en resultados.
+    - generic [ref=e27]: 5 años de experiencia creando soluciones digitales para turismo, comercio electrónico, aplicaciones móviles, gestión deportiva y negocios locales.
+    - generic [ref=e28]:
+      - link "Ver proyectos" [ref=e29] [cursor=pointer]:
+        - /url: "#casos"
+      - link "Hablemos por WhatsApp" [ref=e30] [cursor=pointer]:
+        - /url: "#contacto"
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]: ✓
+        - text: 5+ años de experiencia
+      - generic [ref=e34]:
+        - generic [ref=e35]: ✓
+        - text: Web & mobile apps
+      - generic [ref=e36]:
+        - generic [ref=e37]: ✓
+        - text: E-commerce
+      - generic [ref=e38]:
+        - generic [ref=e39]: ✓
+        - text: Custom platforms
+      - generic [ref=e40]:
+        - generic [ref=e41]: ✓
+        - text: Responsive design
+  - generic [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]: 5+ años
+      - paragraph [ref=e75]: Experiencia desarrollando productos digitales.
+    - generic [ref=e76]:
+      - generic [ref=e77]: Proyectos web y móviles
+      - paragraph [ref=e78]: Sitios web, apps, tiendas y plataformas.
+    - generic [ref=e79]:
+      - generic [ref=e80]: Soluciones para negocios
+      - paragraph [ref=e81]: Diseño y desarrollo enfocado en objetivos reales.
+    - generic [ref=e82]:
+      - generic [ref=e83]: Diseño responsive
+      - paragraph [ref=e84]: Experiencias adaptadas a todos los dispositivos.
+  - generic [ref=e87]:
+    - generic [ref=e88]:
+      - heading "Metodología de trabajo" [level=2] [ref=e89]
+      - paragraph [ref=e90]: Un proceso estructurado, transparente y orientado a minimizar riesgos y acelerar resultados.
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - heading "Descubrimiento e idea" [level=3] [ref=e96]
+          - paragraph [ref=e97]: Entendemos el negocio, el problema y los objetivos del proyecto.
+        - generic [ref=e98]: "1"
+      - generic [ref=e99]:
+        - generic [ref=e100]: "2"
+        - generic [ref=e101]:
+          - heading "Estructura y arquitectura" [level=3] [ref=e102]
+          - paragraph [ref=e103]: Definimos secciones, funcionalidades y la base de la experiencia.
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - heading "Diseño UI / UX" [level=3] [ref=e106]
+          - paragraph [ref=e107]: Creamos una interfaz moderna, clara y fácil de usar.
+        - generic [ref=e108]: "3"
+      - generic [ref=e109]:
+        - generic [ref=e110]: "4"
+        - generic [ref=e111]:
+          - heading "Desarrollo técnico" [level=3] [ref=e112]
+          - paragraph [ref=e113]: Construimos el producto con foco en rendimiento, escalabilidad y calidad.
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - heading "Lanzamiento y soporte" [level=3] [ref=e116]
+          - paragraph [ref=e117]: Publicamos, optimizamos y dejamos una base lista para crecer.
+        - generic [ref=e118]: "5"
+  - generic [ref=e121]:
+    - generic [ref=e123]:
+      - generic [ref=e126]: OG
+      - heading "Oscar García" [level=3] [ref=e127]
+      - paragraph [ref=e128]: Dev
+      - generic [ref=e129]:
+        - img [ref=e131]
+        - img [ref=e134]
+    - generic [ref=e136]:
+      - heading "Soy Oscar García" [level=2] [ref=e137]
+      - paragraph [ref=e138]: Desarrollador web y creador de soluciones digitales con 5 años de experiencia construyendo productos para negocios reales. He trabajado en e-commerce, turismo, aplicaciones móviles, plataformas de gestión y sitios web comerciales, combinando desarrollo, diseño responsive y pensamiento estratégico para crear experiencias útiles, funcionales y bien ejecutadas.
+      - generic [ref=e139]:
+        - generic [ref=e140]: Desarrollo web
+        - generic [ref=e141]: Diseño responsive
+        - generic [ref=e142]: Productos digitales
+        - generic [ref=e143]: Soluciones a medida
+        - generic [ref=e144]: Experiencia freelance
+  - contentinfo [ref=e145]:
+    - generic [ref=e146]:
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - link "OG Oscar García Dev" [ref=e149] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e150]: OG
+            - generic [ref=e151]: Oscar García Dev
+          - paragraph [ref=e152]: Websites · E-commerce · Apps · Plataformas
+        - generic [ref=e153]:
+          - link "Especialidades" [ref=e154] [cursor=pointer]:
+            - /url: "#especialidades"
+          - link "Casos de éxito" [ref=e155] [cursor=pointer]:
+            - /url: "#casos"
+          - link "Proceso" [ref=e156] [cursor=pointer]:
+            - /url: "#proceso"
+          - link "Sobre mí" [ref=e157] [cursor=pointer]:
+            - /url: "#sobre-mi"
+        - generic [ref=e158]:
+          - link "LinkedIn" [ref=e159] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e160]
+          - link "GitHub" [ref=e162] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e163]
+      - generic [ref=e165]: © 2026 Oscar García Dev. Todos los derechos reservados.
+  - generic [ref=e168]:
+    - button "Menu" [ref=e169]:
+      - img [ref=e171]
+      - generic: Menu
+    - button "Inspect" [ref=e175]:
+      - img [ref=e177]
+      - generic: Inspect
+    - button "Audit" [ref=e179]:
+      - img [ref=e181]
+      - generic: Audit
+    - button "Settings" [ref=e184]:
+      - img [ref=e186]
+      - generic: Settings

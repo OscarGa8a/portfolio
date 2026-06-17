@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "OG Oscar García Dev" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: OG
+        - generic [ref=e7]: Oscar García Dev
+      - generic [ref=e8]:
+        - link "Especialidades" [ref=e9] [cursor=pointer]:
+          - /url: "#especialidades"
+        - link "Casos de éxito" [ref=e10] [cursor=pointer]:
+          - /url: "#casos"
+        - link "Proceso" [ref=e11] [cursor=pointer]:
+          - /url: "#proceso"
+        - link "Sobre mí" [ref=e12] [cursor=pointer]:
+          - /url: "#sobre-mi"
+      - generic [ref=e13]:
+        - link "Switch to EN" [ref=e14] [cursor=pointer]:
+          - /url: /en/
+          - img [ref=e15]
+          - text: EN
+        - link "Hablemos" [ref=e17] [cursor=pointer]:
+          - /url: "#contacto"
+  - main [ref=e18]
+  - contentinfo [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - link "OG Oscar García Dev" [ref=e23] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e24]: OG
+            - generic [ref=e25]: Oscar García Dev
+          - paragraph [ref=e26]: Websites · E-commerce · Apps · Plataformas
+        - generic [ref=e27]:
+          - link "Especialidades" [ref=e28] [cursor=pointer]:
+            - /url: "#especialidades"
+          - link "Casos de éxito" [ref=e29] [cursor=pointer]:
+            - /url: "#casos"
+          - link "Proceso" [ref=e30] [cursor=pointer]:
+            - /url: "#proceso"
+          - link "Sobre mí" [ref=e31] [cursor=pointer]:
+            - /url: "#sobre-mi"
+        - generic [ref=e32]:
+          - link "LinkedIn" [ref=e33] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e34]
+          - link "GitHub" [ref=e36] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e37]
+      - generic [ref=e39]: © 2026 Oscar García Dev. Todos los derechos reservados.
+  - generic [ref=e42]:
+    - button "Menu" [ref=e43]:
+      - img [ref=e45]
+      - generic: Menu
+    - button "Inspect" [ref=e49]:
+      - img [ref=e51]
+      - generic: Inspect
+    - button "Audit" [ref=e53]:
+      - generic [ref=e54]:
+        - img [ref=e55]
+        - img [ref=e58]
+      - generic: Audit
+    - button "Settings" [ref=e61]:
+      - img [ref=e63]
+      - generic: Settings

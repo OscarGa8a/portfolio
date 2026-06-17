@@ -1,0 +1,63 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "JD Juan David Studio" [ref=e4] [cursor=pointer]:
+        - /url: /en/
+        - generic [ref=e6]: JD
+        - generic [ref=e7]: Juan David Studio
+      - generic [ref=e8]:
+        - link "Specialties" [ref=e9] [cursor=pointer]:
+          - /url: "#especialidades"
+        - link "Case Studies" [ref=e10] [cursor=pointer]:
+          - /url: "#casos"
+        - link "Process" [ref=e11] [cursor=pointer]:
+          - /url: "#proceso"
+        - link "About" [ref=e12] [cursor=pointer]:
+          - /url: "#sobre-mi"
+      - generic [ref=e13]:
+        - link "Switch to ES" [ref=e14] [cursor=pointer]:
+          - /url: /
+          - img [ref=e15]
+          - text: ES
+        - link "Let's talk" [ref=e17] [cursor=pointer]:
+          - /url: "#contacto"
+  - main [ref=e18]
+  - contentinfo [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - link "JD Juan David Studio" [ref=e23] [cursor=pointer]:
+            - /url: /en/
+            - generic [ref=e24]: JD
+            - generic [ref=e25]: Juan David Studio
+          - paragraph [ref=e26]: Websites · E-commerce · Apps · Platforms
+        - generic [ref=e27]:
+          - link "Specialties" [ref=e28] [cursor=pointer]:
+            - /url: "#especialidades"
+          - link "Case Studies" [ref=e29] [cursor=pointer]:
+            - /url: "#casos"
+          - link "Process" [ref=e30] [cursor=pointer]:
+            - /url: "#proceso"
+          - link "About" [ref=e31] [cursor=pointer]:
+            - /url: "#sobre-mi"
+        - generic [ref=e32]:
+          - link "LinkedIn" [ref=e33] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e34]
+          - link "GitHub" [ref=e36] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e37]
+      - generic [ref=e39]: © 2026 Juan David Studio. All rights reserved.
+  - generic [ref=e42]:
+    - button "Menu" [ref=e43]:
+      - img [ref=e45]
+      - generic: Menu
+    - button "Inspect" [ref=e49]:
+      - img [ref=e51]
+      - generic: Inspect
+    - button "Audit" [ref=e53]:
+      - img [ref=e55]
+      - generic: Audit
+    - button "Settings" [ref=e58]:
+      - img [ref=e60]
+      - generic: Settings

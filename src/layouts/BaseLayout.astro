@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import RevealObserver from '../components/RevealObserver.astro';
 
 interface Props {
   lang: 'es' | 'en';
@@ -24,5 +25,6 @@ const { lang, title = 'Oscar García Dev | Freelance Web Developer' } = Astro.pr
     <div class="fixed top-0 left-[-10%] w-[500px] h-[500px] bg-acc-violet/10 rounded-full blur-[120px] pointer-events-none z-[-1] animate-pulse-glow"></div>
     <div class="fixed bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-acc-blue/10 rounded-full blur-[150px] pointer-events-none z-[-1] animate-pulse-glow" style="animation-delay: 2s;"></div>
     <slot />
+    <RevealObserver />
   </body>
 </html>
