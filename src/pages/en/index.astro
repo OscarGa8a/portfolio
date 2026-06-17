@@ -1,14 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+import About from '../../components/About.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'en' as const;
 ---
 <BaseLayout lang={lang}>
   <Nav lang={lang} />
-  <main class="pt-20">
-    <!-- Sections will be added in PR2 and PR3 -->
-  </main>
+  <Hero lang={lang} />
+  <TrustMetrics lang={lang} />
+  <ProcessTimeline lang={lang} />
+  <About lang={lang} />
   <Footer lang={lang} />
 </BaseLayout>

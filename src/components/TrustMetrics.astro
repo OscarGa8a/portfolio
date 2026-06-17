@@ -1,0 +1,31 @@
+---
+import type { Locale } from '../i18n/index';
+import { t } from '../i18n/index';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+---
+<section class="py-16 bg-bg-sec/50 border-y border-white/5 reveal">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 border-l-2 border-acc-blue">
+        <div class="text-3xl font-sora font-bold text-white mb-1">5+ <span class="text-xl font-normal text-text-sec">{t(lang, 'trust_years_label')}</span></div>
+        <p class="text-sm text-text-sec">{t(lang, 'trust_years_desc')}</p>
+      </div>
+      <div class="p-6 border-l-2 border-acc-violet">
+        <div class="text-xl font-sora font-bold text-white mb-2 pt-1">{t(lang, 'trust_projects_title')}</div>
+        <p class="text-sm text-text-sec">{t(lang, 'trust_projects_desc')}</p>
+      </div>
+      <div class="p-6 border-l-2 border-acc-cyan">
+        <div class="text-xl font-sora font-bold text-white mb-2 pt-1">{t(lang, 'trust_solutions_title')}</div>
+        <p class="text-sm text-text-sec">{t(lang, 'trust_solutions_desc')}</p>
+      </div>
+      <div class="p-6 border-l-2 border-white/20">
+        <div class="text-xl font-sora font-bold text-white mb-2 pt-1">{t(lang, 'trust_responsive_title')}</div>
+        <p class="text-sm text-text-sec">{t(lang, 'trust_responsive_desc')}</p>
+      </div>
+    </div>
+  </div>
+</section>

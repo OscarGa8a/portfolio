@@ -1,0 +1,30 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  reveal?: boolean;
+  padding?: string;
+  container?: boolean;
+  bg?: string;
+}
+const {
+  id,
+  class: className = '',
+  reveal = true,
+  padding = 'py-24',
+  container = true,
+  bg = '',
+} = Astro.props;
+
+const outerClass = [bg, reveal ? 'reveal' : '', padding, className].filter(Boolean).join(' ');
+const innerClass = container ? 'max-w-7xl mx-auto px-6 lg:px-8' : '';
+---
+<section id={id} class={outerClass}>
+  {container ? (
+    <div class={innerClass}>
+      <slot />
+    </div>
+  ) : (
+    <slot />
+  )}
+</section>
