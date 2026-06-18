@@ -1,15 +1,21 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
-import LanguageToggle from './LanguageToggle.astro';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
+
+const langDest  = lang === 'es' ? '/en/' : '/';
+const langLabel = lang === 'es' ? 'EN' : 'ES';
+const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLabel}`;
 ---
+
 <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+
+    <!-- Logo -->
     <a href={lang === 'es' ? '/' : '/en/'} class="font-sora font-bold text-xl tracking-tight flex items-center gap-2.5 group">
       <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-sm shadow-[0_0_15px_rgba(56,189,248,0.3)] group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
         <span class="text-white font-bold">OG</span>
@@ -17,18 +23,140 @@ const { lang } = Astro.props;
       <span class="text-text-main">Oscar García <span class="text-text-sec font-normal">Dev</span></span>
     </a>
 
-    <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-text-sec">
+    <!-- Desktop links (lg+) -->
+    <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-text-sec">
       <a href="#especialidades" class="hover:text-text-main transition-colors">{t(lang, 'nav_specialties')}</a>
-      <a href="#casos" class="hover:text-text-main transition-colors">{t(lang, 'nav_case_studies')}</a>
-      <a href="#proceso" class="hover:text-text-main transition-colors">{t(lang, 'nav_process')}</a>
-      <a href="#sobre-mi" class="hover:text-text-main transition-colors">{t(lang, 'nav_about')}</a>
+      <a href="#casos"          class="hover:text-text-main transition-colors">{t(lang, 'nav_case_studies')}</a>
+      <a href="#proceso"        class="hover:text-text-main transition-colors">{t(lang, 'nav_process')}</a>
+      <a href="#sobre-mi"       class="hover:text-text-main transition-colors">{t(lang, 'nav_about')}</a>
     </div>
 
-    <div class="flex items-center space-x-4">
-      <LanguageToggle lang={lang} />
-      <a href="#contacto" class="hidden md:inline-flex bg-white text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all shadow-lg">
+    <!-- Desktop right (lg+) -->
+    <div class="hidden lg:flex items-center space-x-4">
+      <a href={langDest} class="text-xs font-bold text-text-sec hover:text-text-main transition-colors bg-white/5 border border-white/10 px-3 py-1.5 rounded-md flex items-center gap-1.5" aria-label={langText}>
+        <svg class="w-3.5 h-3.5 text-acc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        </svg>
+        {langLabel}
+      </a>
+      <a href="#contacto" class="bg-white text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all shadow-lg">
         {t(lang, 'nav_cta')}
       </a>
     </div>
+
+    <!-- Hamburger button (below lg) -->
+    <button
+      id="nav-toggle"
+      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-white/5 transition-colors"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center" id="hb-1"></span>
+      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300" id="hb-2"></span>
+      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center" id="hb-3"></span>
+    </button>
   </div>
 </nav>
+
+<!-- Backdrop -->
+<div
+  id="nav-backdrop"
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+></div>
+
+<!-- Sidebar drawer -->
+<aside
+  id="nav-drawer"
+  class="fixed top-0 right-0 h-full w-72 bg-card-bg border-l border-white/5 z-50 translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col overflow-y-auto"
+  aria-hidden="true"
+>
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between px-6 py-5 border-b border-white/5 shrink-0">
+    <span class="font-sora font-bold text-sm text-text-main">{lang === 'es' ? 'Menú' : 'Menu'}</span>
+    <button
+      id="nav-close"
+      class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors text-text-sec hover:text-text-main"
+      aria-label="Cerrar menú"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Nav links -->
+  <div class="flex flex-col gap-1 px-4 py-6 flex-1">
+    <a href="#especialidades" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
+      {t(lang, 'nav_specialties')}
+    </a>
+    <a href="#casos" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
+      {t(lang, 'nav_case_studies')}
+    </a>
+    <a href="#proceso" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
+      {t(lang, 'nav_process')}
+    </a>
+    <a href="#sobre-mi" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
+      {t(lang, 'nav_about')}
+    </a>
+  </div>
+
+  <!-- Drawer footer -->
+  <div class="px-4 pb-8 pt-6 flex flex-col gap-3 border-t border-white/5 shrink-0">
+    <a href={langDest} class="drawer-link flex items-center gap-2 px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
+      <svg class="w-4 h-4 text-acc-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+      </svg>
+      {langText}
+    </a>
+    <a href="#contacto" class="drawer-link w-full text-center bg-white text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all">
+      {t(lang, 'nav_cta')}
+    </a>
+  </div>
+</aside>
+
+<script>
+  const toggle   = document.getElementById('nav-toggle')!;
+  const drawer   = document.getElementById('nav-drawer')!;
+  const backdrop = document.getElementById('nav-backdrop')!;
+  const closeBtn = document.getElementById('nav-close')!;
+  const hb1      = document.getElementById('hb-1')!;
+  const hb2      = document.getElementById('hb-2')!;
+  const hb3      = document.getElementById('hb-3')!;
+
+  function openMenu() {
+    drawer.classList.remove('translate-x-full');
+    drawer.setAttribute('aria-hidden', 'false');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    backdrop.classList.add('opacity-100');
+    toggle.setAttribute('aria-expanded', 'true');
+    hb1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+    hb2.style.opacity   = '0';
+    hb3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    drawer.classList.add('translate-x-full');
+    drawer.setAttribute('aria-hidden', 'true');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    backdrop.classList.remove('opacity-100');
+    toggle.setAttribute('aria-expanded', 'false');
+    hb1.style.transform = '';
+    hb2.style.opacity   = '';
+    hb3.style.transform = '';
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.drawer-link').forEach(link =>
+    link.addEventListener('click', closeMenu)
+  );
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+</script>
