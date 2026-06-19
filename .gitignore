@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.playwright-mcp/
+.claude/
+.agents/
+
+openspec/
+
+# verification screenshots (playwright, manual)
+/*.png
