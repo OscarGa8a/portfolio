@@ -2,18 +2,24 @@
 
 @theme {
   /* Brand colors */
-  --color-bg-main: #060B18;
-  --color-bg-sec: #0E1628;
-  --color-card-bg: #101A30;
-  --color-text-main: #F8FAFC;
-  --color-text-sec: #94A3B8;
-  --color-acc-blue: #38BDF8;
-  --color-acc-violet: #8B5CF6;
-  --color-acc-cyan: #22D3EE;
+  --color-bg-main: #060b18;
+  --color-bg-sec: #0e1628;
+  --color-card-bg: #101a30;
+  --color-text-main: #f8fafc;
+  --color-text-sec: #94a3b8;
+  --color-acc-blue: #38bdf8;
+  --color-acc-violet: #8b5cf6;
+  --color-acc-cyan: #22d3ee;
 
   /* Font families */
   --font-sora: "Sora", system-ui, sans-serif;
   --font-inter: "Inter", system-ui, sans-serif;
+
+  /* Custom text sizes */
+  --text-xxs: 9px;
+
+  /* Custom leading */
+  --leading-hero: 1.1;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
@@ -21,30 +27,53 @@
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
   }
 
   @keyframes pulse-glow {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.05); }
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
   }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
   body {
-    background-color: #060B18;
-    color: #F8FAFC;
+    background-color: #060b18;
+    color: #f8fafc;
     font-family: "Inter", system-ui, sans-serif;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Sora", system-ui, sans-serif;
   }
 }
@@ -58,7 +87,7 @@
   }
 
   .premium-card {
-    background: #101A30;
+    background: #101a30;
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: all 0.3s ease;
   }
@@ -70,14 +99,18 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #38BDF8, #8B5CF6, #22D3EE);
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6, #22d3ee);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .bg-gradient-primary {
-    background: linear-gradient(135deg, #38BDF8, #8B5CF6);
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+  }
+
+  .shadow-white-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   }
 
   .reveal {
