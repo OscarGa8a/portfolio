@@ -1,112 +1,59 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
+import { Image } from 'astro:assets';
+import duartes from '../assets/projects/duartes.png';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 ---
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 min-h-[90vh]">
-
+<section class="relative min-h-[100dvh] pt-24 pb-16 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
   <!-- Left: Content -->
-  <div class="lg:w-1/2 flex flex-col items-start space-y-8 reveal">
+  <div class="lg:w-1/2 flex flex-col items-start space-y-7 reveal">
+    <!-- Availability badge (the dot conveys real status: open for work) -->
+    <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-4 py-2 text-xs font-medium text-accent">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+      </span>
+      <span>{t(lang, 'hero_badge')}</span>
+    </div>
 
     <!-- Headline -->
-    <h1 class="font-sora font-bold text-4xl sm:text-5xl lg:text-5xl leading-hero tracking-tight max-w-xl text-white">
-      <span class="block">{t(lang, 'hero_title_1')}</span>
-      <span class="block text-gradient">{t(lang, 'hero_title_gradient')}</span>
+    <h1 class="font-display font-bold text-4xl md:text-5xl leading-[1.1] tracking-tight text-text-main max-w-xl">
+      {t(lang, 'hero_title_1')} <span class="text-gradient">{t(lang, 'hero_title_gradient')}</span>
     </h1>
 
+    <!-- Subtitle -->
+    <p class="text-lg text-text-sec leading-relaxed max-w-xl">
+      {t(lang, 'hero_subtitle')}
+    </p>
+
     <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-      <a href="#casos" class="w-full sm:w-auto text-center bg-white text-bg-main px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-200 transition-all shadow-white-glow">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
+      <a href="#casos" class="text-center bg-accent text-bg-main px-7 py-3.5 rounded-xl font-semibold hover:bg-accent-strong transition-colors active:translate-y-px">
         {t(lang, 'hero_cta_primary')}
       </a>
-      <a href="#contacto" class="w-full sm:w-auto text-center premium-card px-8 py-3.5 rounded-xl font-semibold text-white">
+      <a href="#contacto" class="text-center border border-white/15 px-7 py-3.5 rounded-xl font-semibold text-text-main hover:border-white/30 hover:bg-white/5 transition-colors active:translate-y-px">
         {t(lang, 'hero_cta_secondary')}
       </a>
     </div>
-
-    <!-- Sector markers -->
-    <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-      <span class="flex items-center gap-2 text-xs text-text-sec tracking-widest uppercase font-medium">
-        <span class="w-1.5 h-1.5 rounded-full bg-acc-blue shrink-0 shadow-[0_0_6px_rgba(56,189,248,0.8)]"></span>
-        {t(lang, 'hero_chip_experience')}
-      </span>
-      <span class="flex items-center gap-2 text-xs text-text-sec tracking-widest uppercase font-medium">
-        <span class="w-1.5 h-1.5 rounded-full bg-acc-violet shrink-0 shadow-[0_0_6px_rgba(139,92,246,0.8)]"></span>
-        {t(lang, 'hero_chip_apps')}
-      </span>
-      <span class="flex items-center gap-2 text-xs text-text-sec tracking-widest uppercase font-medium">
-        <span class="w-1.5 h-1.5 rounded-full bg-acc-cyan shrink-0 shadow-[0_0_6px_rgba(34,211,238,0.8)]"></span>
-        {t(lang, 'hero_chip_ecommerce')}
-      </span>
-      <span class="flex items-center gap-2 text-xs text-text-sec tracking-widest uppercase font-medium">
-        <span class="w-1.5 h-1.5 rounded-full bg-acc-blue shrink-0 shadow-[0_0_6px_rgba(56,189,248,0.8)]"></span>
-        {t(lang, 'hero_chip_platforms')}
-      </span>
-    </div>
   </div>
 
-  <!-- Right: Real projects composition (desktop only) -->
   <div class="hidden lg:flex lg:w-1/2 relative w-full h-[420px] lg:h-[560px] items-center justify-center reveal">
+  <!-- Right: Project preview -->
+  <div class="lg:w-1/2 relative w-full flex items-center justify-center reveal">
+    <!-- Static accent glow for depth (single accent, no pulse) -->
+    <div class="absolute inset-8 bg-accent/10 blur-[90px] rounded-full pointer-events-none -z-10"></div>
 
-    <!-- Ambient glows -->
-    <div class="absolute top-1/4 left-1/4 w-52 h-52 bg-acc-violet/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-44 h-44 bg-acc-blue/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <!-- La Locura Bar — left, floats -->
-    <div class="absolute left-[0%] top-[5%] w-36 -rotate-3 z-20 animate-float">
-      <div class="rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_40px_rgba(236,72,153,0.15)]">
-        <img
-          src="/images/la-locura-bar.PNG"
-          alt="La Locura Bar — web para negocio local"
-          class="w-full h-72 object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-      <p class="mt-2 text-center text-xxs text-text-sec/40 font-medium tracking-widest uppercase">La Locura Bar</p>
-    </div>
-
-    <!-- Duartes Auto Detailing — top right, cliente USA -->
-    <div class="absolute right-[2%] top-[2%] w-36 rotate-2 z-30">
-      <div class="rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_40px_rgba(245,158,11,0.2)]">
-        <img
-          src="/images/duartes-auto-detailing.PNG"
-          alt="Duartes Auto Detailing — Bay Area, USA"
-          class="w-full h-72 object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-      <p class="mt-2 text-center text-xxs text-text-sec/40 font-medium tracking-widest uppercase">Duartes · Bay Area</p>
-    </div>
-
-    <!-- ConectaPlay — bottom right, float delayed -->
-    <div class="absolute right-[10%] bottom-[5%] w-32 -rotate-2 z-20 animate-float-delayed">
-      <div class="rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_30px_rgba(16,185,129,0.15)]">
-        <img
-          src="/images/conectaplay.PNG"
-          alt="ConectaPlay — plataforma de gestión deportiva"
-          class="w-full h-64 object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-      <p class="mt-2 text-center text-xxs text-text-sec/40 font-medium tracking-widest uppercase">ConectaPlay</p>
-    </div>
-
-    <!-- Cia Vial del Llano — bottom left, smallest -->
-    <div class="absolute left-[8%] bottom-[2%] w-28 rotate-1 z-10">
-      <div class="rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.65),0_0_20px_rgba(59,130,246,0.12)]">
-        <img
-          src="/images/cia-vial-del-llano.PNG"
-          alt="Cia Vial del Llano — landing page comercial"
-          class="w-full h-56 object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-      <p class="mt-2 text-center text-xxs text-text-sec/40 font-medium tracking-widest uppercase">Cia Vial del Llano</p>
-    </div>
+    <Image
+      src={duartes}
+      alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
+      class="w-full aspect-[4/3] object-cover object-top rounded-2xl border border-white/10 shadow-2xl animate-float"
+      loading="eager"
+    />
   </div>
 
 </section>

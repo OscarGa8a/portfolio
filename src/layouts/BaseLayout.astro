@@ -5,8 +5,15 @@ import RevealObserver from '../components/RevealObserver.astro';
 interface Props {
   lang: 'es' | 'en';
   title?: string;
+  description?: string;
 }
-const { lang, title = 'Oscar García Dev | Freelance Web Developer' } = Astro.props;
+const {
+  lang,
+  title = 'Oscar García Dev | Freelance Web Developer',
+  description = lang === 'es'
+    ? 'Desarrollador web freelance: sitios web, e-commerce, apps y plataformas a medida para negocios reales.'
+    : 'Freelance web developer: websites, e-commerce, apps and custom platforms for real businesses.',
+} = Astro.props;
 ---
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
@@ -14,16 +21,17 @@ const { lang, title = 'Oscar García Dev | Freelance Web Developer' } = Astro.pr
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" hreflang="es" href="/" />
     <link rel="alternate" hreflang="en" href="/en/" />
     <link rel="alternate" hreflang="x-default" href="/" />
   </head>
   <body class="antialiased">
-    <div class="fixed top-0 left-[-10%] w-[500px] h-[500px] bg-acc-violet/10 rounded-full blur-[120px] pointer-events-none z-[-1] animate-pulse-glow"></div>
-    <div class="fixed bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-acc-blue/10 rounded-full blur-[150px] pointer-events-none z-[-1] animate-pulse-glow" style="animation-delay: 2s;"></div>
     <slot />
     <RevealObserver />
   </body>

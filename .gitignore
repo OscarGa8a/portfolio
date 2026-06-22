@@ -31,3 +31,4 @@ openspec/
 
 # verification screenshots (playwright, manual)
 /*.png
+.verify/

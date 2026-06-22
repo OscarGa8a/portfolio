@@ -1,20 +1,21 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   lang: Locale;
   title: string;
   tagKey: string;
-  tagColor: string;
   descKey: string;
   features: string[];
   problemKey: string;
   solutionKey: string;
   resultKey: string;
-  resultColor: string;
-  ctaLabelKey: string;
+  ctaLabelKey?: string;
   ctaHref?: string;
+  // For projects that live in more than one place (e.g. an app on both stores).
+  links?: { label: string; href: string }[];
   variant?: 'image-left' | 'image-right';
 }
 
@@ -22,64 +23,67 @@ const {
   lang,
   title,
   tagKey,
-  tagColor,
   descKey,
   features,
   problemKey,
   solutionKey,
   resultKey,
-  resultColor,
   ctaLabelKey,
   ctaHref = '#',
+  links,
   variant = 'image-left',
 } = Astro.props;
 
 const isRight = variant === 'image-right';
+const hasMultiple = Array.isArray(links) && links.length > 0;
 ---
-<div class={`premium-card rounded-3xl overflow-hidden flex flex-col ${isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
-  <!-- Mockup slot -->
-  <div class={`lg:w-5/12 bg-bg-main relative overflow-hidden flex items-center justify-center p-8 border-b lg:border-b-0 ${isRight ? 'lg:border-l' : 'lg:border-r'} border-white/5`}>
+<div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+  <!-- Preview (single framed image, no surrounding card) -->
+  <div class={`relative flex justify-center ${isRight ? 'lg:order-2' : ''}`}>
+    <div class="absolute inset-x-12 inset-y-6 bg-accent/10 blur-[80px] rounded-full pointer-events-none -z-10"></div>
     <slot name="mockup" />
   </div>
 
   <!-- Content -->
-  <div class="lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center">
-    <div class="text-xs font-semibold tracking-wider uppercase mb-3" style={`color: ${tagColor}`}>
-      {t(lang, tagKey)}
-    </div>
-    <h3 class="font-sora text-2xl lg:text-3xl font-bold mb-4 text-white">{title}</h3>
-    <p class="text-text-sec mb-6">{t(lang, descKey)}</p>
+  <div class={isRight ? 'lg:order-1' : ''}>
+    <div class="text-xs font-semibold tracking-wide uppercase text-accent mb-3">{t(lang, tagKey)}</div>
+    <h3 class="font-display text-2xl lg:text-3xl font-bold mb-4 text-text-main">{title}</h3>
+    <p class="text-text-sec leading-relaxed mb-6">{t(lang, descKey)}</p>
 
-    <div class="flex gap-4 mb-8">
-      <div class="flex flex-col gap-1">
-        <span class="text-white text-sm font-semibold">{lang === 'es' ? 'Características' : 'Features'}</span>
-        <ul class="space-y-1 mt-1">
-          {features.map(k => (
-            <li class="text-xs text-text-sec flex items-center gap-1.5">
-              <span style={`color: ${tagColor}`}>✓</span> {t(lang, k)}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <ul class="flex flex-wrap gap-x-5 gap-y-2 mb-7">
+      {features.map((k) => (
+        <li class="text-sm text-text-sec flex items-center gap-1.5">
+          <Icon name="ph:check" class="w-4 h-4 text-accent shrink-0" /> {t(lang, k)}
+        </li>
+      ))}
+    </ul>
 
-    <details class="group bg-white/5 border border-white/10 rounded-xl mb-6">
-      <summary class="p-4 font-semibold text-sm text-white flex justify-between items-center hover:bg-white/5 transition-colors rounded-xl outline-none cursor-pointer">
+    <details class="group border-t border-white/10 pt-4 mb-6">
+      <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none">
         <span>{t(lang, 'cases_study_label')}</span>
-        <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={`color: ${tagColor}`}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform group-open:rotate-180" />
       </summary>
-      <div class="p-5 pt-2 text-sm text-text-sec space-y-4 border-t border-white/10">
-        <div><strong class="text-white block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
-        <div><strong class="text-white block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
-        <div><strong class="text-white block mb-1">{t(lang, 'cases_result_label')}</strong><span style={`color: ${resultColor}`}>{t(lang, resultKey)}</span></div>
+      <div class="pt-4 text-sm text-text-sec space-y-4">
+        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
+        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
+        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-accent">{t(lang, resultKey)}</span></div>
       </div>
     </details>
 
-    <div>
-      <a href={ctaHref} class="inline-flex items-center gap-2 text-sm font-semibold text-bg-main bg-white px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
-        {t(lang, ctaLabelKey)}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+    {hasMultiple ? (
+      <div class="flex flex-wrap gap-x-6 gap-y-3">
+        {links!.map((l) => (
+          <a href={l.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+            {l.label}
+            <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+          </a>
+        ))}
+      </div>
+    ) : (
+      <a href={ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+        {t(lang, ctaLabelKey!)}
+        <Icon name="ph:arrow-up-right" class="w-4 h-4" />
       </a>
-    </div>
+    )}
   </div>
 </div>

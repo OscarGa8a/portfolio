@@ -1,30 +1,28 @@
+@import "@fontsource-variable/bricolage-grotesque/index.css";
+@import "@fontsource-variable/geist/index.css";
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors */
-  --color-bg-main: #060b18;
-  --color-bg-sec: #0e1628;
-  --color-card-bg: #101a30;
-  --color-text-main: #f8fafc;
-  --color-text-sec: #94a3b8;
-  --color-acc-blue: #38bdf8;
-  --color-acc-violet: #8b5cf6;
-  --color-acc-cyan: #22d3ee;
+  /* Surfaces — warm, editorial near-black (no pure #000) */
+  --color-bg-main: #0A0A0B;
+  --color-bg-sec: #131215;
+  --color-card-bg: #161518;
 
-  /* Font families */
-  --font-sora: "Sora", system-ui, sans-serif;
-  --font-inter: "Inter", system-ui, sans-serif;
+  /* Text */
+  --color-text-main: #FAFAF8;
+  --color-text-sec: #9F9DA6;
 
-  /* Custom text sizes */
-  --text-xxs: 9px;
+  /* Single locked accent: warm amber. One accent across the whole page. */
+  --color-accent: #E5A23E;
+  --color-accent-strong: #F2B457;
 
-  /* Custom leading */
-  --leading-hero: 1.1;
+  /* Fonts — self-hosted via Fontsource */
+  --font-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --font-body: "Geist Variable", system-ui, sans-serif;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-delayed: float 6s ease-in-out 3s infinite;
-  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 
   @keyframes float {
     0%,
@@ -33,18 +31,6 @@
     }
     50% {
       transform: translateY(-15px);
-    }
-  }
-
-  @keyframes pulse-glow {
-    0%,
-    100% {
-      opacity: 0.4;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.05);
     }
   }
 }
@@ -62,51 +48,47 @@
 
 @layer base {
   body {
-    background-color: #060b18;
-    color: #f8fafc;
-    font-family: "Inter", system-ui, sans-serif;
+    background-color: #0A0A0B;
+    color: #FAFAF8;
+    font-family: "Geist Variable", system-ui, sans-serif;
     overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Sora", system-ui, sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque Variable", system-ui, sans-serif;
   }
 }
 
 @layer components {
   .glass-nav {
-    background: rgba(6, 11, 24, 0.8);
+    background: rgba(10, 10, 11, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .premium-card {
-    background: #101a30;
+    background: #161518;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .premium-card:hover {
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 10px 40px -10px rgba(34, 211, 238, 0.15);
+    border-color: rgba(229, 162, 62, 0.35);
+    box-shadow: 0 14px 44px -18px rgba(229, 162, 62, 0.18);
     transform: translateY(-4px);
   }
 
+  /* Single-hue accent highlight (no rainbow gradient text) */
   .text-gradient {
-    background: linear-gradient(135deg, #38bdf8, #8b5cf6, #22d3ee);
+    background: linear-gradient(120deg, #F2B457, #E5A23E);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .bg-gradient-primary {
-    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    background: linear-gradient(135deg, #E5A23E, #F2B457);
   }
 
   .shadow-white-glow {
@@ -116,7 +98,8 @@
   .reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1),
+                transform 0.8s cubic-bezier(0.5, 0, 0, 1);
   }
 
   .reveal.visible {
