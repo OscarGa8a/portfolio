@@ -1,29 +1,32 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
+import { Icon } from 'astro-icon/components';
+import { contact } from '../config/site';
 
 interface Props { lang: Locale; }
 const { lang } = Astro.props;
 ---
-<section id="contacto" class="py-24 relative reveal">
-  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-    <div class="premium-card p-12 md:p-16 rounded-[2rem]">
-      <h2 class="font-sora text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-        {t(lang, 'cta_title')}
-      </h2>
-      <p class="text-text-sec text-lg mb-10 max-w-2xl mx-auto">
-        {t(lang, 'cta_subtitle')}
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#" class="bg-white text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center justify-center gap-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.89-4.443 9.893-9.896.002-5.466-4.415-9.898-9.881-9.898-5.452 0-9.887 4.441-9.889 9.896-.001 1.892.518 3.636 1.448 5.187l-1.146 4.194 4.183-1.075zm7.362-7.147c-.328-.164-1.933-.955-2.233-1.064-.302-.109-.523-.164-.744.164-.221.328-.844 1.064-1.035 1.282-.191.218-.383.246-.711.082-.328-.164-1.381-.51-2.628-1.632-.969-.873-1.624-1.951-1.816-2.28-.191-.328-.02-.505.144-.67.149-.148.328-.382.493-.574.164-.191.221-.328.331-.546.111-.218.056-.41-.027-.574-.082-.164-.744-1.794-1.02-2.458-.268-.646-.539-.558-.744-.567-.191-.009-.411-.009-.631-.009-.221 0-.579.082-.881.41-.302.328-1.151 1.121-1.151 2.735 0 1.614 1.178 3.176 1.342 3.395.164.218 2.316 3.535 5.609 4.957 2.213.954 3.018.91 4.148.777 1.296-.153 3.003-1.229 3.424-2.417.421-1.188.421-2.206.295-2.417-.126-.211-.466-.328-.794-.492z"/></svg>
-          {t(lang, 'cta_whatsapp')}
-        </a>
-        <a href="#" class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          {t(lang, 'cta_email')}
-        </a>
-      </div>
+<section id="contacto" class="py-28 relative reveal overflow-hidden">
+  <!-- Accent glow does the focusing, no card box -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] max-w-[90vw] h-[420px] bg-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative">
+    <h2 class="font-display text-3xl md:text-5xl font-bold mb-6 text-text-main leading-tight">
+      {t(lang, 'cta_title')}
+    </h2>
+    <p class="text-text-sec text-lg mb-10 max-w-2xl mx-auto">
+      {t(lang, 'cta_subtitle')}
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" class="bg-accent text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-accent-strong transition-colors active:translate-y-px flex items-center justify-center gap-2">
+        <Icon name="ph:whatsapp-logo" class="w-5 h-5" />
+        {t(lang, 'cta_whatsapp')}
+      </a>
+      <a href={contact.email} class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-text-main transition-colors active:translate-y-px flex items-center justify-center gap-2">
+        <Icon name="ph:envelope-simple" class="w-5 h-5" />
+        {t(lang, 'cta_email')}
+      </a>
     </div>
   </div>
 </section>

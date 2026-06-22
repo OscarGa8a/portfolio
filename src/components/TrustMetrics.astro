@@ -7,32 +7,26 @@ interface Props {
 }
 const { lang } = Astro.props;
 ---
-
-<section class="py-16 border-y border-white/5 reveal">
+<section class="py-14 bg-bg-sec/40 border-y border-white/5 reveal">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-
-      <div class="border-l-2 border-acc-blue pl-5">
-        <div class="text-5xl lg:text-6xl font-sora font-bold text-acc-blue leading-none">5+</div>
-        <div class="text-xxs font-semibold text-text-main uppercase tracking-widest mt-2">{t(lang, 'trust_years_label')}</div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-x-0 lg:divide-x lg:divide-white/10">
+      <div class="lg:px-8 lg:first:pl-0">
+        <div class="font-display text-4xl font-bold text-text-main leading-none">
+          5<span class="text-accent">+</span>
+          <span class="text-base font-medium text-text-sec ml-1">{t(lang, 'trust_years_label')}</span>
+        </div>
         <p class="text-sm text-text-sec mt-3 leading-relaxed">{t(lang, 'trust_years_desc')}</p>
       </div>
-
-      <div class="border-l-2 border-acc-violet pl-5">
-        <div class="text-5xl lg:text-6xl font-sora font-bold text-acc-violet leading-none">10+</div>
-        <div class="text-xxs font-semibold text-text-main uppercase tracking-widest mt-2">{t(lang, 'trust_projects_title')}</div>
+      <div class="lg:px-8">
+        <div class="font-display text-lg font-bold text-text-main leading-snug">{t(lang, 'trust_projects_title')}</div>
         <p class="text-sm text-text-sec mt-3 leading-relaxed">{t(lang, 'trust_projects_desc')}</p>
       </div>
-
-      <div class="border-l-2 border-acc-cyan pl-5">
-        <div class="text-5xl lg:text-6xl font-sora font-bold text-acc-cyan leading-none">6</div>
-        <div class="text-xxs font-semibold text-text-main uppercase tracking-widest mt-2">{t(lang, 'trust_solutions_title')}</div>
+      <div class="lg:px-8">
+        <div class="font-display text-lg font-bold text-text-main leading-snug">{t(lang, 'trust_solutions_title')}</div>
         <p class="text-sm text-text-sec mt-3 leading-relaxed">{t(lang, 'trust_solutions_desc')}</p>
       </div>
-
-      <div class="border-l-2 border-white/30 pl-5">
-        <div class="text-5xl lg:text-6xl font-sora font-bold text-text-main leading-none">2</div>
-        <div class="text-xxs font-semibold text-text-main uppercase tracking-widest mt-2">{t(lang, 'trust_responsive_title')}</div>
+      <div class="lg:px-8">
+        <div class="font-display text-lg font-bold text-text-main leading-snug">{t(lang, 'trust_responsive_title')}</div>
         <p class="text-sm text-text-sec mt-3 leading-relaxed">{t(lang, 'trust_responsive_desc')}</p>
       </div>
 

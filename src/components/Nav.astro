@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
+import LanguageToggle from './LanguageToggle.astro';
 
 interface Props {
   lang: Locale;
@@ -11,35 +12,25 @@ const langDest  = lang === 'es' ? '/en/' : '/';
 const langLabel = lang === 'es' ? 'EN' : 'ES';
 const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLabel}`;
 ---
-
-<nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
+<nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-3.5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
-
-    <!-- Logo -->
-    <a href={lang === 'es' ? '/' : '/en/'} class="font-sora font-bold text-xl tracking-tight flex items-center gap-2.5 group">
-      <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-sm shadow-[0_0_15px_rgba(56,189,248,0.3)] group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
-        <span class="text-white font-bold">OG</span>
+    <a href={lang === 'es' ? '/' : '/en/'} class="font-display font-bold text-xl tracking-tight flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-sm shadow-[0_0_18px_-2px_rgba(229,162,62,0.45)]">
+        <span class="text-bg-main font-bold">OG</span>
       </div>
       <span class="text-text-main">Oscar García <span class="text-text-sec font-normal">Dev</span></span>
     </a>
 
-    <!-- Desktop links (lg+) -->
-    <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-text-sec">
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-text-sec">
       <a href="#especialidades" class="hover:text-text-main transition-colors">{t(lang, 'nav_specialties')}</a>
       <a href="#casos"          class="hover:text-text-main transition-colors">{t(lang, 'nav_case_studies')}</a>
       <a href="#proceso"        class="hover:text-text-main transition-colors">{t(lang, 'nav_process')}</a>
       <a href="#sobre-mi"       class="hover:text-text-main transition-colors">{t(lang, 'nav_about')}</a>
     </div>
 
-    <!-- Desktop right (lg+) -->
-    <div class="hidden lg:flex items-center space-x-4">
-      <a href={langDest} class="text-xs font-bold text-text-sec hover:text-text-main transition-colors bg-white/5 border border-white/10 px-3 py-1.5 rounded-md flex items-center gap-1.5" aria-label={langText}>
-        <svg class="w-3.5 h-3.5 text-acc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-        </svg>
-        {langLabel}
-      </a>
-      <a href="#contacto" class="bg-white text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all shadow-lg">
+    <div class="flex items-center gap-3">
+      <LanguageToggle lang={lang} />
+      <a href="#contacto" class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-colors active:translate-y-px">
         {t(lang, 'nav_cta')}
       </a>
     </div>
@@ -72,7 +63,7 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
 >
   <!-- Drawer header -->
   <div class="flex items-center justify-between px-6 py-5 border-b border-white/5 shrink-0">
-    <span class="font-sora font-bold text-sm text-text-main">{lang === 'es' ? 'Menú' : 'Menu'}</span>
+    <span class="font-display font-bold text-sm text-text-main">{lang === 'es' ? 'Menú' : 'Menu'}</span>
     <button
       id="nav-close"
       class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors text-text-sec hover:text-text-main"
@@ -103,12 +94,12 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
   <!-- Drawer footer -->
   <div class="px-4 pb-8 pt-6 flex flex-col gap-3 border-t border-white/5 shrink-0">
     <a href={langDest} class="drawer-link flex items-center gap-2 px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      <svg class="w-4 h-4 text-acc-cyan shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
       </svg>
       {langText}
     </a>
-    <a href="#contacto" class="drawer-link w-full text-center bg-white text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-all">
+    <a href="#contacto" class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all">
       {t(lang, 'nav_cta')}
     </a>
   </div>
