@@ -7,7 +7,7 @@ Astro + Tailwind v4 + TypeScript portfolio. Static site, two locales (ES/EN).
 - **Framework**: Astro 5 (static, no SSR)
 - **Styles**: Tailwind v4 — CSS-first, no `tailwind.config.js`
 - **i18n**: Custom (`src/i18n/es.ts` + `src/i18n/en.ts`) — routes: `/` → ES, `/en/` → EN
-- **Fonts**: Sora (headings), Inter (body) — loaded via Google Fonts
+- **Fonts**: Bricolage Grotesque Variable (`font-display`, headings), Geist Variable (`font-body`, body) — self-hosted via Fontsource
 
 ## Design System
 
@@ -22,13 +22,14 @@ Always use these instead of raw hex or arbitrary values:
 | `--color-card-bg` | `bg-card-bg` | Cards and panels |
 | `--color-text-main` | `text-text-main` | Primary text |
 | `--color-text-sec` | `text-text-sec` | Secondary/muted text |
-| `--color-acc-blue` | `text-acc-blue` / `bg-acc-blue` | Blue accent |
-| `--color-acc-violet` | `text-acc-violet` / `bg-acc-violet` | Violet accent |
-| `--color-acc-cyan` | `text-acc-cyan` / `bg-acc-cyan` | Cyan accent |
-| `--text-xxs` | `text-xxs` | 9px — decorative micro labels |
-| `--leading-hero` | `leading-hero` | Line height 1.1 — hero headings |
+| `--color-accent` | `text-accent` / `bg-accent` | Single locked accent (warm amber) |
+| `--color-accent-strong` | `text-accent-strong` / `bg-accent-strong` | Accent hover / brighter amber |
+| `--font-display` | `font-display` | Bricolage Grotesque — headings |
+| `--font-body` | `font-body` | Geist — body |
 | `--animate-float` | `animate-float` | Floating card animation |
 | `--animate-float-delayed` | `animate-float-delayed` | Float with 3s delay |
+
+> Design system is **single-accent** (warm amber). There is no blue/violet/cyan and no rainbow gradient — one accent across the whole page.
 
 ### Component classes (`@layer components` in `global.css`)
 
@@ -38,8 +39,8 @@ Prefer these over raw utility combinations:
 |---|---|
 | `glass-nav` | Navbar: dark bg + backdrop blur + bottom border |
 | `premium-card` | Card: `card-bg` + border + hover lift |
-| `text-gradient` | Brand gradient text (blue → violet → cyan) |
-| `bg-gradient-primary` | Brand gradient background |
+| `text-gradient` | Single-hue amber highlight text (`accent-strong` → `accent`) |
+| `bg-gradient-primary` | Amber accent gradient background |
 | `shadow-white-glow` | White glow — primary CTA buttons |
 | `reveal` | Scroll reveal base state (JS adds `.visible`) |
 
@@ -57,10 +58,9 @@ Before writing `class-[value]`, check:
 
 ```
 ❌ text-[14px]          ✅ text-sm
-❌ text-[9px]           ✅ text-xxs
 ❌ w-[200px]            ✅ w-48  (close enough)
-❌ bg-[#101A30]         ✅ bg-card-bg
-❌ leading-[1.1]        ✅ leading-hero
+❌ bg-[#161518]         ✅ bg-card-bg
+❌ text-[#E5A23E]       ✅ text-accent
 ❌ shadow-[0_0_20px_rgba(255,255,255,0.1)]  ✅ shadow-white-glow
 ```
 
