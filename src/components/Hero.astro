@@ -42,9 +42,8 @@ const { lang } = Astro.props;
     </div>
   </div>
 
+  <!-- Right: Project preview (desktop only) -->
   <div class="hidden lg:flex lg:w-1/2 relative w-full h-[420px] lg:h-[560px] items-center justify-center reveal">
-  <!-- Right: Project preview -->
-  <div class="lg:w-1/2 relative w-full flex items-center justify-center reveal">
     <!-- Static accent glow for depth (single accent, no pulse) -->
     <div class="absolute inset-8 bg-accent/10 blur-[90px] rounded-full pointer-events-none -z-10"></div>
 
@@ -55,5 +54,4 @@ const { lang } = Astro.props;
       loading="eager"
     />
   </div>
-
 </section>
