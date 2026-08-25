@@ -4,16 +4,22 @@ import { Icon } from 'astro-icon/components';
 
 interface Props {
   lang: Locale;
+  mobile?: boolean;
 }
-const { lang } = Astro.props;
+const { lang, mobile = false } = Astro.props;
 const dest = lang === 'es' ? '/en/' : '/';
 const label = lang === 'es' ? 'EN' : 'ES';
+const accessibleLabel = lang === 'es' ? 'Cambiar el idioma a inglés' : 'Switch language to Spanish';
 ---
 <a
   href={dest}
-  class="text-xs font-bold text-text-sec hover:text-text-main transition-colors bg-white/5 border border-white/10 px-3 py-1.5 rounded-md flex items-center gap-1.5"
-  aria-label={`Switch to ${label}`}
+  class:list={[
+    'text-xs font-bold text-text-sec hover:text-text-main transition-colors bg-white/5 border border-white/10 flex items-center gap-1.5',
+    mobile ? 'drawer-link w-full px-3 py-3 rounded-lg' : 'px-3 py-1.5 rounded-md',
+  ]}
+  aria-label={accessibleLabel}
+  hreflang={lang === 'es' ? 'en' : 'es'}
 >
   <Icon name="ph:translate" class="w-3.5 h-3.5 text-accent" />
-  {label}
+  {mobile ? accessibleLabel : label}
 </a>

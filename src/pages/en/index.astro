@@ -12,14 +12,20 @@ import Footer from '../../components/Footer.astro';
 
 const lang = 'en' as const;
 ---
-<BaseLayout lang={lang}>
+<BaseLayout
+  lang={lang}
+  title="Oscar Dev | Web development for real businesses"
+  description="Websites, online stores, apps and custom platforms for businesses that need more clarity, order and control."
+>
   <Nav lang={lang} />
-  <Hero lang={lang} />
-  <TrustMetrics lang={lang} />
-  <Services lang={lang} />
-  <CaseStudies lang={lang} />
-  <ProcessTimeline lang={lang} />
-  <About lang={lang} />
-  <FinalCta lang={lang} />
+  <main id="contenido-principal">
+    <Hero lang={lang} />
+    <TrustMetrics lang={lang} />
+    <Services lang={lang} />
+    <CaseStudies lang={lang} />
+    <ProcessTimeline lang={lang} />
+    <About lang={lang} />
+    <FinalCta lang={lang} />
+  </main>
   <Footer lang={lang} />
 </BaseLayout>

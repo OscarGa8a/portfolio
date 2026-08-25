@@ -1,0 +1,31 @@
+<!--
+  Vendor-neutral event layer. It does not send data by itself.
+  If a future analytics provider exposes `plausible` or `dataLayer`, the same
+  attributes become measurable without changing the components again.
+-->
+<script is:inline>
+  document.addEventListener('click', (event) => {
+    const origin = event.target;
+    if (!(origin instanceof Element)) return;
+
+    const target = origin.closest('[data-event]');
+    if (!(target instanceof HTMLAnchorElement)) return;
+
+    const detail = {
+      event: target.dataset.event,
+      location: target.dataset.eventLocation,
+      label: target.textContent?.trim(),
+      destination: target.href,
+    };
+
+    window.dispatchEvent(new CustomEvent('oscar-dev:event', { detail }));
+
+    if (typeof window.plausible === 'function') {
+      window.plausible('CTA Click', { props: detail });
+    }
+
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: 'portfolio_cta_click', ...detail });
+    }
+  });
+</script>

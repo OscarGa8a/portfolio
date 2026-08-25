@@ -1,7 +1,6 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
-import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import CaseStudyCard from './CaseStudyCard.astro';
 import duartes from '../assets/projects/duartes.png';
@@ -41,6 +40,11 @@ const { lang } = Astro.props;
             src={duartes}
             alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 44vw, 90vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
           />
         </CaseStudyCard>
       </div>
@@ -65,6 +69,11 @@ const { lang } = Astro.props;
             src={conectaplay}
             alt={lang === 'es' ? 'ConectaPlay — plataforma de gestión deportiva' : 'ConectaPlay — sports management platform'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 44vw, 90vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
           />
         </CaseStudyCard>
       </div>
@@ -91,6 +100,11 @@ const { lang } = Astro.props;
             src={detour}
             alt={lang === 'es' ? 'DeTour — turismo VR por Cundinamarca' : 'DeTour — VR tourism in Cundinamarca'}
             class="w-48 aspect-[9/16] object-cover object-top rounded-[2rem] border border-white/10"
+            widths={[240, 384]}
+            sizes="192px"
+            format="webp"
+            quality={80}
+            loading="lazy"
           />
         </CaseStudyCard>
       </div>
@@ -115,6 +129,11 @@ const { lang } = Astro.props;
             src={fueradelmolde}
             alt={lang === 'es' ? 'Fuera del Molde — e-commerce de productos personalizados' : 'Fuera del Molde — custom products e-commerce'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 44vw, 90vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
           />
         </CaseStudyCard>
       </div>
@@ -139,30 +158,15 @@ const { lang } = Astro.props;
             src={lalocura}
             alt={lang === 'es' ? 'La Locura Bar — sitio web del bar' : 'La Locura Bar — bar website'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 44vw, 90vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
           />
         </CaseStudyCard>
       </div>
     </div>
 
-    <!-- Secondary projects: plain list, no boxes -->
-    <div class="mt-14 pt-12 border-t border-white/10">
-      <h3 class="font-display text-xl font-bold mb-4 text-text-main">{t(lang, 'cases_more_title')}</h3>
-      <div class="divide-y divide-white/10">
-        <a href="https://ciavialdelllano.com.co/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between py-5 group">
-          <div>
-            <h4 class="font-display font-bold text-text-main group-hover:text-accent transition-colors">CIA Vial del Llano</h4>
-            <p class="text-sm text-text-sec mt-0.5">{t(lang, 'cases_cia_type')}</p>
-          </div>
-          <Icon name="ph:arrow-up-right" class="w-5 h-5 text-text-sec group-hover:text-accent transition-colors shrink-0" />
-        </a>
-        <a href="https://detour.cundinamarca.gov.co/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between py-5 group">
-          <div>
-            <h4 class="font-display font-bold text-text-main group-hover:text-accent transition-colors">DeTour Cundinamarca Web</h4>
-            <p class="text-sm text-text-sec mt-0.5">{t(lang, 'cases_detour_web_type')}</p>
-          </div>
-          <Icon name="ph:arrow-up-right" class="w-5 h-5 text-text-sec group-hover:text-accent transition-colors shrink-0" />
-        </a>
-      </div>
-    </div>
   </div>
 </section>

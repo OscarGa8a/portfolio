@@ -1,46 +1,110 @@
-# Astro Starter Kit: Basics
+# Oscar Dev — Portfolio v2
+
+Portfolio bilingüe de Oscar Dev, enfocado en presentar soluciones digitales para negocios reales y convertir visitas calificadas en conversaciones por WhatsApp.
+
+## Enfoque
+
+- Marca: Oscar Dev.
+- Audiencia: negocios locales, pequeñas empresas y emprendedores con presencia digital débil o procesos manuales.
+- Oferta: sitios web, e-commerce, aplicaciones web/móviles y plataformas a medida.
+- Mensaje: desarrollo web con pensamiento de negocio.
+- Conversión principal: conversación contextual por WhatsApp.
+- Idiomas: español en `/` e inglés en `/en/`.
+
+La narrativa y los casos siguen las fuentes internas de Oscar Dev. No se publican métricas, testimonios ni resultados cuantitativos sin evidencia y permiso.
+
+## Stack
+
+- Astro 6, salida estática.
+- Tailwind CSS 4.
+- TypeScript estricto.
+- Imágenes optimizadas por Astro y Sharp.
+- Fuentes variables locales mediante Fontsource.
+- i18n propio y tipado para ES/EN.
+
+## Requisitos
+
+- Node.js 22.12 o superior.
+- npm 11.
+
+Este repositorio usa exclusivamente npm. `package-lock.json` es la fuente de verdad para instalaciones reproducibles.
+
+## Desarrollo
 
 ```sh
-npm create astro@latest -- --template basics
+npm ci
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Comandos disponibles:
 
-## 🚀 Project Structure
+| Comando | Uso |
+| --- | --- |
+| `npm run dev` | Servidor local |
+| `npm run check` | Diagnóstico de Astro y TypeScript |
+| `npm run build` | Build estático de producción |
+| `npm run validate` | Check + build |
+| `npm run preview` | Vista previa del build |
+| `npm run assets` | Regenera OG image y favicons desde los SVG fuente |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Estructura
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+  assets/       imágenes fuente procesadas por Astro
+  components/   secciones y comportamiento de la interfaz
+  config/       URL, marca y enlaces de contacto
+  i18n/         copy español e inglés
+  layouts/      metadatos, schema y estructura global
+  pages/        rutas ES/EN
+  styles/       sistema visual Oscar Dev
+public/         robots, sitemap, manifest y assets sociales
+scripts/        generación reproducible de assets de marca
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## SEO e i18n
 
-## 🧞 Commands
+- Canonical independiente por ruta.
+- Alternates `hreflang` para ES, EN y `x-default`.
+- Open Graph y Twitter Card con imagen propia de Oscar Dev.
+- JSON-LD de `Person`, `ProfessionalService` y `WebSite` sin ratings ni resultados inventados.
+- `robots.txt` y sitemap bilingüe.
+- Un solo `h1` por idioma y secciones semánticas.
 
-All commands are run from the root of the project, from a terminal:
+Antes de cambiar el dominio, actualiza tanto `site` en `astro.config.mjs` como `siteUrl` en `src/config/site.ts`, además de las URLs absolutas de `public/robots.txt` y `public/sitemap.xml`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Conversión y medición
 
-## 👀 Want to learn more?
+Los CTAs principales abren WhatsApp con un mensaje contextual según idioma y ubicación. Cada CTA incluye atributos `data-event` y emite el evento de navegador `oscar-dev:event`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+El sitio no activa analítica ni envía datos por defecto. La capa de eventos es compatible con una integración posterior de Plausible (`window.plausible`) o Google Tag Manager/GA (`window.dataLayer`). Antes de activar un proveedor se deben definir finalidad, consentimiento, política de privacidad y credenciales reales.
+
+Eventos incluidos:
+
+- `whatsapp_click`
+- `email_click`
+- `project_link_click`
+
+## Política de evidencia
+
+- “Desde 2019”, experiencia en Colombia/Estados Unidos y los sectores mencionados provienen de la documentación de marca.
+- Los proyectos se presentan como proyectos/casos, no como “casos de éxito”.
+- Los resultados visibles son cualitativos y describen lo construido u organizado.
+- Métricas, porcentajes, testimonios, logos de cliente adicionales y claims de negocio requieren fuente, periodo y permiso.
+
+## Despliegue
+
+El build produce archivos estáticos en `dist/` y puede desplegarse en Cloudflare Pages u otro hosting estático.
+
+Configuración sugerida:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node.js: `22`
+
+## Pendientes de contenido real
+
+- Confirmar testimonios y permisos de publicación por cliente.
+- Añadir métricas únicamente cuando exista fuente, periodo y contexto.
+- Confirmar si Oscar acepta nuevos proyectos antes de mostrar un badge de disponibilidad.
+- Elegir y configurar el proveedor de analítica solo si existe una necesidad de medición y una política de privacidad.

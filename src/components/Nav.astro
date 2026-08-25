@@ -2,23 +2,21 @@
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
 import LanguageToggle from './LanguageToggle.astro';
+import { whatsappUrl } from '../config/site';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 
-const langDest  = lang === 'es' ? '/en/' : '/';
-const langLabel = lang === 'es' ? 'EN' : 'ES';
-const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLabel}`;
 ---
 <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-3.5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
     <a href={lang === 'es' ? '/' : '/en/'} class="font-display font-bold text-xl tracking-tight flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-sm shadow-[0_0_18px_-2px_rgba(229,162,62,0.45)]">
-        <span class="text-bg-main font-bold">OG</span>
+      <div class="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center text-xs shadow-[0_0_18px_-2px_rgba(242,154,46,0.45)]" aria-hidden="true">
+        <span class="text-bg-main font-bold">OD</span>
       </div>
-      <span class="text-text-main">Oscar García <span class="text-text-sec font-normal">Dev</span></span>
+      <span class="text-text-main">Oscar <span class="text-accent">Dev</span></span>
     </a>
 
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-text-sec">
@@ -30,7 +28,14 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
 
     <div class="flex items-center gap-3">
       <LanguageToggle lang={lang} />
-      <a href="#contacto" class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-colors active:translate-y-px">
+      <a
+        href={whatsappUrl(lang)}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="whatsapp_click"
+        data-event-location="navigation"
+        class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-colors active:translate-y-px"
+      >
         {t(lang, 'nav_cta')}
       </a>
     </div>
@@ -38,9 +43,10 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
     <!-- Hamburger button (below lg) -->
     <button
       id="nav-toggle"
-      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-white/5 transition-colors"
-      aria-label="Abrir menú"
+      class="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-white/5 transition-colors"
+      aria-label={t(lang, 'nav_open')}
       aria-expanded="false"
+      aria-controls="mobile-nav"
     >
       <span class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center" id="hb-1"></span>
       <span class="block w-5 h-0.5 bg-text-main transition-all duration-300" id="hb-2"></span>
@@ -49,25 +55,18 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
   </div>
 </nav>
 
-<!-- Backdrop -->
-<div
-  id="nav-backdrop"
-  class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
-></div>
-
-<!-- Sidebar drawer -->
-<aside
-  id="nav-drawer"
-  class="fixed top-0 right-0 h-full w-72 bg-card-bg border-l border-white/5 z-50 translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col overflow-y-auto"
-  aria-hidden="true"
+<dialog
+  id="mobile-nav"
+  class="fixed inset-y-0 right-0 left-auto m-0 h-full w-[min(20rem,88vw)] max-h-none bg-card-bg border-0 border-l border-white/10 z-50 p-0 text-text-main md:hidden flex-col overflow-y-auto"
+  aria-labelledby="mobile-nav-title"
 >
   <!-- Drawer header -->
   <div class="flex items-center justify-between px-6 py-5 border-b border-white/5 shrink-0">
-    <span class="font-display font-bold text-sm text-text-main">{lang === 'es' ? 'Menú' : 'Menu'}</span>
+    <span id="mobile-nav-title" class="font-display font-bold text-sm text-text-main">{t(lang, 'nav_menu')}</span>
     <button
       id="nav-close"
-      class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors text-text-sec hover:text-text-main"
-      aria-label="Cerrar menú"
+      class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors text-text-sec hover:text-text-main"
+      aria-label={t(lang, 'nav_close')}
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -93,32 +92,30 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
 
   <!-- Drawer footer -->
   <div class="px-4 pb-8 pt-6 flex flex-col gap-3 border-t border-white/5 shrink-0">
-    <a href={langDest} class="drawer-link flex items-center gap-2 px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-      </svg>
-      {langText}
-    </a>
-    <a href="#contacto" class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all">
+    <LanguageToggle lang={lang} mobile />
+    <a
+      href={whatsappUrl(lang)}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-event="whatsapp_click"
+      data-event-location="mobile_navigation"
+      class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all"
+    >
       {t(lang, 'nav_cta')}
     </a>
   </div>
-</aside>
+</dialog>
 
 <script>
   const toggle   = document.getElementById('nav-toggle')!;
-  const drawer   = document.getElementById('nav-drawer')!;
-  const backdrop = document.getElementById('nav-backdrop')!;
+  const drawer   = document.getElementById('mobile-nav') as HTMLDialogElement;
   const closeBtn = document.getElementById('nav-close')!;
   const hb1      = document.getElementById('hb-1')!;
   const hb2      = document.getElementById('hb-2')!;
   const hb3      = document.getElementById('hb-3')!;
 
   function openMenu() {
-    drawer.classList.remove('translate-x-full');
-    drawer.setAttribute('aria-hidden', 'false');
-    backdrop.classList.remove('opacity-0', 'pointer-events-none');
-    backdrop.classList.add('opacity-100');
+    drawer.showModal();
     toggle.setAttribute('aria-expanded', 'true');
     hb1.style.transform = 'rotate(45deg) translate(4px, 4px)';
     hb2.style.opacity   = '0';
@@ -127,27 +124,27 @@ const langText  = lang === 'es' ? `Cambiar a ${langLabel}` : `Switch to ${langLa
   }
 
   function closeMenu() {
-    drawer.classList.add('translate-x-full');
-    drawer.setAttribute('aria-hidden', 'true');
-    backdrop.classList.add('opacity-0', 'pointer-events-none');
-    backdrop.classList.remove('opacity-100');
+    if (drawer.open) drawer.close();
+  }
+
+  function resetMenu() {
     toggle.setAttribute('aria-expanded', 'false');
     hb1.style.transform = '';
     hb2.style.opacity   = '';
     hb3.style.transform = '';
     document.body.style.overflow = '';
+    toggle.focus();
   }
 
   toggle.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
-  backdrop.addEventListener('click', closeMenu);
+  drawer.addEventListener('close', resetMenu);
 
   document.querySelectorAll('.drawer-link').forEach(link =>
     link.addEventListener('click', closeMenu)
   );
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 768px)').matches) closeMenu();
   });
 </script>

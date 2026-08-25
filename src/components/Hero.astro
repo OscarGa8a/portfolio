@@ -3,21 +3,18 @@ import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
 import { Image } from 'astro:assets';
 import duartes from '../assets/projects/duartes.png';
+import { whatsappUrl } from '../config/site';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 ---
-<section class="relative min-h-[100dvh] pt-24 pb-16 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<section class="relative min-h-[92dvh] pt-32 pb-20 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
   <!-- Left: Content -->
   <div class="lg:w-1/2 flex flex-col items-start space-y-7 reveal">
-    <!-- Availability badge (the dot conveys real status: open for work) -->
     <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-4 py-2 text-xs font-medium text-accent">
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-      </span>
+      <span class="inline-flex rounded-full h-2 w-2 bg-accent" aria-hidden="true"></span>
       <span>{t(lang, 'hero_badge')}</span>
     </div>
 
@@ -33,10 +30,17 @@ const { lang } = Astro.props;
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
-      <a href="#casos" class="text-center bg-accent text-bg-main px-7 py-3.5 rounded-xl font-semibold hover:bg-accent-strong transition-colors active:translate-y-px">
+      <a
+        href={whatsappUrl(lang, lang === 'es' ? 'proyecto o proceso' : 'project or process')}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="whatsapp_click"
+        data-event-location="hero"
+        class="text-center bg-accent text-bg-main px-7 py-3.5 rounded-xl font-semibold hover:bg-accent-strong transition-colors active:translate-y-px"
+      >
         {t(lang, 'hero_cta_primary')}
       </a>
-      <a href="#contacto" class="text-center border border-white/15 px-7 py-3.5 rounded-xl font-semibold text-text-main hover:border-white/30 hover:bg-white/5 transition-colors active:translate-y-px">
+      <a href="#casos" class="text-center border border-white/15 px-7 py-3.5 rounded-xl font-semibold text-text-main hover:border-white/30 hover:bg-white/5 transition-colors active:translate-y-px">
         {t(lang, 'hero_cta_secondary')}
       </a>
     </div>
@@ -51,7 +55,12 @@ const { lang } = Astro.props;
       src={duartes}
       alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
       class="w-full aspect-[4/3] object-cover object-top rounded-2xl border border-white/10 shadow-2xl animate-float"
+      widths={[640, 960, 1280]}
+      sizes="(min-width: 1024px) 46vw, 1px"
+      format="webp"
+      quality={82}
       loading="eager"
+      fetchpriority="high"
     />
   </div>
 </section>

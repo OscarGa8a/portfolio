@@ -1,0 +1,13 @@
+{
+  "name": "Oscar Dev",
+  "short_name": "Oscar Dev",
+  "description": "Soluciones digitales para negocios reales.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121214",
+  "theme_color": "#121214",
+  "icons": [
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -2,7 +2,7 @@
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
 import { Icon } from 'astro-icon/components';
-import { contact } from '../config/site';
+import { contact, whatsappUrl } from '../config/site';
 
 interface Props { lang: Locale; }
 const { lang } = Astro.props;
@@ -19,11 +19,18 @@ const { lang } = Astro.props;
       {t(lang, 'cta_subtitle')}
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" class="bg-accent text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-accent-strong transition-colors active:translate-y-px flex items-center justify-center gap-2">
+      <a
+        href={whatsappUrl(lang, lang === 'es' ? 'negocio' : 'business')}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="whatsapp_click"
+        data-event-location="final_cta"
+        class="bg-accent text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-accent-strong transition-colors active:translate-y-px flex items-center justify-center gap-2"
+      >
         <Icon name="ph:whatsapp-logo" class="w-5 h-5" />
         {t(lang, 'cta_whatsapp')}
       </a>
-      <a href={contact.email} class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-text-main transition-colors active:translate-y-px flex items-center justify-center gap-2">
+      <a href={contact.email} data-event="email_click" data-event-location="final_cta" class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-text-main transition-colors active:translate-y-px flex items-center justify-center gap-2">
         <Icon name="ph:envelope-simple" class="w-5 h-5" />
         {t(lang, 'cta_email')}
       </a>

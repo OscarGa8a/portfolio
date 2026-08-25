@@ -66,21 +66,21 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
       <div class="pt-4 text-sm text-text-sec space-y-4">
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
-        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-accent">{t(lang, resultKey)}</span></div>
+        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-text-sec">{t(lang, resultKey)}</span></div>
       </div>
     </details>
 
     {hasMultiple ? (
       <div class="flex flex-wrap gap-x-6 gap-y-3">
         {links!.map((l) => (
-          <a href={l.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+          <a href={l.href} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
             {l.label}
             <Icon name="ph:arrow-up-right" class="w-4 h-4" />
           </a>
         ))}
       </div>
     ) : (
-      <a href={ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+      <a href={ctaHref} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
         {t(lang, ctaLabelKey!)}
         <Icon name="ph:arrow-up-right" class="w-4 h-4" />
       </a>
