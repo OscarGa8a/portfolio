@@ -7,7 +7,7 @@
 3. **P0 · Accesibilidad** — semántica, navegación por teclado, foco visible, menú móvil, skip link y reduced motion.
 4. **P1 · Conversión** — WhatsApp contextual, jerarquía de CTAs, proyectos orientados al problema y eventos medibles.
 5. **P1 · Responsive y performance** — imágenes responsivas, formatos modernos y limpieza de assets.
-6. **P1 · Mantenimiento** — npm único, lockfile reproducible, checks y documentación.
+6. **P1 · Mantenimiento** — pnpm único, lockfile reproducible, checks y documentación.
 7. **Validación** — instalación limpia, Astro check, build, enlaces y revisión visual móvil/escritorio.
 
 ## Decisiones

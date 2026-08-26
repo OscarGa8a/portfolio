@@ -24,28 +24,28 @@ La narrativa y los casos siguen las fuentes internas de Oscar Dev. No se publica
 
 ## Requisitos
 
-- Node.js 22.12 o superior.
-- npm 11.
+- Node.js 22.14 o superior.
+- pnpm 11.
 
-Este repositorio usa exclusivamente npm. `package-lock.json` es la fuente de verdad para instalaciones reproducibles.
+Este repositorio usa exclusivamente pnpm. `pnpm-lock.yaml` es la fuente de verdad para instalaciones reproducibles.
 
 ## Desarrollo
 
 ```sh
-npm ci
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Comandos disponibles:
 
 | Comando | Uso |
 | --- | --- |
-| `npm run dev` | Servidor local |
-| `npm run check` | Diagnóstico de Astro y TypeScript |
-| `npm run build` | Build estático de producción |
-| `npm run validate` | Check + build |
-| `npm run preview` | Vista previa del build |
-| `npm run assets` | Regenera OG image y favicons desde los SVG fuente |
+| `pnpm dev` | Servidor local |
+| `pnpm check` | Diagnóstico de Astro y TypeScript |
+| `pnpm build` | Build estático de producción |
+| `pnpm validate` | Check + build |
+| `pnpm preview` | Vista previa del build |
+| `pnpm assets` | Regenera OG image y favicons desde los SVG fuente |
 
 ## Estructura
 
@@ -98,7 +98,7 @@ El build produce archivos estáticos en `dist/` y puede desplegarse en Cloudflar
 
 Configuración sugerida:
 
-- Build command: `npm run build`
+- Build command: `pnpm build`
 - Output directory: `dist`
 - Node.js: `22`
 
