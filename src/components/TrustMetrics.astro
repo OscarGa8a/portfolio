@@ -7,25 +7,21 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-// Each metric now leads with a real number for parallel visual weight.
-// Values are conservative and derived from the site's own content — adjust to the real figures.
 const metrics = [
-  { num: '5', plus: true,  label: t(lang, 'trust_years_label'),     desc: t(lang, 'trust_years_desc') },
-  { num: '7', plus: true,  label: t(lang, 'trust_projects_title'),  desc: t(lang, 'trust_projects_desc') },
-  { num: '6', plus: true,  label: t(lang, 'trust_solutions_title'), desc: t(lang, 'trust_solutions_desc') },
-  { num: '2', plus: false, label: t(lang, 'trust_responsive_title'), desc: t(lang, 'trust_responsive_desc') },
+  { eyebrow: t(lang, 'trust_since_label'), title: t(lang, 'trust_since_title'), desc: t(lang, 'trust_since_desc') },
+  { eyebrow: t(lang, 'trust_scope_label'), title: t(lang, 'trust_scope_title'), desc: t(lang, 'trust_scope_desc') },
+  { eyebrow: t(lang, 'trust_reach_label'), title: t(lang, 'trust_reach_title'), desc: t(lang, 'trust_reach_desc') },
 ];
 ---
 <section class="py-14 bg-bg-sec/40 border-y border-white/5 reveal">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-x-0 lg:divide-x lg:divide-white/10">
+    <h2 class="sr-only">{t(lang, 'trust_heading')}</h2>
+    <div class="grid md:grid-cols-3 gap-x-8 gap-y-10 md:divide-x md:divide-white/10">
       {metrics.map((m) => (
-        <div class="lg:px-8 lg:first:pl-0">
-          <div class="font-display text-4xl font-bold text-text-main leading-none">
-            {m.num}{m.plus && <span class="text-accent">+</span>}
-          </div>
-          <div class="text-base font-medium text-text-sec mt-2">{m.label}</div>
-          <p class="text-sm text-text-sec/80 mt-3 leading-relaxed">{m.desc}</p>
+        <div class="md:px-8 md:first:pl-0">
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">{m.eyebrow}</p>
+          <p class="font-display text-xl font-bold text-text-main leading-tight">{m.title}</p>
+          <p class="text-sm text-text-sec mt-3 leading-relaxed">{m.desc}</p>
         </div>
       ))}
     </div>

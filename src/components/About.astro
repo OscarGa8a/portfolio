@@ -4,6 +4,8 @@ import { t } from '../i18n/index';
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { contact } from '../config/site';
+import { Image } from 'astro:assets';
+import oscarDev from '../assets/oscar-dev.webp';
 
 interface Props {
   lang: Locale;
@@ -11,11 +13,10 @@ interface Props {
 const { lang } = Astro.props;
 
 const tags = [
-  'about_tag_webdev',
-  'about_tag_responsive',
-  'about_tag_products',
-  'about_tag_solutions',
-  'about_tag_freelance',
+  'about_tag_business',
+  'about_tag_strategy',
+  'about_tag_experience',
+  'about_tag_custom',
 ];
 ---
 <Section id="sobre-mi" bg="bg-bg-sec/30 border-y border-white/5" padding="py-24">
@@ -25,15 +26,18 @@ const tags = [
       <div class="relative w-72 h-80 premium-card rounded-[2rem] flex flex-col items-center justify-center border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
         <div class="absolute -top-8 -right-8 w-32 h-32 bg-accent/15 rounded-full blur-[44px] pointer-events-none"></div>
 
-        <!-- TODO: replace this monogram block with a real photo:
-             <img src="/img/oscar.webp" alt="Oscar García" class="absolute inset-0 w-full h-full object-cover" /> -->
-        <div class="w-24 h-24 rounded-full bg-gradient-primary flex items-center justify-center text-3xl font-bold text-bg-main mb-6 shadow-xl relative z-10">
-          OG
-        </div>
-        <h3 class="font-display text-xl font-bold text-text-main mb-1 relative z-10">Oscar García</h3>
-        <p class="text-sm text-text-sec uppercase tracking-widest relative z-10">Dev</p>
-
-        <div class="mt-8 flex gap-3 relative z-10">
+        <Image
+          src={oscarDev}
+          alt={lang === 'es' ? 'Retrato ilustrado de Oscar García, creador de Oscar Dev' : 'Illustrated portrait of Oscar García, creator of Oscar Dev'}
+          widths={[288, 576]}
+          sizes="288px"
+          format="webp"
+          quality={82}
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg-main via-bg-main/80 to-transparent"></div>
+        <div class="absolute bottom-6 flex gap-3 z-10">
           <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors">
             <Icon name="ph:linkedin-logo" class="w-4 h-4" />
           </a>
@@ -46,6 +50,7 @@ const tags = [
 
     <!-- Content -->
     <div class="w-full lg:w-7/12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t(lang, 'about_kicker')}</p>
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-text-main">{t(lang, 'about_title')}</h2>
       <p class="text-text-sec text-lg leading-relaxed mb-8">{t(lang, 'about_body')}</p>
 

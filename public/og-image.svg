@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Oscar Dev — soluciones digitales para negocios reales">
+  <defs>
+    <radialGradient id="glow" cx="80%" cy="18%" r="70%">
+      <stop offset="0" stop-color="#F29A2E" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#121214" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#121214"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M0 4h1200" stroke="#F29A2E" stroke-width="8"/>
+  <g transform="translate(80 82)">
+    <circle cx="34" cy="34" r="22" fill="none" stroke="#F29A2E" stroke-width="12"/>
+    <path d="M58 12h10c20 0 31 8 31 22S88 56 68 56H58V12Z" fill="none" stroke="#EBDDCA" stroke-width="12" stroke-linejoin="round"/>
+    <text x="125" y="48" fill="#EBDDCA" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">OSCAR <tspan fill="#F29A2E">DEV</tspan></text>
+  </g>
+  <text x="80" y="260" fill="#EBDDCA" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700">
+    <tspan x="80" dy="0">Soluciones digitales para</tspan>
+    <tspan x="80" dy="82">negocios reales.</tspan>
+  </text>
+  <text x="80" y="485" fill="#B8AD9E" font-family="Arial, Helvetica, sans-serif" font-size="30">Webs · tiendas online · apps · plataformas a medida</text>
+  <text x="80" y="555" fill="#F29A2E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">oscar-garcia.dev</text>
+</svg>
