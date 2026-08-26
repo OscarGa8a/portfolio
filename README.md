@@ -24,7 +24,7 @@ La narrativa y los casos siguen las fuentes internas de Oscar Dev. No se publica
 
 ## Requisitos
 
-- Node.js 22.12 o superior.
+- Node.js 22.14 o superior.
 - pnpm 11.
 
 Este repositorio usa exclusivamente pnpm. `pnpm-lock.yaml` es la fuente de verdad para instalaciones reproducibles.
