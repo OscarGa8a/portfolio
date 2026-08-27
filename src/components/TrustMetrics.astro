@@ -18,10 +18,10 @@ const metrics = [
     <h2 class="sr-only">{t(lang, 'trust_heading')}</h2>
     <div class="grid md:grid-cols-3 gap-x-8 gap-y-10 md:divide-x md:divide-white/10">
       {metrics.map((m) => (
-        <div class="md:px-8 md:first:pl-0">
-          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">{m.eyebrow}</p>
+        <div class="md:px-8 md:first:pl-0 flex flex-col justify-start">
+          <p class="font-mono text-xs font-bold uppercase tracking-widest text-accent mb-2.5">{m.eyebrow}</p>
           <p class="font-display text-xl font-bold text-text-main leading-tight">{m.title}</p>
-          <p class="text-sm text-text-sec mt-3 leading-relaxed">{m.desc}</p>
+          <p class="text-sm text-text-sec mt-2.5 leading-relaxed">{m.desc}</p>
         </div>
       ))}
     </div>
