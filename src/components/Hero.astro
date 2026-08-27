@@ -10,15 +10,15 @@ interface Props {
 }
 const { lang } = Astro.props;
 ---
-<section class="relative min-h-[92dvh] pt-32 pb-20 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<section class="relative pt-32 pb-16 lg:pt-36 lg:pb-24 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
   <!-- Left: Content -->
-  <div class="lg:w-1/2 flex flex-col items-start space-y-7 reveal">
-    <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-4 py-2 text-xs font-medium text-accent">
+  <div class="w-full lg:w-1/2 flex flex-col items-start space-y-6 sm:space-y-7 reveal">
+    <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-3.5 py-1.5 text-xs font-medium text-accent">
       <span class="inline-flex rounded-full h-2 w-2 bg-accent" aria-hidden="true"></span>
       <span>{t(lang, 'hero_badge')}</span>
     </div>
 
-    <h1 class="font-display font-bold text-4xl md:text-5xl leading-[1.1] tracking-tight text-text-main max-w-xl">
+    <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-tight text-text-main max-w-xl">
       {t(lang, 'hero_title_1')} <span class="text-accent">{t(lang, 'hero_title_gradient')}</span>
     </h1>
 
