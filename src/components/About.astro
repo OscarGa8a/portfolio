@@ -23,25 +23,25 @@ const tags = [
   <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
     <!-- Profile card -->
     <div class="w-full lg:w-5/12 flex justify-center">
-      <div class="relative w-72 h-80 premium-card rounded-[2rem] flex flex-col items-center justify-center border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
-        <div class="absolute -top-8 -right-8 w-32 h-32 bg-accent/15 rounded-full blur-[44px] pointer-events-none"></div>
+      <div class="relative w-72 sm:w-80 h-96 premium-card rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden group">
+        <div class="absolute -top-8 -right-8 w-36 h-36 bg-accent/15 rounded-full blur-[48px] pointer-events-none"></div>
 
         <Image
           src={oscarDev}
           alt={lang === 'es' ? 'Retrato ilustrado de Oscar García, creador de Oscar Dev' : 'Illustrated portrait of Oscar García, creator of Oscar Dev'}
-          widths={[288, 576]}
-          sizes="288px"
+          widths={[320, 640]}
+          sizes="(min-width: 640px) 320px, 288px"
           format="webp"
-          quality={82}
-          class="absolute inset-0 w-full h-full object-cover"
+          quality={85}
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           loading="lazy"
         />
         <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg-main via-bg-main/80 to-transparent"></div>
         <div class="absolute bottom-6 flex gap-3 z-10">
-          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors">
+          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-accent hover:text-bg-main border border-white/10 hover:border-accent transition-all duration-150 ease-out active:scale-95 flex items-center justify-center text-text-sec">
             <Icon name="ph:linkedin-logo" class="w-4 h-4" />
           </a>
-          <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors">
+          <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-accent hover:text-bg-main border border-white/10 hover:border-accent transition-all duration-150 ease-out active:scale-95 flex items-center justify-center text-text-sec">
             <Icon name="ph:github-logo" class="w-4 h-4" />
           </a>
         </div>
@@ -54,9 +54,9 @@ const tags = [
       <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-text-main">{t(lang, 'about_title')}</h2>
       <p class="text-text-sec text-lg leading-relaxed mb-8">{t(lang, 'about_body')}</p>
 
-      <div class="flex flex-wrap gap-3">
+      <div class="flex flex-wrap gap-2.5">
         {tags.map((tag) => (
-          <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-md text-sm text-text-main/90">{t(lang, tag)}</span>
+          <span class="bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-lg text-xs font-medium text-text-sec hover:border-accent/40 hover:text-text-main transition-colors">{t(lang, tag)}</span>
         ))}
       </div>
     </div>
