@@ -18,7 +18,7 @@ typography:
     letterSpacing: "-0.02em"
     lineHeight: 1.15
   body:
-    fontFamily: "'Geist Variable', system-ui, sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
     fontWeight: 400
     letterSpacing: "normal"
     lineHeight: 1.6
@@ -68,7 +68,7 @@ Oscar Dev utiliza una estética editorial dark-mode cálida con alto contraste y
 
 ## Typography
 - **Display / Títulos**: `Bricolage Grotesque Variable` (Pesos: 600, 700, 800). Grotesca con carácter e interletreado óptico ajustado para encabezados.
-- **Cuerpo / Interfaz**: `Geist Variable` (Pesos: 400, 500, 600). Sans-serif moderna y limpia optimizada para lectura en pantallas y claridad técnica.
+- **Cuerpo / Interfaz**: System-first clean sans-serif stack (`system-ui, -apple-system, Segoe UI, Roboto, sans-serif`). Limpia, de renderizado nativo veloz y alta legibilidad sin sobrecargar el bundle ni caer en fuentes genéricas de IA.
 - **Escala de Jerarquía**:
   - `Hero Title`: `clamp(2.25rem, 5vw, 4rem)`, tracking tight, line-height 1.1.
   - `Títulos de Sección (H2)`: `clamp(1.75rem, 3.5vw, 2.75rem)`, font-weight 700.
