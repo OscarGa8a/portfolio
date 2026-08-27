@@ -1,0 +1,102 @@
+# Oscar Dev — Dossier Completo de Soluciones Digitales y Desarrollo a Medida
+
+## Resumen Ejecutivo
+Oscar Dev es la marca profesional de Oscar García, desarrollador de software y soluciones digitales con actividad continua desde 2019. Su enfoque se centra en crear soluciones de software útiles, rápidas y aterrizadas a la rentabilidad del negocio, evitando plantillas genéricas o dependencias innecesarias.
+
+## Perfil del Autor y Credenciales E-E-A-T
+- **Nombre**: Oscar García
+- **Cargo**: Desarrollador de Soluciones Digitales / Full Stack Developer
+- **Experiencia**: Más de 5 años en desarrollo web, móvil y plataformas empresariales (desde 2019).
+- **Alcance Geográfico**: Colombia y Estados Unidos.
+- **Canales Oficiales**:
+  - Web: https://oscar-garcia.dev/
+  - Web en Inglés: https://oscar-garcia.dev/en/
+  - LinkedIn: https://www.linkedin.com/in/oscar-garcia-dev/
+  - GitHub: https://github.com/OscarGa8a
+  - WhatsApp: +57 310 649 5249
+  - Correo Electrónico: oscar.ga8a@gmail.com
+
+---
+
+## Servicios Detallados
+
+### 1. Sitios Web Profesionales y Landings de Conversión
+- **Enfoque**: Sitios diseñados para proyectar confianza, estructurar la propuesta de valor y guiar al usuario hacia la conversión (reserva, compra o contacto directo).
+- **Tecnología Principal**: Astro. Cero JavaScript innecesario enviado al cliente para garantizar que el navegador pinte el contenido en menos de 0.6 segundos. Si una sección requiere micro-interactividad reactiva puntual (como un cotizador o filtro), se utiliza una isla aislada en React.
+
+### 2. Tiendas Online y E-commerce Personalizado
+- **Enfoque**: Catálogos estructurados, navegación fluida, personalización de productos y pasarelas de pago seguras (Stripe, Mercado Pago, Wompi, PayU).
+- **Diferencial**: Optimización móvil-primero que elimina fricciones en el proceso de checkout y reduce el abandono del carrito.
+
+### 3. Aplicaciones Web y Móviles (iOS y Android)
+- **Enfoque**: Aplicaciones orientadas a usuarios o clientes finales que requieren uso frecuente, geolocalización, sincronización en tiempo real o uso en dispositivos móviles.
+- **Tecnología**: Angular + Ionic. Permite compilar aplicaciones nativas para Google Play y Apple App Store con excelente rendimiento y mantenimiento unificado.
+
+### 4. Plataformas y Software a Medida (B2B / Gestión Interna)
+- **Enfoque**: Sistemas administrativos, gestión de reservas, paneles de control (Dashboards), automatización de tareas y digitalización de procesos que hoy dependen de planillas de Excel o chats de WhatsApp.
+- **Tecnología**: Angular con TypeScript. Arquitectura modular, inyección de dependencias, tipado robusto y escalabilidad empresarial.
+
+---
+
+## Portafolio y Casos de Estudio Reales
+
+### Duarte's Auto Detailing (Cliente en EE. UU.)
+- **Tipo de proyecto**: Landing page comercial para detailing automotriz a domicilio.
+- **Problema**: El negocio requería una presencia digital premium para el mercado estadounidense que comunicara calidad y permitiera a los clientes reservar servicios fácilmente.
+- **Solución**: Diseño con paleta oscura de alta gama, tipografía editorial, presentación visual de paquetes y ruta de reserva directa.
+- **Enlace en vivo**: https://duartesautodetailing.com/
+
+### ConectaPlay (Colombia)
+- **Tipo de proyecto**: Plataforma web para la gestión de complejos deportivos y torneos.
+- **Problema**: Los administradores de canchas perdían tiempo coordinando reservas manuales y cobros.
+- **Solución**: Plataforma web integral con calendario de disponibilidad en tiempo real, gestión de canchas y módulo para torneos.
+- **Enlace en vivo**: https://app.conectaplay.co/
+
+### DeTour (Cundinamarca, Colombia)
+- **Tipo de proyecto**: Aplicación móvil turística con Realidad Aumentada (AR).
+- **Problema**: Promocionar destinos turísticos de la región mediante una experiencia interactiva y moderna.
+- **Solución**: App móvil multiplataforma desarrollada en Angular e Ionic con mapas interactivos, geolocalización y módulos inmersivos de AR.
+- **Enlaces**: https://play.google.com/store/apps/details?id=com.GrupoCato.DeTourCundi
+
+### Fuera del Molde (Colombia)
+- **Tipo de proyecto**: Tienda online de e-commerce de productos personalizados.
+- **Problema**: Mostrar catálogo dinámico de productos personalizables con una experiencia de compra sencilla en celulares.
+- **Solución**: Tienda online responsiva con filtros claros, personalizador visual y pasarela de pago integrada.
+- **Enlace en vivo**: https://fueradelmolde.com/
+
+### La Locura Bar (Colombia)
+- **Tipo de proyecto**: Sitio web comercial y menú digital para negocio local.
+- **Problema**: Digitalizar la carta, ubicación y sistema de reservas para atraer clientes físicos.
+- **Solución**: Web moderna con menú digital categorizado, mapa interactivo e integración directa con WhatsApp para reservas.
+- **Enlace en vivo**: https://lalocurabar.com.co/
+
+---
+
+## Preguntas Frecuentes y Políticas de Trabajo (FAQ)
+
+### 1. ¿Qué tipo de soluciones desarrollas y qué tecnologías utilizas?
+Desarrollo landings y sitios web de alto rendimiento con Astro (y React puntual si requiere micro-interactividad). Para plataformas web complejas, portales comerciales y paneles a medida utilizo Angular. Para aplicaciones móviles multiplataforma (iOS y Android) utilizo Angular con Ionic.
+
+### 2. ¿Cuánto tiempo toma el desarrollo de un proyecto?
+Depende de la complejidad. Una landing page o sitio web comercial suele tomar entre 2 y 4 semanas. Una plataforma web o aplicación móvil a medida suele tomar entre 6 y 12 semanas, con entregas continuas y avances visibles.
+
+### 3. ¿Cuál es la ventaja de una solución a medida frente a plantillas o constructores genéricos?
+Una solución a medida carga en milisegundos, no depende de decenas de plugins que se rompen con actualizaciones, es 100% segura, se adapta con exactitud al flujo de tu negocio y el código te pertenece por completo sin costos mensuales por plataformas cerradas.
+
+### 4. ¿Cómo es el proceso de trabajo y qué incluye la cotización?
+El proceso tiene 4 etapas:
+1. **Entendimiento del problema de negocio**: Analizamos qué hace falta antes de programar una sola línea de código.
+2. **Diseño de arquitectura y experiencia**: Estructuramos contenido, wireframes y flujos de usuario.
+3. **Construcción y pruebas**: Desarrollo con código limpio, pruebas de velocidad y accesibilidad.
+4. **Despliegue y entrega**: Puesta en marcha en producción con soporte y entrega del código fuente.
+
+### 5. ¿Trabajas con clientes fuera de Colombia?
+Sí. Cuento con experiencia desarrollando proyectos para negocios tanto en Colombia como en Estados Unidos, con comunicación fluida en español e inglés y metodologías ágiles de seguimiento remoto.
+
+---
+
+## Contacto Directo
+- **WhatsApp**: https://wa.me/573106495249
+- **Email**: oscar.ga8a@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/oscar-garcia-dev/
+- **Página principal**: https://oscar-garcia.dev/

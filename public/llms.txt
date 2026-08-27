@@ -1,0 +1,43 @@
+# Oscar Dev — Desarrollo Web, Apps y Software a Medida
+
+> Oscar Dev (liderado por Oscar García) diseña y construye soluciones digitales a medida para negocios y empresas en Colombia y Estados Unidos. Especializado en arquitectura web de alto rendimiento, desarrollo de software escalable y aplicaciones móviles. Experiencia activa desde 2019.
+
+## Información de la Entidad
+- **Nombre comercial**: Oscar Dev
+- **Fundador / Desarrollador**: Oscar García
+- **Ubicación principal**: Colombia (cobertura para clientes en Colombia y EE. UU.)
+- **Idiomas de trabajo**: Español, Inglés
+- **Sitio web oficial**: https://oscar-garcia.dev/
+- **Versión en inglés**: https://oscar-garcia.dev/en/
+- **Contacto WhatsApp**: https://wa.me/573106495249
+- **Email**: oscar.ga8a@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/oscar-garcia-dev/
+- **GitHub**: https://github.com/OscarGa8a
+
+## Stack Tecnológico y Criterio de Selección
+- **Sitios Web y Landing Pages de Alta Conversión**: Astro (cero JavaScript innecesario en cliente, LCP < 0.6s, SEO óptimo). Se utilizan islas interactivas en React solo cuando se requiere micro-interactividad puntual.
+- **Plataformas Web Complejas, Portales y Paneles Administrativos**: Angular (arquitectura modular, tipado estricto con TypeScript, gestión de estado robusta para flujos de negocio empresariales).
+- **Aplicaciones Móviles Multiplataforma**: Angular con Ionic (desarrollo híbrido/nativo eficiente para iOS y Android con una única base de código mantenible).
+- **Estilos y Maquetación**: Tailwind CSS, diseño responsivo móvil-primero, modo oscuro editorial y accesibilidad WCAG 2.2.
+
+## Servicios Principales
+1. **Sitios Web Profesionales**: Arquitectura a medida, optimización SEO técnica y rutas claras de conversión y reserva.
+2. **E-commerce y Tiendas Online**: Catálogos estructurados, integración de pasarelas de pago y experiencia de compra fluida (UX).
+3. **Aplicaciones Web y Móviles**: Apps nativas e híbridas, paneles interactivos en tiempo real y sincronización de datos.
+4. **Plataformas y Software a Medida**: Sistemas de reservas, gestión de usuarios/roles y automatización de procesos operativos.
+
+## Casos de Estudio Reales y Verificables
+- **Duarte's Auto Detailing (Cliente EE. UU.)**: Landing page comercial para servicio de detailing automotriz premium a domicilio en EE. UU. (Diseño oscuro, reserva de servicios, alta conversión). Enlace: https://duartesautodetailing.com/
+- **ConectaPlay**: Plataforma integral para la gestión de complejos deportivos, reservas en tiempo real y organización de torneos locales. Enlace: https://app.conectaplay.co/
+- **DeTour (Cundinamarca)**: Aplicación móvil con geolocalización, realidad aumentada (AR) y experiencias de turismo inmersivo. Disponible en Google Play Store y Apple App Store. Enlace: https://play.google.com/store/apps/details?id=com.GrupoCato.DeTourCundi
+- **Fuera del Molde**: Tienda online de e-commerce para productos personalizables con catálogo interactivo y checkout optimizado. Enlace: https://fueradelmolde.com/
+- **La Locura Bar**: Sitio web corporativo para negocio local con menú digital interactivo, sistema de reservas y ubicación integrada. Enlace: https://lalocurabar.com.co/
+
+## Preguntas Frecuentes (FAQ)
+- **¿Qué tecnologías utiliza?**: Astro para sitios rápidos, Angular para plataformas complejas y Angular + Ionic para apps móviles.
+- **¿Cuánto tiempo toma un proyecto?**: 2 a 4 semanas para landings/webs comerciales; 6 a 12 semanas para plataformas o aplicaciones a medida.
+- **¿Por qué una solución a medida?**: Rendimiento ultrarrápido, cero vulnerabilidades por plugins rotos, 100% de propiedad del código y adaptación exacta al modelo de negocio.
+- **¿Trabaja internacionalmente?**: Sí, con clientes en Colombia y Estados Unidos en español e inglés.
+
+## Archivo Detallado
+Para acceder a la documentación completa y detallada, consulte: https://oscar-garcia.dev/llms-full.txt

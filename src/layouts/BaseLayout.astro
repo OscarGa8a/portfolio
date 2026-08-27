@@ -3,6 +3,7 @@ import '../styles/global.css';
 import RevealObserver from '../components/RevealObserver.astro';
 import Analytics from '../components/Analytics.astro';
 import { siteUrl, author, contact } from '../config/site';
+import { t } from '../i18n/index';
 
 interface Props {
   lang: 'es' | 'en';
@@ -12,11 +13,11 @@ interface Props {
 const {
   lang,
   title = lang === 'es'
-    ? 'Oscar Dev | Desarrollo web para negocios reales'
-    : 'Oscar Dev | Web development for real businesses',
+    ? 'Oscar Dev | Desarrollo Web, Apps y Software a Medida'
+    : 'Oscar Dev | Custom Web, App and Software Development',
   description = lang === 'es'
-    ? 'Webs, tiendas online, apps y plataformas a medida para negocios que necesitan más claridad, orden y control.'
-    : 'Websites, online stores, apps and custom platforms for businesses that need more clarity, order and control.',
+    ? 'Webs, tiendas online y plataformas a medida para empresas que buscan orden, control y resultados. Astro, Angular e Ionic desde 2019. Cotiza tu proyecto.'
+    : 'Websites, online stores and custom platforms for businesses that need clarity, control and growth. Astro, Angular and Ionic since 2019. Get in touch.',
 } = Astro.props;
 
 // Absolute URLs (canonical, OG) derived from the single siteUrl source.
@@ -32,7 +33,15 @@ const services = lang === 'es'
   ? ['Sitios web profesionales', 'Tiendas online', 'Aplicaciones web y móviles', 'Plataformas a medida']
   : ['Professional websites', 'Online stores', 'Web and mobile apps', 'Custom platforms'];
 
-// Structured data: who Oscar is + what he offers. Helps Google show rich results.
+const faqs = [
+  { q: t(lang, 'faq_q1'), a: t(lang, 'faq_a1') },
+  { q: t(lang, 'faq_q2'), a: t(lang, 'faq_a2') },
+  { q: t(lang, 'faq_q3'), a: t(lang, 'faq_a3') },
+  { q: t(lang, 'faq_q4'), a: t(lang, 'faq_a4') },
+  { q: t(lang, 'faq_q5'), a: t(lang, 'faq_a5') },
+];
+
+// Structured data: Entity graph + FAQPage for traditional and AI search (Google AI Overviews, Perplexity, ChatGPT).
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -46,6 +55,19 @@ const jsonLd = {
       email: author.email,
       telephone: author.phone,
       address: { '@type': 'PostalAddress', addressCountry: author.countryCode },
+      knowsAbout: [
+        'Desarrollo Web',
+        'Arquitectura de Software',
+        'Astro',
+        'React',
+        'Angular',
+        'Ionic',
+        'TypeScript',
+        'Tailwind CSS',
+        'E-commerce',
+        'Aplicaciones Móviles Multiplataforma',
+        'Web Performance Optimization',
+      ],
       sameAs: [contact.linkedin, contact.github],
     },
     {
@@ -58,6 +80,17 @@ const jsonLd = {
       provider: { '@id': `${siteUrl}/#person` },
       inLanguage: [lang, lang === 'es' ? 'en' : 'es'],
       areaServed: ['CO', 'US'],
+      priceRange: '$$',
+      currenciesAccepted: 'COP, USD',
+      paymentAccepted: 'Transferencia bancaria, Pasarela de pago, Stripe, Wire transfer',
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: lang === 'es' ? 'Soluciones digitales' : 'Digital solutions',
@@ -70,6 +103,18 @@ const jsonLd = {
       name: author.brand,
       url: siteUrl,
       inLanguage: ['es', 'en'],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
     },
   ],
 };
