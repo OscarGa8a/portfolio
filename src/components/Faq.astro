@@ -1,0 +1,160 @@
+---
+import type { Locale } from '../i18n/index';
+import { t } from '../i18n/index';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const faqs = [
+  { qKey: 'faq_q1', aKey: 'faq_a1', num: '01' },
+  { qKey: 'faq_q2', aKey: 'faq_a2', num: '02' },
+  { qKey: 'faq_q3', aKey: 'faq_a3', num: '03' },
+  { qKey: 'faq_q4', aKey: 'faq_a4', num: '04' },
+  { qKey: 'faq_q5', aKey: 'faq_a5', num: '05' },
+];
+---
+
+<section id="faq" class="py-24 bg-bg-sec/30 border-y border-white/5 reveal">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mb-14">
+      <div class="font-mono text-xs text-accent uppercase tracking-widest mb-3 font-semibold">
+        {t(lang, 'faq_eyebrow')}
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-text-main">
+        {t(lang, 'faq_title')}
+      </h2>
+      <p class="text-text-sec text-lg leading-relaxed">
+        {t(lang, 'faq_subtitle')}
+      </p>
+    </div>
+
+    <div class="max-w-4xl divide-y divide-white/10 border-t border-b border-white/10">
+      {faqs.map((faq) => (
+        <details class="faq-item group py-6">
+          <summary class="flex justify-between items-start md:items-center gap-4 cursor-pointer list-none select-none text-left focus-visible:outline-none focus-visible:text-accent">
+            <div class="flex items-start md:items-center gap-4">
+              <span class="font-mono text-xs md:text-sm text-accent/80 font-bold shrink-0 pt-0.5 md:pt-0">
+                {faq.num}
+              </span>
+              <span class="font-display text-lg md:text-xl font-medium text-text-main group-hover:text-accent transition-colors duration-150">
+                {t(lang, faq.qKey)}
+              </span>
+            </div>
+            <div class="shrink-0 p-1 rounded-md border border-white/10 bg-white/5 group-hover:border-accent/40 transition-colors duration-150">
+              <Icon
+                name="ph:caret-down"
+                class="w-4 h-4 text-accent transition-transform duration-200 ease-out group-open:rotate-180"
+              />
+            </div>
+          </summary>
+          <div class="faq-content overflow-hidden">
+            <div class="pt-4 pl-8 md:pl-9 pr-4 text-text-sec text-base leading-relaxed">
+              {t(lang, faq.aKey)}
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  class FaqAccordionController {
+    private el: HTMLDetailsElement;
+    private summary: HTMLElement;
+    private content: HTMLElement;
+    private animation: Animation | null = null;
+    private isClosing = false;
+    private isExpanding = false;
+
+    constructor(el: HTMLDetailsElement) {
+      this.el = el;
+      this.summary = el.querySelector('summary')!;
+      this.content = el.querySelector('.faq-content')!;
+      this.summary.addEventListener('click', (e) => this.onClick(e));
+    }
+
+    private onClick(e: MouseEvent) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      e.preventDefault();
+
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    private shrink() {
+      this.isClosing = true;
+      const startHeight = `${this.content.offsetHeight}px`;
+      const startOpacity = parseFloat(window.getComputedStyle(this.content).opacity) || 1;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.content.animate(
+        {
+          height: [startHeight, '0px'],
+          opacity: [startOpacity, 0],
+        },
+        {
+          duration: 180,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => {
+        this.isClosing = false;
+      };
+    }
+
+    private open() {
+      const wasAnimating = Boolean(this.animation);
+      const startHeight = wasAnimating ? `${this.content.offsetHeight}px` : '0px';
+      const startOpacity = wasAnimating ? (parseFloat(window.getComputedStyle(this.content).opacity) || 0) : 0;
+
+      this.el.open = true;
+      this.isExpanding = true;
+
+      const endHeight = `${this.content.scrollHeight}px`;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.content.animate(
+        {
+          height: [startHeight, endHeight],
+          opacity: [startOpacity, 1],
+        },
+        {
+          duration: 220,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => {
+        this.isExpanding = false;
+      };
+    }
+
+    private onAnimationFinish(open: boolean) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.content.style.height = '';
+    }
+  }
+
+  document.querySelectorAll<HTMLDetailsElement>('details.faq-item').forEach((el) => {
+    new FaqAccordionController(el);
+  });
+</script>

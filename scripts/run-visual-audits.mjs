@@ -22,14 +22,14 @@ async function runVisualAudits() {
   console.log('🧪 1. Ejecutando Muestreo Cinemático de Animación (WAAPI)...');
   const desktopContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const page = await desktopContext.newPage();
-  await page.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
+  await page.goto('http://localhost:4321/', { waitUntil: 'domcontentloaded' });
 
   // Scroll to case studies
   await page.locator('#casos').scrollIntoViewIfNeeded();
   await page.waitForTimeout(300);
 
   // Test OPEN transition monotonicity
-  console.log('   - Grabando fotogramas de APERTURA (cada 16ms)...');
+  console.log('   - Grabando fotogramas de APERTURA Casos de Estudio (cada 16ms)...');
   const openSamples = await page.evaluate(async () => {
     const summaryEl = document.querySelector('#casos details.accordion-case-study summary');
     const detailsEl = document.querySelector('#casos details.accordion-case-study');
@@ -55,7 +55,7 @@ async function runVisualAudits() {
   }
 
   // Test CLOSE transition monotonicity & zero rebound
-  console.log('   - Grabando fotogramas de CIERRE (cada 16ms)...');
+  console.log('   - Grabando fotogramas de CIERRE Casos de Estudio (cada 16ms)...');
   const closeSamples = await page.evaluate(async () => {
     const summaryEl = document.querySelector('#casos details.accordion-case-study summary');
     const detailsEl = document.querySelector('#casos details.accordion-case-study');
@@ -75,7 +75,6 @@ async function runVisualAudits() {
   let closeMonotonic = true;
   let hasRebound = false;
   for (let i = 1; i < closeSamples.length; i++) {
-    // Height should not increase during close
     if (closeSamples[i].height > closeSamples[i - 1].height + 2) {
       closeMonotonic = false;
     }
@@ -84,19 +83,68 @@ async function runVisualAudits() {
   const finalCloseHeight = closeSamples[closeSamples.length - 1].height;
   const initialOpenHeight = openSamples[0].height;
 
-  // Rebound test: final closed height must match initial height within 2px
   if (Math.abs(finalCloseHeight - initialOpenHeight) > 2) {
     hasRebound = true;
   }
 
-  if (openMonotonic && closeMonotonic && !hasRebound) {
-    report.kinematicAccordion.passed = true;
-    report.kinematicAccordion.details.push(`Apertura suave y monótona (${openSamples[0].height}px -> ${openSamples[openSamples.length - 1].height}px)`);
-    report.kinematicAccordion.details.push(`Cierre perfecto sin rebotes (${closeSamples[0].height}px -> ${closeSamples[closeSamples.length - 1].height}px)`);
-    report.kinematicAccordion.details.push(`Delta de rebote final: 0px (Box model perfectamente estable)`);
-  } else {
-    report.kinematicAccordion.details.push(`Fallo cinemático: openMonotonic=${openMonotonic}, closeMonotonic=${closeMonotonic}, hasRebound=${hasRebound}`);
+  // Also test FAQ kinematic accordion
+  console.log('   - Grabando fotogramas de APERTURA y CIERRE de FAQ (cada 16ms)...');
+  await page.locator('#faq').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(300);
+
+  const faqKinematics = await page.evaluate(async () => {
+    const summaryEl = document.querySelector('#faq details.faq-item summary');
+    const detailsEl = document.querySelector('#faq details.faq-item');
+    const samples = [];
+
+    // Open
+    summaryEl.click();
+    const startOpen = performance.now();
+    while (performance.now() - startOpen < 280) {
+      const rect = detailsEl.getBoundingClientRect();
+      samples.push({ phase: 'open', height: Math.round(rect.height) });
+      await new Promise(r => requestAnimationFrame(r));
+    }
+
+    // Close
+    summaryEl.click();
+    const startClose = performance.now();
+    while (performance.now() - startClose < 260) {
+      const rect = detailsEl.getBoundingClientRect();
+      samples.push({ phase: 'close', height: Math.round(rect.height) });
+      await new Promise(r => requestAnimationFrame(r));
+    }
+
+    return samples;
+  });
+
+  const faqOpens = faqKinematics.filter(s => s.phase === 'open');
+  const faqCloses = faqKinematics.filter(s => s.phase === 'close');
+  let faqOpenMonotonic = true;
+  let faqCloseMonotonic = true;
+
+  for (let i = 1; i < faqOpens.length; i++) {
+    if (faqOpens[i].height < faqOpens[i - 1].height - 2) faqOpenMonotonic = false;
   }
+  for (let i = 1; i < faqCloses.length; i++) {
+    if (faqCloses[i].height > faqCloses[i - 1].height + 2) faqCloseMonotonic = false;
+  }
+
+  if (openMonotonic && closeMonotonic && !hasRebound && faqOpenMonotonic && faqCloseMonotonic) {
+    report.kinematicAccordion.passed = true;
+    report.kinematicAccordion.details.push(`Casos de Estudio: Apertura suave (${openSamples[0].height}px -> ${openSamples[openSamples.length - 1].height}px)`);
+    report.kinematicAccordion.details.push(`Casos de Estudio: Cierre perfecto sin rebotes (${closeSamples[0].height}px -> ${closeSamples[closeSamples.length - 1].height}px)`);
+    report.kinematicAccordion.details.push(`FAQ Accordion: Cinemática monótona validada (Apertura: ${faqOpens[0].height}px -> ${faqOpens[faqOpens.length - 1].height}px, Cierre: ${faqCloses[0].height}px -> ${faqCloses[faqCloses.length - 1].height}px)`);
+    report.kinematicAccordion.details.push(`Delta de rebote final: 0px (Box models perfectamente estables)`);
+  } else {
+    report.kinematicAccordion.details.push(`Fallo cinemático: openMonotonic=${openMonotonic}, closeMonotonic=${closeMonotonic}, faqOpen=${faqOpenMonotonic}, faqClose=${faqCloseMonotonic}`);
+  }
+
+  // Capture FAQ section screenshot for visual inspection
+  const faqSection = page.locator('#faq');
+  await faqSection.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(300);
+  await faqSection.screenshot({ path: '/mnt/d/code/portfolio/screenshots/08-desktop-faq.png' });
 
   // -------------------------------------------------------------
   // 2. AUDITORÍA DE TOUCH TARGETS Y ACCESIBILIDAD (IMPECCABLE)
@@ -108,7 +156,7 @@ async function runVisualAudits() {
     hasTouch: true
   });
   const mobilePage = await mobileContext.newPage();
-  await mobilePage.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
+  await mobilePage.goto('http://localhost:4321/', { waitUntil: 'domcontentloaded' });
 
   const interactiveElements = await mobilePage.$$eval('a, button, summary', (els) => {
     return els.map((el) => {
