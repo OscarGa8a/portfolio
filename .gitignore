@@ -28,6 +28,11 @@ pnpm-debug.log*
 .playwright-mcp/
 .claude/
 .agents/
+.codex/
+.impeccable/
+.github/agents/
+.github/hooks/
+.github/skills/
 
 openspec/
 
