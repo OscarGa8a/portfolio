@@ -1,4 +1,28 @@
+# Robots.txt for oscar-garcia.dev
 User-agent: *
 Allow: /
 
+# Explicit AI Search & Discovery Crawler Allowances
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps and AI Context Files
 Sitemap: https://oscar-garcia.dev/sitemap.xml
