@@ -58,12 +58,12 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
       ))}
     </ul>
 
-    <details class="group border-t border-white/10 pt-4 mb-6">
-      <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none">
+    <details class="accordion-case-study group border-t border-white/10 pt-4 mb-6">
+      <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none select-none">
         <span>{t(lang, 'cases_study_label')}</span>
         <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform duration-200 ease-out group-open:rotate-180" />
       </summary>
-      <div class="pt-4 text-sm text-text-sec space-y-4">
+      <div class="accordion-content pt-4 text-sm text-text-sec space-y-4">
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-text-sec">{t(lang, resultKey)}</span></div>
@@ -87,3 +87,103 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
     )}
   </div>
 </div>
+
+<script>
+  class AccordionController {
+    private el: HTMLDetailsElement;
+    private summary: HTMLElement;
+    private content: HTMLElement;
+    private animation: Animation | null = null;
+    private isClosing = false;
+    private isExpanding = false;
+
+    constructor(el: HTMLDetailsElement) {
+      this.el = el;
+      this.summary = el.querySelector('summary')!;
+      this.content = el.querySelector('.accordion-content')!;
+      this.summary.addEventListener('click', (e) => this.onClick(e));
+    }
+
+    private onClick(e: MouseEvent) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      e.preventDefault();
+      this.el.style.overflow = 'hidden';
+
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    private shrink() {
+      this.isClosing = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight}px`;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.el.animate(
+        {
+          height: [startHeight, endHeight],
+          opacity: [1, 0.95],
+        },
+        {
+          duration: 180,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => {
+        this.isClosing = false;
+      };
+    }
+
+    private open() {
+      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.el.open = true;
+      window.requestAnimationFrame(() => this.expand());
+    }
+
+    private expand() {
+      this.isExpanding = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.el.animate(
+        {
+          height: [startHeight, endHeight],
+          opacity: [0.95, 1],
+        },
+        {
+          duration: 220,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => {
+        this.isExpanding = false;
+      };
+    }
+
+    private onAnimationFinish(open: boolean) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.el.style.height = '';
+      this.el.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll<HTMLDetailsElement>('details.accordion-case-study').forEach((el) => {
+    new AccordionController(el);
+  });
+</script>
