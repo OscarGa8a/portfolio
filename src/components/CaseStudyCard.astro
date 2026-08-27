@@ -58,32 +58,131 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
       ))}
     </ul>
 
-    <details class="group border-t border-white/10 pt-4 mb-6">
-      <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none">
+    <details class="accordion-case-study group border-t border-white/10 pt-4 mb-6">
+      <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none select-none">
         <span>{t(lang, 'cases_study_label')}</span>
-        <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform group-open:rotate-180" />
+        <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform duration-200 ease-out group-open:rotate-180" />
       </summary>
-      <div class="pt-4 text-sm text-text-sec space-y-4">
-        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
-        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
-        <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-text-sec">{t(lang, resultKey)}</span></div>
+      <div class="accordion-content overflow-hidden">
+        <div class="pt-4 text-sm text-text-sec space-y-4">
+          <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
+          <div><strong class="text-text-main block mb-1">{t(lang, 'cases_solution_label')}</strong>{t(lang, solutionKey)}</div>
+          <div><strong class="text-text-main block mb-1">{t(lang, 'cases_result_label')}</strong><span class="text-text-sec">{t(lang, resultKey)}</span></div>
+        </div>
       </div>
     </details>
 
     {hasMultiple ? (
       <div class="flex flex-wrap gap-x-6 gap-y-3">
         {links!.map((l) => (
-          <a href={l.href} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+          <a href={l.href} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="group/link inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-all duration-150 ease-out active:scale-95">
             {l.label}
-            <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+            <Icon name="ph:arrow-up-right" class="w-4 h-4 transition-transform duration-150 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
           </a>
         ))}
       </div>
     ) : (
-      <a href={ctaHref} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+      <a href={ctaHref} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="group/link inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-all duration-150 ease-out active:scale-95">
         {t(lang, ctaLabelKey!)}
-        <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+        <Icon name="ph:arrow-up-right" class="w-4 h-4 transition-transform duration-150 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
       </a>
     )}
   </div>
 </div>
+
+<script>
+  class AccordionController {
+    private el: HTMLDetailsElement;
+    private summary: HTMLElement;
+    private content: HTMLElement;
+    private animation: Animation | null = null;
+    private isClosing = false;
+    private isExpanding = false;
+
+    constructor(el: HTMLDetailsElement) {
+      this.el = el;
+      this.summary = el.querySelector('summary')!;
+      this.content = el.querySelector('.accordion-content')!;
+      this.summary.addEventListener('click', (e) => this.onClick(e));
+    }
+
+    private onClick(e: MouseEvent) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      e.preventDefault();
+
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    private shrink() {
+      this.isClosing = true;
+      const startHeight = `${this.content.offsetHeight}px`;
+      const startOpacity = parseFloat(window.getComputedStyle(this.content).opacity) || 1;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.content.animate(
+        {
+          height: [startHeight, '0px'],
+          opacity: [startOpacity, 0],
+        },
+        {
+          duration: 180,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => {
+        this.isClosing = false;
+      };
+    }
+
+    private open() {
+      const wasAnimating = Boolean(this.animation);
+      const startHeight = wasAnimating ? `${this.content.offsetHeight}px` : '0px';
+      const startOpacity = wasAnimating ? (parseFloat(window.getComputedStyle(this.content).opacity) || 0) : 0;
+
+      this.el.open = true;
+      this.isExpanding = true;
+
+      const endHeight = `${this.content.scrollHeight}px`;
+
+      if (this.animation) this.animation.cancel();
+
+      this.animation = this.content.animate(
+        {
+          height: [startHeight, endHeight],
+          opacity: [startOpacity, 1],
+        },
+        {
+          duration: 220,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        }
+      );
+
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => {
+        this.isExpanding = false;
+      };
+    }
+
+    private onAnimationFinish(open: boolean) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.content.style.height = '';
+    }
+  }
+
+  document.querySelectorAll<HTMLDetailsElement>('details.accordion-case-study').forEach((el) => {
+    new AccordionController(el);
+  });
+</script>

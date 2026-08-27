@@ -27,25 +27,15 @@
   --radius-card: 1rem;
   --radius-button: 0.75rem;
 
-  /* Animations */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-delayed: float 6s ease-in-out 3s infinite;
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-  }
+  /* Emil Kowalski motion curves */
+  --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -91,13 +81,17 @@
   .premium-card {
     background: var(--color-card-bg);
     border: 1px solid var(--color-border-subtle);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    transition: border-color 0.2s var(--ease-out-strong),
+                box-shadow 0.2s var(--ease-out-strong),
+                transform 0.2s var(--ease-out-strong);
   }
 
-  .premium-card:hover {
-    border-color: var(--color-border-hover);
-    box-shadow: 0 14px 44px -18px rgba(242, 154, 46, 0.18);
-    transform: translateY(-4px);
+  @media (hover: hover) and (pointer: fine) {
+    .premium-card:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: 0 14px 44px -18px rgba(242, 154, 46, 0.18);
+      transform: translateY(-3px);
+    }
   }
 
   .bg-gradient-primary {
@@ -129,14 +123,14 @@
 
   #mobile-nav[open] {
     display: flex;
-    animation: drawer-in 0.25s ease-out;
+    animation: drawer-in 0.24s cubic-bezier(0.32, 0.72, 0, 1);
   }
 
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1),
-                transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transform: translateY(14px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal.visible {
@@ -153,8 +147,8 @@
     display: none;
   }
 
-  details[open] summary ~ * {
-    animation: slideDown 0.3s ease-out;
+  details:not(.accordion-case-study)[open] summary ~ * {
+    animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -170,8 +164,6 @@
     scroll-behavior: auto !important;
   }
 
-  .animate-float,
-  .animate-float-delayed,
   .reveal {
     animation: none !important;
     transform: none !important;

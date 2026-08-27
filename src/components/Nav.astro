@@ -34,7 +34,7 @@ const { lang } = Astro.props;
         rel="noopener noreferrer"
         data-event="whatsapp_click"
         data-event-location="navigation"
-        class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-colors active:translate-y-px"
+        class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97]"
       >
         {t(lang, 'nav_cta')}
       </a>
@@ -43,7 +43,7 @@ const { lang } = Astro.props;
     <!-- Hamburger button (below md) -->
     <button
       id="nav-toggle"
-      class="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-white/5 transition-colors"
+      class="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-white/5 transition-all duration-100 ease-out active:scale-95"
       aria-label={t(lang, 'nav_open')}
       aria-expanded="false"
       aria-controls="mobile-nav"
@@ -65,7 +65,7 @@ const { lang } = Astro.props;
     <span id="mobile-nav-title" class="font-display font-bold text-sm text-text-main">{t(lang, 'nav_menu')}</span>
     <button
       id="nav-close"
-      class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors text-text-sec hover:text-text-main"
+      class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-all duration-100 ease-out active:scale-95 text-text-sec hover:text-text-main"
       aria-label={t(lang, 'nav_close')}
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ const { lang } = Astro.props;
       rel="noopener noreferrer"
       data-event="whatsapp_click"
       data-event-location="mobile_navigation"
-      class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all"
+      class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97]"
     >
       {t(lang, 'nav_cta')}
     </a>

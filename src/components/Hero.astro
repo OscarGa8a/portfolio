@@ -35,11 +35,11 @@ const { lang } = Astro.props;
         rel="noopener noreferrer"
         data-event="whatsapp_click"
         data-event-location="hero"
-        class="text-center bg-accent text-bg-main px-7 py-3.5 rounded-xl font-semibold hover:bg-accent-strong transition-colors active:translate-y-px"
+        class="text-center bg-accent text-bg-main px-7 py-3.5 rounded-xl font-semibold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97]"
       >
         {t(lang, 'hero_cta_primary')}
       </a>
-      <a href="#casos" class="text-center border border-white/15 px-7 py-3.5 rounded-xl font-semibold text-text-main hover:border-white/30 hover:bg-white/5 transition-colors active:translate-y-px">
+      <a href="#casos" class="text-center border border-white/15 px-7 py-3.5 rounded-xl font-semibold text-text-main hover:border-white/30 hover:bg-white/5 transition-all duration-150 ease-out active:scale-[0.97]">
         {t(lang, 'hero_cta_secondary')}
       </a>
     </div>
@@ -53,7 +53,7 @@ const { lang } = Astro.props;
     <Image
       src={duartes}
       alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
-      class="w-full aspect-[4/3] object-cover object-top rounded-2xl border border-white/10 shadow-2xl animate-float"
+      class="w-full aspect-[4/3] object-cover object-top rounded-2xl border border-white/10 shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.01]"
       widths={[640, 960, 1280]}
       sizes="(min-width: 1024px) 46vw, 1px"
       format="webp"

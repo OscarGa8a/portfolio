@@ -14,7 +14,7 @@ const accessibleLabel = lang === 'es' ? 'Cambiar el idioma a inglés' : 'Switch 
 <a
   href={dest}
   class:list={[
-    'text-xs font-bold text-text-sec hover:text-text-main transition-colors bg-white/5 border border-white/10 flex items-center gap-1.5',
+    'text-xs font-bold text-text-sec hover:text-text-main transition-all duration-100 ease-out active:scale-95 bg-white/5 border border-white/10 flex items-center gap-1.5',
     mobile ? 'drawer-link w-full px-3 py-3 rounded-lg' : 'px-3 py-1.5 rounded-md',
   ]}
   aria-label={accessibleLabel}
