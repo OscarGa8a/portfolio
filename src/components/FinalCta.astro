@@ -25,12 +25,12 @@ const { lang } = Astro.props;
         rel="noopener noreferrer"
         data-event="whatsapp_click"
         data-event-location="final_cta"
-        class="bg-accent text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-accent-strong transition-colors active:translate-y-px flex items-center justify-center gap-2"
+        class="bg-accent text-bg-main px-8 py-4 rounded-xl font-bold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97] flex items-center justify-center gap-2"
       >
         <Icon name="ph:whatsapp-logo" class="w-5 h-5" />
         {t(lang, 'cta_whatsapp')}
       </a>
-      <a href={contact.email} data-event="email_click" data-event-location="final_cta" class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-text-main transition-colors active:translate-y-px flex items-center justify-center gap-2">
+      <a href={contact.email} data-event="email_click" data-event-location="final_cta" class="bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-xl font-bold text-text-main transition-all duration-150 ease-out active:scale-[0.97] flex items-center justify-center gap-2">
         <Icon name="ph:envelope-simple" class="w-5 h-5" />
         {t(lang, 'cta_email')}
       </a>

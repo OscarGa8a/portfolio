@@ -61,7 +61,7 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
     <details class="group border-t border-white/10 pt-4 mb-6">
       <summary class="flex justify-between items-center cursor-pointer text-sm font-semibold text-text-main list-none">
         <span>{t(lang, 'cases_study_label')}</span>
-        <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform group-open:rotate-180" />
+        <Icon name="ph:caret-down" class="w-4 h-4 text-accent transition-transform duration-200 ease-out group-open:rotate-180" />
       </summary>
       <div class="pt-4 text-sm text-text-sec space-y-4">
         <div><strong class="text-text-main block mb-1">{t(lang, 'cases_problem_label')}</strong>{t(lang, problemKey)}</div>
@@ -73,16 +73,16 @@ const hasMultiple = Array.isArray(links) && links.length > 0;
     {hasMultiple ? (
       <div class="flex flex-wrap gap-x-6 gap-y-3">
         {links!.map((l) => (
-          <a href={l.href} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+          <a href={l.href} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="group/link inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-all duration-150 ease-out active:scale-95">
             {l.label}
-            <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+            <Icon name="ph:arrow-up-right" class="w-4 h-4 transition-transform duration-150 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
           </a>
         ))}
       </div>
     ) : (
-      <a href={ctaHref} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-colors">
+      <a href={ctaHref} target="_blank" rel="noopener noreferrer" data-event="project_link_click" data-event-location={title} class="group/link inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong transition-all duration-150 ease-out active:scale-95">
         {t(lang, ctaLabelKey!)}
-        <Icon name="ph:arrow-up-right" class="w-4 h-4" />
+        <Icon name="ph:arrow-up-right" class="w-4 h-4 transition-transform duration-150 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
       </a>
     )}
   </div>
