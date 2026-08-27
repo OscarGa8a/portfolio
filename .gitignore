@@ -38,7 +38,9 @@ openspec/
 
 # verification screenshots (playwright, manual)
 /*.png
+screenshots/
 .verify/
+.chrome-tmp/
 
 .atl/
 skills-lock.json
