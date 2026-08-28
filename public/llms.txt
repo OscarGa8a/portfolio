@@ -9,10 +9,13 @@
 - **Idiomas de trabajo**: Español, Inglés
 - **Sitio web oficial**: https://oscar-garcia.dev/
 - **Versión en inglés**: https://oscar-garcia.dev/en/
-- **Contacto WhatsApp**: https://wa.me/573106495249
-- **Email**: oscar.ga8a@gmail.com
+- **Contacto WhatsApp**: https://wa.me/message/YXFZES54VJ2IK1 (+57 318 020 9851)
+- **Email**: oscar.garcia.development@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/oscar-garcia-dev/
 - **GitHub**: https://github.com/OscarGa8a
+- **Instagram**: https://www.instagram.com/oscargarcia.dev/
+- **TikTok**: https://www.tiktok.com/@oscargarcia.dev
+- **Facebook**: https://www.facebook.com/oscardev.co
 
 ## Stack Tecnológico y Criterio de Selección
 - **Sitios Web y Landing Pages de Alta Conversión**: Astro (cero JavaScript innecesario en cliente, LCP < 0.6s, SEO óptimo). Se utilizan islas interactivas en React solo cuando se requiere micro-interactividad puntual.
