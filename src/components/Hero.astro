@@ -1,8 +1,7 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
-import { Image } from 'astro:assets';
-import duartes from '../assets/projects/duartes.png';
+import { Icon } from 'astro-icon/components';
 import { whatsappUrl } from '../config/site';
 
 interface Props {
@@ -10,11 +9,15 @@ interface Props {
 }
 const { lang } = Astro.props;
 ---
-<section class="relative pt-32 pb-16 lg:pt-36 lg:pb-24 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<section class="relative pt-32 pb-16 lg:pt-36 lg:pb-24 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16 overflow-hidden">
+  <!-- Atmospheric background glow & grid (0KB overhead) -->
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-70 pointer-events-none"></div>
+  <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
   <!-- Left: Content -->
   <div class="w-full lg:w-1/2 flex flex-col items-start space-y-6 sm:space-y-7 reveal">
-    <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-3.5 py-1.5 text-xs font-medium text-accent">
-      <span class="inline-flex rounded-full h-2 w-2 bg-accent" aria-hidden="true"></span>
+    <div class="inline-flex items-center gap-2 bg-card-bg border border-white/10 rounded-full px-3.5 py-1.5 text-xs font-medium text-accent shadow-sm">
+      <span class="inline-flex rounded-full h-2 w-2 bg-emerald-400 animate-pulse" aria-hidden="true"></span>
       <span>{t(lang, 'hero_badge')}</span>
     </div>
 
@@ -43,23 +46,176 @@ const { lang } = Astro.props;
         {t(lang, 'hero_cta_secondary')}
       </a>
     </div>
+
+    <!-- Micro Value Indicators -->
+    <div class="flex flex-wrap items-center gap-y-2 gap-x-6 pt-2 text-xs font-medium text-text-sec">
+      <div class="flex items-center gap-1.5">
+        <Icon name="ph:lightning" class="w-4 h-4 text-accent" />
+        <span>100/100 Lighthouse</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="ph:devices" class="w-4 h-4 text-accent" />
+        <span>Web & Mobile Ready</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="ph:shield-check" class="w-4 h-4 text-accent" />
+        <span>Clean Architecture</span>
+      </div>
+    </div>
   </div>
 
-  <!-- Right: Project preview (desktop only) -->
-  <div class="hidden lg:flex lg:w-1/2 relative w-full h-[420px] lg:h-[560px] items-center justify-center reveal">
-    <!-- Static accent glow for depth (single accent, no pulse) -->
-    <div class="absolute inset-8 bg-accent/10 blur-[90px] rounded-full pointer-events-none -z-10"></div>
+  <!-- Right: Interactive Architecture & Stack Bento Card -->
+  <div class="w-full lg:w-1/2 relative reveal">
+    <div class="w-full bg-card-bg/90 backdrop-blur-md rounded-2xl border border-white/10 p-5 sm:p-6 shadow-2xl space-y-5 transition-all duration-300 hover:border-white/20">
+      
+      <!-- Card Top Bar: Mac-like dots + Live Status -->
+      <div class="flex items-center justify-between border-b border-white/5 pb-3.5">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <span class="text-xs font-mono text-text-sec pl-2">{t(lang, 'hero_card_title')}</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>{t(lang, 'hero_card_status')}</span>
+        </div>
+      </div>
 
-    <Image
-      src={duartes}
-      alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
-      class="w-full aspect-[4/3] object-cover object-top rounded-2xl border border-white/10 shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.01]"
-      widths={[640, 960, 1280]}
-      sizes="(min-width: 1024px) 46vw, 1px"
-      format="webp"
-      quality={82}
-      loading="eager"
-      fetchpriority="high"
-    />
+      <!-- Interactive 3-Stack Selector Tabs -->
+      <div class="grid grid-cols-3 gap-2 p-1 bg-bg-main/60 rounded-xl border border-white/5" role="tablist" aria-label={t(lang, 'hero_card_title')}>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="true"
+          id="hero-tab-landing"
+          data-tab-target="landing"
+          class="hero-tab-btn px-2.5 py-2.5 rounded-lg text-xs font-semibold flex flex-col items-center gap-1 transition-all duration-150 ease-out bg-white/10 text-text-main shadow-sm border border-white/10"
+        >
+          <Icon name="ph:globe" class="w-4 h-4 text-accent" />
+          <span class="truncate max-w-full">{t(lang, 'hero_tab_landing')}</span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          id="hero-tab-platform"
+          data-tab-target="platform"
+          class="hero-tab-btn px-2.5 py-2.5 rounded-lg text-xs font-medium flex flex-col items-center gap-1 transition-all duration-150 ease-out text-text-sec hover:text-text-main hover:bg-white/5"
+        >
+          <Icon name="ph:layout" class="w-4 h-4 text-text-sec" />
+          <span class="truncate max-w-full">{t(lang, 'hero_tab_platform')}</span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          id="hero-tab-mobile"
+          data-tab-target="mobile"
+          class="hero-tab-btn px-2.5 py-2.5 rounded-lg text-xs font-medium flex flex-col items-center gap-1 transition-all duration-150 ease-out text-text-sec hover:text-text-main hover:bg-white/5"
+        >
+          <Icon name="ph:device-mobile" class="w-4 h-4 text-text-sec" />
+          <span class="truncate max-w-full">{t(lang, 'hero_tab_mobile')}</span>
+        </button>
+      </div>
+
+      <!-- Active Stack Details Box -->
+      <div class="relative bg-bg-main/80 rounded-xl p-4 sm:p-5 border border-white/5 min-h-[140px] flex flex-col justify-between transition-all duration-200">
+        <!-- Landing Content -->
+        <div id="hero-panel-landing" class="hero-panel space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-display font-bold text-sm text-text-main">{t(lang, 'hero_tab_landing')}</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-accent/15 text-accent border border-accent/30">{t(lang, 'hero_tab_landing_stack')}</span>
+          </div>
+          <p class="text-xs text-text-sec leading-relaxed">{t(lang, 'hero_tab_landing_desc')}</p>
+        </div>
+
+        <!-- Platform Content (hidden by default) -->
+        <div id="hero-panel-platform" class="hero-panel hidden space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-display font-bold text-sm text-text-main">{t(lang, 'hero_tab_platform')}</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-accent/15 text-accent border border-accent/30">{t(lang, 'hero_tab_platform_stack')}</span>
+          </div>
+          <p class="text-xs text-text-sec leading-relaxed">{t(lang, 'hero_tab_platform_desc')}</p>
+        </div>
+
+        <!-- Mobile Content (hidden by default) -->
+        <div id="hero-panel-mobile" class="hero-panel hidden space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-display font-bold text-sm text-text-main">{t(lang, 'hero_tab_mobile')}</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-accent/15 text-accent border border-accent/30">{t(lang, 'hero_tab_mobile_stack')}</span>
+          </div>
+          <p class="text-xs text-text-sec leading-relaxed">{t(lang, 'hero_tab_mobile_desc')}</p>
+        </div>
+
+        <!-- Live Code/Architecture Indicators -->
+        <div class="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-text-sec">
+          <span class="flex items-center gap-1.5 text-emerald-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            architecture: clean
+          </span>
+          <span class="text-text-sec/80">ssr: static-opt</span>
+        </div>
+      </div>
+
+      <!-- Core Web Vitals Verified Badges Grid -->
+      <div class="grid grid-cols-3 gap-2.5 pt-1">
+        <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-center flex flex-col items-center">
+          <span class="text-base font-bold font-display text-emerald-400">0.4s</span>
+          <span class="text-[10px] text-text-sec font-medium">{t(lang, 'hero_metric_speed_label')}</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-center flex flex-col items-center">
+          <span class="text-base font-bold font-display text-accent">100/100</span>
+          <span class="text-[10px] text-text-sec font-medium">{t(lang, 'hero_metric_score_label')}</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-center flex flex-col items-center">
+          <span class="text-base font-bold font-display text-emerald-400">0.00</span>
+          <span class="text-[10px] text-text-sec font-medium">{t(lang, 'hero_metric_stability_label')}</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
+<script>
+  // Interactive tab switcher for Hero Architecture Card
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.hero-tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.hero-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tabTarget;
+      if (!target) return;
+
+      // Update tab active styling
+      tabs.forEach(t => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) {
+          t.className = 'hero-tab-btn px-2.5 py-2.5 rounded-lg text-xs font-semibold flex flex-col items-center gap-1 transition-all duration-150 ease-out bg-white/10 text-text-main shadow-sm border border-white/10';
+          const icon = t.querySelector('svg');
+          if (icon) icon.setAttribute('class', 'w-4 h-4 text-accent');
+        } else {
+          t.className = 'hero-tab-btn px-2.5 py-2.5 rounded-lg text-xs font-medium flex flex-col items-center gap-1 transition-all duration-150 ease-out text-text-sec hover:text-text-main hover:bg-white/5';
+          const icon = t.querySelector('svg');
+          if (icon) icon.setAttribute('class', 'w-4 h-4 text-text-sec');
+        }
+      });
+
+      // Update visible panel
+      panels.forEach(p => {
+        if (p.id === `hero-panel-target` || p.id === `hero-panel-${target}`) {
+          p.classList.remove('hidden');
+        } else {
+          p.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
