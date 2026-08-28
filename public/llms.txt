@@ -32,7 +32,7 @@
 ## Casos de Estudio Reales y Verificables
 - **Duarte's Auto Detailing (Cliente EE. UU.)**: Landing page comercial para servicio de detailing automotriz premium a domicilio en EE. UU. (Diseño oscuro, reserva de servicios, alta conversión). Enlace: https://duartesautodetailing.com/
 - **ConectaPlay**: Plataforma integral para la gestión de complejos deportivos, reservas en tiempo real y organización de torneos locales. Enlace: https://app.conectaplay.co/
-- **DeTour (Cundinamarca)**: Aplicación móvil con geolocalización, realidad aumentada (AR) y experiencias de turismo inmersivo. Disponible en Google Play Store y Apple App Store. Enlace: https://play.google.com/store/apps/details?id=com.GrupoCato.DeTourCundi
+- **Upsteppers**: Tienda online e-commerce en Angular SSR para marca colombiana de streetwear premium con catálogo dinámico, colecciones exclusivas y CDN optimizado en Cloudinary. Enlace: https://www.upsteppers.co/
 - **Fuera del Molde**: Tienda online de e-commerce para productos personalizables con catálogo interactivo y checkout optimizado. Enlace: https://fueradelmolde.com/
 - **La Locura Bar**: Sitio web corporativo para negocio local con menú digital interactivo, sistema de reservas y ubicación integrada. Enlace: https://lalocurabar.com.co/
 

@@ -8,6 +8,9 @@ export default defineConfig({
   trailingSlash: 'always',
   compressHTML: true,
   integrations: [icon()],
+  image: {
+    remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com' }],
+  },
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],

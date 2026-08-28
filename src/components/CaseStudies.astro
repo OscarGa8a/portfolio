@@ -1,13 +1,8 @@
 ---
 import type { Locale } from '../i18n/index';
 import { t } from '../i18n/index';
-import { Image } from 'astro:assets';
+import { CldImage } from 'astro-cloudinary';
 import CaseStudyCard from './CaseStudyCard.astro';
-import duartes from '../assets/projects/duartes.png';
-import conectaplay from '../assets/projects/conectaplay.png';
-import detour from '../assets/projects/detour.png';
-import fueradelmolde from '../assets/projects/fueradelmolde.png';
-import lalocura from '../assets/projects/lalocura.png';
 
 interface Props { lang: Locale; }
 const { lang } = Astro.props;
@@ -35,15 +30,13 @@ const { lang } = Astro.props;
           ctaHref="https://duartesautodetailing.com/"
           variant="image-right"
         >
-          <Image
+          <CldImage
             slot="mockup"
-            src={duartes}
+            src="duartes_y9fonr"
+            width={960}
+            height={720}
             alt={lang === 'es' ? "Duarte's Auto Detailing — landing de detailing premium a domicilio" : "Duarte's Auto Detailing — premium mobile detailing landing"}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
-            widths={[480, 720, 960]}
-            sizes="(min-width: 1024px) 44vw, 90vw"
-            format="webp"
-            quality={80}
             loading="lazy"
           />
         </CaseStudyCard>
@@ -64,46 +57,40 @@ const { lang } = Astro.props;
           ctaHref="https://app.conectaplay.co/"
           variant="image-left"
         >
-          <Image
+          <CldImage
             slot="mockup"
-            src={conectaplay}
+            src="conecta_play_q9zbia"
+            width={960}
+            height={720}
             alt={lang === 'es' ? 'ConectaPlay — plataforma de gestión deportiva' : 'ConectaPlay — sports management platform'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
-            widths={[480, 720, 960]}
-            sizes="(min-width: 1024px) 44vw, 90vw"
-            format="webp"
-            quality={80}
             loading="lazy"
           />
         </CaseStudyCard>
       </div>
 
-      <!-- DeTour -->
+      <!-- Upsteppers -->
       <div class="py-14">
         <CaseStudyCard
           lang={lang}
-          title="DeTour"
-          tagKey="cases_tag_tourism"
-          descKey="cases_detour_desc"
-          features={['cases_detour_f1', 'cases_detour_f2', 'cases_detour_f3']}
-          problemKey="cases_detour_problem"
-          solutionKey="cases_detour_solution"
-          resultKey="cases_detour_result"
-          links={[
-            { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.GrupoCato.DeTourCundi' },
-            { label: 'App Store', href: 'https://apps.apple.com/us/app/de-tour-por-cundinamarca/id1488257160' },
-          ]}
+          title="Upsteppers"
+          tagKey="cases_tag_streetwear"
+          descKey="cases_upsteppers_desc"
+          features={['cases_upsteppers_f1', 'cases_upsteppers_f2', 'cases_upsteppers_f3']}
+          problemKey="cases_upsteppers_problem"
+          solutionKey="cases_upsteppers_solution"
+          resultKey="cases_upsteppers_result"
+          ctaLabelKey="cases_visit_store"
+          ctaHref="https://www.upsteppers.co/"
           variant="image-right"
         >
-          <Image
+          <CldImage
             slot="mockup"
-            src={detour}
-            alt={lang === 'es' ? 'DeTour — turismo VR por Cundinamarca' : 'DeTour — VR tourism in Cundinamarca'}
-            class="w-48 aspect-[9/16] object-cover object-top rounded-[2rem] border border-white/10"
-            widths={[240, 384]}
-            sizes="192px"
-            format="webp"
-            quality={80}
+            src="upsteppers_fwoojy"
+            width={960}
+            height={720}
+            alt={lang === 'es' ? 'Upsteppers — tienda de ropa urbana premium y streetwear colombiano' : 'Upsteppers — premium streetwear online store'}
+            class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
             loading="lazy"
           />
         </CaseStudyCard>
@@ -124,15 +111,13 @@ const { lang } = Astro.props;
           ctaHref="https://fueradelmolde.com/"
           variant="image-left"
         >
-          <Image
+          <CldImage
             slot="mockup"
-            src={fueradelmolde}
+            src="fueradelmolde_y8vm23"
+            width={960}
+            height={720}
             alt={lang === 'es' ? 'Fuera del Molde — e-commerce de productos personalizados' : 'Fuera del Molde — custom products e-commerce'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
-            widths={[480, 720, 960]}
-            sizes="(min-width: 1024px) 44vw, 90vw"
-            format="webp"
-            quality={80}
             loading="lazy"
           />
         </CaseStudyCard>
@@ -153,15 +138,13 @@ const { lang } = Astro.props;
           ctaHref="https://lalocurabar.com.co/"
           variant="image-right"
         >
-          <Image
+          <CldImage
             slot="mockup"
-            src={lalocura}
+            src="la_locura_bar_owfcnw"
+            width={960}
+            height={720}
             alt={lang === 'es' ? 'La Locura Bar — sitio web del bar' : 'La Locura Bar — bar website'}
             class="w-full aspect-[4/3] object-cover object-top rounded-xl border border-white/10"
-            widths={[480, 720, 960]}
-            sizes="(min-width: 1024px) 44vw, 90vw"
-            format="webp"
-            quality={80}
             loading="lazy"
           />
         </CaseStudyCard>
