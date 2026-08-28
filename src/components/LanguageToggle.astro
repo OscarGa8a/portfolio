@@ -9,7 +9,7 @@ interface Props {
 const { lang, mobile = false } = Astro.props;
 const dest = lang === 'es' ? '/en/' : '/';
 const label = lang === 'es' ? 'EN' : 'ES';
-const accessibleLabel = lang === 'es' ? 'Cambiar el idioma a inglés' : 'Switch language to Spanish';
+const accessibleLabel = lang === 'es' ? 'EN - Cambiar el idioma a inglés' : 'ES - Switch language to Spanish';
 ---
 <a
   href={dest}
