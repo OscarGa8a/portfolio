@@ -1,34 +1,48 @@
 ---
-import type { Locale } from '../i18n/index';
-import { t } from '../i18n/index';
-import LanguageToggle from './LanguageToggle.astro';
-import { whatsappUrl } from '../config/site';
-import { CldImage } from 'astro-cloudinary';
+import type { Locale } from "../i18n/index";
+import { t } from "../i18n/index";
+import LanguageToggle from "./LanguageToggle.astro";
+import { whatsappUrl } from "../config/site";
+import { CldImage } from "astro-cloudinary";
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
-
 ---
+
 <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-3.5">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
-    <a href={lang === 'es' ? '/' : '/en/'} class="flex items-center group" aria-label="Oscar Dev — Home">
+    <a
+      href={lang === "es" ? "/" : "/en/"}
+      class="flex items-center group"
+      aria-label="Oscar Dev — Home"
+    >
       <CldImage
         src="oscar_dev/logo_horizontal2_e5gcg8"
         width={160}
         height={32}
         alt="Oscar Dev"
-        class="h-7 md:h-8 w-auto object-contain transition-opacity duration-150 group-hover:opacity-90"
+        class="h-7 md:h-8 w-auto object-contain! transition-opacity duration-150 group-hover:opacity-90"
         loading="eager"
       />
     </a>
 
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-text-sec">
-      <a href="#especialidades" class="hover:text-text-main transition-colors">{t(lang, 'nav_specialties')}</a>
-      <a href="#casos"          class="hover:text-text-main transition-colors">{t(lang, 'nav_case_studies')}</a>
-      <a href="#proceso"        class="hover:text-text-main transition-colors">{t(lang, 'nav_process')}</a>
-      <a href="#sobre-mi"       class="hover:text-text-main transition-colors">{t(lang, 'nav_about')}</a>
+    <div
+      class="hidden md:flex items-center gap-8 text-sm font-medium text-text-sec"
+    >
+      <a href="#especialidades" class="hover:text-text-main transition-colors"
+        >{t(lang, "nav_specialties")}</a
+      >
+      <a href="#casos" class="hover:text-text-main transition-colors"
+        >{t(lang, "nav_case_studies")}</a
+      >
+      <a href="#proceso" class="hover:text-text-main transition-colors"
+        >{t(lang, "nav_process")}</a
+      >
+      <a href="#sobre-mi" class="hover:text-text-main transition-colors"
+        >{t(lang, "nav_about")}</a
+      >
     </div>
 
     <div class="flex items-center gap-3">
@@ -41,7 +55,7 @@ const { lang } = Astro.props;
         data-event-location="navigation"
         class="hidden md:inline-flex bg-accent text-bg-main px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97]"
       >
-        {t(lang, 'nav_cta')}
+        {t(lang, "nav_cta")}
       </a>
     </div>
 
@@ -49,13 +63,19 @@ const { lang } = Astro.props;
     <button
       id="nav-toggle"
       class="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-lg hover:bg-white/5 transition-all duration-100 ease-out active:scale-95"
-      aria-label={t(lang, 'nav_open')}
+      aria-label={t(lang, "nav_open")}
       aria-expanded="false"
       aria-controls="mobile-nav"
     >
-      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center" id="hb-1"></span>
-      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300" id="hb-2"></span>
-      <span class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center" id="hb-3"></span>
+      <span
+        class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center"
+        id="hb-1"></span>
+      <span
+        class="block w-5 h-0.5 bg-text-main transition-all duration-300"
+        id="hb-2"></span>
+      <span
+        class="block w-5 h-0.5 bg-text-main transition-all duration-300 origin-center"
+        id="hb-3"></span>
     </button>
   </div>
 </nav>
@@ -66,37 +86,66 @@ const { lang } = Astro.props;
   aria-labelledby="mobile-nav-title"
 >
   <!-- Drawer header -->
-  <div class="flex items-center justify-between px-6 py-5 border-b border-white/5 shrink-0">
-    <span id="mobile-nav-title" class="font-display font-bold text-sm text-text-main">{t(lang, 'nav_menu')}</span>
+  <div
+    class="flex items-center justify-between px-6 py-5 border-b border-white/5 shrink-0"
+  >
+    <span
+      id="mobile-nav-title"
+      class="font-display font-bold text-sm text-text-main"
+      >{t(lang, "nav_menu")}</span
+    >
     <button
       id="nav-close"
       class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-all duration-100 ease-out active:scale-95 text-text-sec hover:text-text-main"
-      aria-label={t(lang, 'nav_close')}
+      aria-label={t(lang, "nav_close")}
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </div>
 
   <!-- Nav links -->
   <div class="flex flex-col gap-1 px-4 py-6 flex-1">
-    <a href="#especialidades" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      {t(lang, 'nav_specialties')}
+    <a
+      href="#especialidades"
+      class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium"
+    >
+      {t(lang, "nav_specialties")}
     </a>
-    <a href="#casos" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      {t(lang, 'nav_case_studies')}
+    <a
+      href="#casos"
+      class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium"
+    >
+      {t(lang, "nav_case_studies")}
     </a>
-    <a href="#proceso" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      {t(lang, 'nav_process')}
+    <a
+      href="#proceso"
+      class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium"
+    >
+      {t(lang, "nav_process")}
     </a>
-    <a href="#sobre-mi" class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium">
-      {t(lang, 'nav_about')}
+    <a
+      href="#sobre-mi"
+      class="drawer-link px-3 py-3 rounded-lg text-text-sec hover:text-text-main hover:bg-white/5 transition-all text-sm font-medium"
+    >
+      {t(lang, "nav_about")}
     </a>
   </div>
 
   <!-- Drawer footer -->
-  <div class="px-4 pb-8 pt-6 flex flex-col gap-3 border-t border-white/5 shrink-0">
+  <div
+    class="px-4 pb-8 pt-6 flex flex-col gap-3 border-t border-white/5 shrink-0"
+  >
     <LanguageToggle lang={lang} mobile />
     <a
       href={whatsappUrl(lang)}
@@ -106,26 +155,26 @@ const { lang } = Astro.props;
       data-event-location="mobile_navigation"
       class="drawer-link w-full text-center bg-accent text-bg-main px-5 py-3 rounded-lg text-sm font-semibold hover:bg-accent-strong transition-all duration-150 ease-out active:scale-[0.97]"
     >
-      {t(lang, 'nav_cta')}
+      {t(lang, "nav_cta")}
     </a>
   </div>
 </dialog>
 
 <script>
-  const toggle   = document.getElementById('nav-toggle')!;
-  const drawer   = document.getElementById('mobile-nav') as HTMLDialogElement;
-  const closeBtn = document.getElementById('nav-close')!;
-  const hb1      = document.getElementById('hb-1')!;
-  const hb2      = document.getElementById('hb-2')!;
-  const hb3      = document.getElementById('hb-3')!;
+  const toggle = document.getElementById("nav-toggle")!;
+  const drawer = document.getElementById("mobile-nav") as HTMLDialogElement;
+  const closeBtn = document.getElementById("nav-close")!;
+  const hb1 = document.getElementById("hb-1")!;
+  const hb2 = document.getElementById("hb-2")!;
+  const hb3 = document.getElementById("hb-3")!;
 
   function openMenu() {
     drawer.showModal();
-    toggle.setAttribute('aria-expanded', 'true');
-    hb1.style.transform = 'rotate(45deg) translate(4px, 4px)';
-    hb2.style.opacity   = '0';
-    hb3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
-    document.body.style.overflow = 'hidden';
+    toggle.setAttribute("aria-expanded", "true");
+    hb1.style.transform = "rotate(45deg) translate(4px, 4px)";
+    hb2.style.opacity = "0";
+    hb3.style.transform = "rotate(-45deg) translate(4px, -4px)";
+    document.body.style.overflow = "hidden";
   }
 
   function closeMenu() {
@@ -133,23 +182,23 @@ const { lang } = Astro.props;
   }
 
   function resetMenu() {
-    toggle.setAttribute('aria-expanded', 'false');
-    hb1.style.transform = '';
-    hb2.style.opacity   = '';
-    hb3.style.transform = '';
-    document.body.style.overflow = '';
+    toggle.setAttribute("aria-expanded", "false");
+    hb1.style.transform = "";
+    hb2.style.opacity = "";
+    hb3.style.transform = "";
+    document.body.style.overflow = "";
     toggle.focus();
   }
 
-  toggle.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-  drawer.addEventListener('close', resetMenu);
+  toggle.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+  drawer.addEventListener("close", resetMenu);
 
-  document.querySelectorAll('.drawer-link').forEach(link =>
-    link.addEventListener('click', closeMenu)
-  );
+  document
+    .querySelectorAll(".drawer-link")
+    .forEach((link) => link.addEventListener("click", closeMenu));
 
-  window.addEventListener('resize', () => {
-    if (window.matchMedia('(min-width: 768px)').matches) closeMenu();
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 768px)").matches) closeMenu();
   });
 </script>
