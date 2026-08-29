@@ -4,8 +4,7 @@ import { t } from '../i18n/index';
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { contact } from '../config/site';
-import { Image } from 'astro:assets';
-import oscarDev from '../assets/oscar-dev.webp';
+import { CldImage } from 'astro-cloudinary';
 
 interface Props {
   lang: Locale;
@@ -26,13 +25,11 @@ const tags = [
       <div class="relative w-72 sm:w-80 h-96 premium-card rounded-2xl flex flex-col items-center justify-center border border-white/10 shadow-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden group">
         <div class="absolute -top-8 -right-8 w-36 h-36 bg-accent/15 rounded-full blur-[48px] pointer-events-none"></div>
 
-        <Image
-          src={oscarDev}
+        <CldImage
+          src="oscar_dev/oscar-dev_sef1wl"
+          width={640}
+          height={768}
           alt={lang === 'es' ? 'Retrato ilustrado de Oscar García, creador de Oscar Dev' : 'Illustrated portrait of Oscar García, creator of Oscar Dev'}
-          widths={[320, 640]}
-          sizes="(min-width: 640px) 320px, 288px"
-          format="webp"
-          quality={85}
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           loading="lazy"
         />

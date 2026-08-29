@@ -37,7 +37,7 @@ Sitio web estático internacionalizado (Español / Inglés), optimizado para nav
 ## Evidence on Hand
 
 - Trayectoria profesional real desde 2019 con clientes en Colombia y Estados Unidos en múltiples sectores (gobierno, deportes, e-commerce, automotriz).
-- Proyectos reales documentados: ConectaPlay, Detour, La Locura, Fuera del Molde, Duartes.
+- Proyectos reales documentados: ConectaPlay, Upsteppers, La Locura, Fuera del Molde, Duartes.
 - Ausencias declaradas: No se publican métricas porcentuales ni testimonios sin autorización formal previa.
 
 ## Product Principles

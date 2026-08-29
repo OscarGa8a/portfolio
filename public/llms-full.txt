@@ -55,11 +55,11 @@ Oscar Dev es la marca profesional de Oscar García, desarrollador de software y 
 - **Solución**: Plataforma web integral con calendario de disponibilidad en tiempo real, gestión de canchas y módulo para torneos.
 - **Enlace en vivo**: https://app.conectaplay.co/
 
-### DeTour (Cundinamarca, Colombia)
-- **Tipo de proyecto**: Aplicación móvil turística con Realidad Aumentada (AR).
-- **Problema**: Promocionar destinos turísticos de la región mediante una experiencia interactiva y moderna.
-- **Solución**: App móvil multiplataforma desarrollada en Angular e Ionic con mapas interactivos, geolocalización y módulos inmersivos de AR.
-- **Enlaces**: https://play.google.com/store/apps/details?id=com.GrupoCato.DeTourCundi
+### Upsteppers (Colombia)
+- **Tipo de proyecto**: Plataforma e-commerce para marca colombiana de streetwear premium.
+- **Problema**: Lanzar colecciones exclusivas de moda urbana con una tienda online rápida, sin depender de plataformas lentas y genéricas.
+- **Solución**: Tienda online moderna desarrollada en Angular con Server-Side Rendering (SSR), integración de medios optimizados en Cloudinary CDN y flujo de compra fluido para móvil.
+- **Enlace en vivo**: https://www.upsteppers.co/
 
 ### Fuera del Molde (Colombia)
 - **Tipo de proyecto**: Tienda online de e-commerce de productos personalizados.

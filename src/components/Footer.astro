@@ -1,54 +1,105 @@
 ---
-import type { Locale } from '../i18n/index';
-import { t } from '../i18n/index';
-import { Icon } from 'astro-icon/components';
-import { contact } from '../config/site';
+import type { Locale } from "../i18n/index";
+import { t } from "../i18n/index";
+import { Icon } from "astro-icon/components";
+import { contact } from "../config/site";
+import { CldImage } from "astro-cloudinary";
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
 const year = new Date().getFullYear();
-const tagline = lang === 'es'
-  ? 'Desarrollo web con pensamiento de negocio.'
-  : 'Web development with business thinking.';
+const tagline =
+  lang === "es"
+    ? "Desarrollo web con pensamiento de negocio."
+    : "Web development with business thinking.";
 ---
+
 <footer class="border-t border-white/5 bg-bg-sec/80 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-      <div class="text-center md:text-left">
-        <a href={lang === 'es' ? '/' : '/en/'} class="font-display font-bold text-xl tracking-tight flex items-center justify-center md:justify-start gap-2 mb-2">
-          <div class="w-6 h-6 rounded bg-gradient-primary flex items-center justify-center text-[10px] text-bg-main font-bold" aria-hidden="true">OD</div>
-          <span class="text-text-main">Oscar <span class="text-accent">Dev</span></span>
+    <div
+      class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12"
+    >
+      <div
+        class="text-center md:text-left flex flex-col items-center md:items-start"
+      >
+        <a
+          href={lang === "es" ? "/" : "/en/"}
+          class="inline-flex items-center mb-3 group"
+          aria-label="Oscar Dev — Home"
+        >
+          <CldImage
+            src="oscar_dev/logo_horizontal2_e5gcg8"
+            width={160}
+            height={32}
+            alt="Oscar Dev"
+            class="h-7 md:h-8 w-auto object-contain! transition-opacity duration-150 group-hover:opacity-90"
+            loading="lazy"
+          />
         </a>
         <p class="text-text-sec text-sm">{tagline}</p>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-text-sec font-medium">
-        <a href="#especialidades" class="hover:text-text-main transition-colors">{t(lang, 'footer_specialties')}</a>
-        <a href="#casos" class="hover:text-text-main transition-colors">{t(lang, 'footer_case_studies')}</a>
-        <a href="#proceso" class="hover:text-text-main transition-colors">{t(lang, 'footer_process')}</a>
-        <a href="#sobre-mi" class="hover:text-text-main transition-colors">{t(lang, 'footer_about')}</a>
+      <div
+        class="flex flex-wrap justify-center gap-6 text-sm text-text-sec font-medium"
+      >
+        <a href="#especialidades" class="hover:text-text-main transition-colors"
+          >{t(lang, "footer_specialties")}</a
+        >
+        <a href="#casos" class="hover:text-text-main transition-colors"
+          >{t(lang, "footer_case_studies")}</a
+        >
+        <a href="#proceso" class="hover:text-text-main transition-colors"
+          >{t(lang, "footer_process")}</a
+        >
+        <a href="#sobre-mi" class="hover:text-text-main transition-colors"
+          >{t(lang, "footer_about")}</a
+        >
       </div>
 
       <div class="flex gap-3">
-        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors" aria-label="LinkedIn">
+        <a
+          href={contact.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors"
+          aria-label="LinkedIn"
+        >
           <Icon name="ph:linkedin-logo" class="w-5 h-5" />
         </a>
-        <a href={contact.github} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors" aria-label="GitHub">
+        <a
+          href={contact.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors"
+          aria-label="GitHub"
+        >
           <Icon name="ph:github-logo" class="w-5 h-5" />
         </a>
-        <a href={contact.instagram} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors" aria-label="Instagram">
+        <a
+          href={contact.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors"
+          aria-label="Instagram"
+        >
           <Icon name="ph:instagram-logo" class="w-5 h-5" />
         </a>
-        <a href={contact.tiktok} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors" aria-label="TikTok">
+        <a
+          href={contact.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-sec hover:text-accent hover:border-accent/40 transition-colors"
+          aria-label="TikTok"
+        >
           <Icon name="ph:tiktok-logo" class="w-5 h-5" />
         </a>
       </div>
     </div>
 
     <div class="text-center text-sm text-text-sec pt-8 border-t border-white/5">
-      &copy; {year} Oscar Dev. {t(lang, 'footer_rights')}
+      &copy; {year} Oscar Dev. {t(lang, "footer_rights")}
     </div>
   </div>
 </footer>
