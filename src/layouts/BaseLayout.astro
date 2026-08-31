@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import RevealObserver from '../components/RevealObserver.astro';
 import Analytics from '../components/Analytics.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import { siteUrl, author, contact } from '../config/site';
 import { t } from '../i18n/index';
 
@@ -194,5 +195,6 @@ const jsonLd = {
     <slot />
     <RevealObserver />
     <Analytics />
+    <FloatingWhatsApp lang={lang} />
   </body>
 </html>
