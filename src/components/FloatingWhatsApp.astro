@@ -1,0 +1,46 @@
+---
+import type { Locale } from '../i18n/index';
+import { Icon } from 'astro-icon/components';
+import { whatsappUrl } from '../config/site';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const tooltipText = lang === 'es' ? '¿Hablamos por WhatsApp?' : 'Chat on WhatsApp';
+const ariaLabel = lang === 'es' ? 'Contactar a Oscar por WhatsApp' : 'Contact Oscar on WhatsApp';
+---
+
+<aside aria-label={ariaLabel} class="fixed bottom-6 right-6 z-40 print:hidden pointer-events-auto">
+  <a
+    href={whatsappUrl(lang, 'floating_widget')}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={ariaLabel}
+    data-event="whatsapp_click"
+    data-event-location="floating_widget"
+    class="group relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:shadow-[0_12px_28px_rgba(37,211,102,0.5)] hover:scale-105 active:scale-95 transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#121214]"
+  >
+    <!-- Pulse badge indicator -->
+    <span
+      class="absolute top-0 right-0 flex h-3.5 w-3.5"
+      aria-hidden="true"
+    >
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#121214]"></span>
+    </span>
+
+    <!-- WhatsApp Icon -->
+    <Icon name="ph:whatsapp-logo" class="w-7 h-7 sm:w-8 sm:h-8" />
+
+    <!-- Expanding pill tooltip on hover/focus -->
+    <span
+      role="tooltip"
+      class="absolute right-full mr-3 hidden sm:inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap bg-[#1a1a1e]/95 backdrop-blur-md text-white border border-white/10 shadow-xl opacity-0 translate-x-2 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 transition-all duration-150 ease-out"
+    >
+      {tooltipText}
+    </span>
+  </a>
+</aside>
