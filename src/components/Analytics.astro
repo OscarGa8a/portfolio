@@ -37,5 +37,9 @@
       label,
       destination,
     });
+
+    if (typeof window._loadGTM === 'function') {
+      window._loadGTM();
+    }
   });
 </script>
