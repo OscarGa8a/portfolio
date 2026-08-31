@@ -9,15 +9,15 @@ Oscar Dev es la marca profesional de Oscar García, desarrollador de software y 
 - **Experiencia**: Más de 5 años en desarrollo web, móvil y plataformas empresariales (desde 2019).
 - **Alcance Geográfico**: Colombia y Estados Unidos.
 - **Canales Oficiales**:
-  - Web: https://oscardev.co/
-  - Web en Inglés: https://oscardev.co/en/
-  - LinkedIn: https://www.linkedin.com/in/oscar-garcia-dev/
-  - GitHub: https://github.com/OscarGa8a
-  - Instagram: https://www.instagram.com/oscargarcia.dev/
-  - TikTok: https://www.tiktok.com/@oscargarcia.dev
-  - Facebook: https://www.facebook.com/oscardev.co
-  - WhatsApp: https://wa.me/message/YXFZES54VJ2IK1 (+57 318 020 9851)
-  - Correo Electrónico: oscar.garcia.development@gmail.com
+  - Web (Español): [https://oscardev.co/](https://oscardev.co/)
+  - Web (English): [https://oscardev.co/en/](https://oscardev.co/en/)
+  - LinkedIn: [Oscar García en LinkedIn](https://www.linkedin.com/in/oscar-garcia-dev/)
+  - GitHub: [OscarGa8a en GitHub](https://github.com/OscarGa8a)
+  - Instagram: [@oscargarcia.dev en Instagram](https://www.instagram.com/oscargarcia.dev/)
+  - TikTok: [@oscargarcia.dev en TikTok](https://www.tiktok.com/@oscargarcia.dev)
+  - Facebook: [Oscar Dev en Facebook](https://www.facebook.com/oscardev.co)
+  - WhatsApp: [WhatsApp Directo (+57 318 020 9851)](https://wa.me/message/YXFZES54VJ2IK1)
+  - Correo Electrónico: [oscar.garcia.development@gmail.com](mailto:oscar.garcia.development@gmail.com)
 
 ---
 
@@ -47,31 +47,31 @@ Oscar Dev es la marca profesional de Oscar García, desarrollador de software y 
 - **Tipo de proyecto**: Landing page comercial para detailing automotriz a domicilio.
 - **Problema**: El negocio requería una presencia digital premium para el mercado estadounidense que comunicara calidad y permitiera a los clientes reservar servicios fácilmente.
 - **Solución**: Diseño con paleta oscura de alta gama, tipografía editorial, presentación visual de paquetes y ruta de reserva directa.
-- **Enlace en vivo**: https://duartesautodetailing.com/
+- **Enlace en vivo**: [Duarte's Auto Detailing](https://duartesautodetailing.com/)
 
 ### ConectaPlay (Colombia)
 - **Tipo de proyecto**: Plataforma web para la gestión de complejos deportivos y torneos.
 - **Problema**: Los administradores de canchas perdían tiempo coordinando reservas manuales y cobros.
 - **Solución**: Plataforma web integral con calendario de disponibilidad en tiempo real, gestión de canchas y módulo para torneos.
-- **Enlace en vivo**: https://app.conectaplay.co/
+- **Enlace en vivo**: [ConectaPlay](https://app.conectaplay.co/)
 
 ### Upsteppers (Colombia)
 - **Tipo de proyecto**: Plataforma e-commerce para marca colombiana de streetwear premium.
 - **Problema**: Lanzar colecciones exclusivas de moda urbana con una tienda online rápida, sin depender de plataformas lentas y genéricas.
 - **Solución**: Tienda online moderna desarrollada en Angular con Server-Side Rendering (SSR), integración de medios optimizados en Cloudinary CDN y flujo de compra fluido para móvil.
-- **Enlace en vivo**: https://www.upsteppers.co/
+- **Enlace en vivo**: [Upsteppers](https://www.upsteppers.co/)
 
 ### Fuera del Molde (Colombia)
 - **Tipo de proyecto**: Tienda online de e-commerce de productos personalizados.
 - **Problema**: Mostrar catálogo dinámico de productos personalizables con una experiencia de compra sencilla en celulares.
 - **Solución**: Tienda online responsiva con filtros claros, personalizador visual y pasarela de pago integrada.
-- **Enlace en vivo**: https://fueradelmolde.com/
+- **Enlace en vivo**: [Fuera del Molde](https://fueradelmolde.com/)
 
 ### La Locura Bar (Colombia)
 - **Tipo de proyecto**: Sitio web comercial y menú digital para negocio local.
 - **Problema**: Digitalizar la carta, ubicación y sistema de reservas para atraer clientes físicos.
 - **Solución**: Web moderna con menú digital categorizado, mapa interactivo e integración directa con WhatsApp para reservas.
-- **Enlace en vivo**: https://lalocurabar.com.co/
+- **Enlace en vivo**: [La Locura Bar](https://lalocurabar.com.co/)
 
 ---
 
@@ -99,11 +99,11 @@ Sí. Cuento con experiencia desarrollando proyectos para negocios tanto en Colom
 ---
 
 ## Contacto Directo
-- **WhatsApp**: https://wa.me/message/YXFZES54VJ2IK1 (+57 318 020 9851)
-- **Email**: oscar.garcia.development@gmail.com
-- **LinkedIn**: https://www.linkedin.com/in/oscar-garcia-dev/
-- **GitHub**: https://github.com/OscarGa8a
-- **Instagram**: https://www.instagram.com/oscargarcia.dev/
-- **TikTok**: https://www.tiktok.com/@oscargarcia.dev
-- **Facebook**: https://www.facebook.com/oscardev.co
-- **Página principal**: https://oscardev.co/
+- **WhatsApp**: [WhatsApp Directo (+57 318 020 9851)](https://wa.me/message/YXFZES54VJ2IK1)
+- **Email**: [oscar.garcia.development@gmail.com](mailto:oscar.garcia.development@gmail.com)
+- **LinkedIn**: [LinkedIn de Oscar García](https://www.linkedin.com/in/oscar-garcia-dev/)
+- **GitHub**: [GitHub de Oscar García](https://github.com/OscarGa8a)
+- **Instagram**: [Instagram de Oscar García](https://www.instagram.com/oscargarcia.dev/)
+- **TikTok**: [TikTok de Oscar García](https://www.tiktok.com/@oscargarcia.dev)
+- **Facebook**: [Página de Facebook de Oscar Dev](https://www.facebook.com/oscardev.co)
+- **Página principal**: [https://oscardev.co/](https://oscardev.co/)
