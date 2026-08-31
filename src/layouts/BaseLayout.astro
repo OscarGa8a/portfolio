@@ -21,6 +21,7 @@ const {
 } = Astro.props;
 
 // Absolute URLs (canonical, OG) derived from the single siteUrl source.
+const gtmId = import.meta.env.PUBLIC_GTM_ID || 'GTM-5L5Z4KV6';
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = new URL('/og-image.png', siteUrl).href;
 const esHref = new URL('/', siteUrl).href;
@@ -164,8 +165,31 @@ const jsonLd = {
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={esHref} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+    {gtmId && (
+      <!-- Google Tag Manager -->
+      <script is:inline define:vars={{ gtmId }}>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer',gtmId);
+      </script>
+      <!-- End Google Tag Manager -->
+    )}
   </head>
   <body class="antialiased">
+    {gtmId && (
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    )}
     <a class="skip-link" href="#contenido-principal">{lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
     <slot />
     <RevealObserver />

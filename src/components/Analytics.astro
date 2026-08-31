@@ -24,8 +24,7 @@
       window.plausible('CTA Click', { props: detail });
     }
 
-    if (Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({ event: 'portfolio_cta_click', ...detail });
-    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'portfolio_cta_click', ...detail });
   });
 </script>
