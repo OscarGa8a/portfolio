@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://oscar-garcia.dev/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://oscar-garcia.dev/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://oscar-garcia.dev/en/" />
+    <loc>https://oscardev.co/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://oscardev.co/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://oscardev.co/en/" />
   </url>
   <url>
-    <loc>https://oscar-garcia.dev/en/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://oscar-garcia.dev/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://oscar-garcia.dev/en/" />
+    <loc>https://oscardev.co/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://oscardev.co/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://oscardev.co/en/" />
   </url>
 </urlset>

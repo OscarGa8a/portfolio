@@ -7,8 +7,8 @@
 - **Fundador / Desarrollador**: Oscar García
 - **Ubicación principal**: Colombia (cobertura para clientes en Colombia y EE. UU.)
 - **Idiomas de trabajo**: Español, Inglés
-- **Sitio web oficial**: https://oscar-garcia.dev/
-- **Versión en inglés**: https://oscar-garcia.dev/en/
+- **Sitio web oficial**: https://oscardev.co/
+- **Versión en inglés**: https://oscardev.co/en/
 - **Contacto WhatsApp**: https://wa.me/message/YXFZES54VJ2IK1 (+57 318 020 9851)
 - **Email**: oscar.garcia.development@gmail.com
 - **LinkedIn**: https://www.linkedin.com/in/oscar-garcia-dev/
@@ -43,4 +43,4 @@
 - **¿Trabaja internacionalmente?**: Sí, con clientes en Colombia y Estados Unidos en español e inglés.
 
 ## Archivo Detallado
-Para acceder a la documentación completa y detallada, consulte: https://oscar-garcia.dev/llms-full.txt
+Para acceder a la documentación completa y detallada, consulte: https://oscardev.co/llms-full.txt

@@ -8,7 +8,7 @@ if (!process.env.PUBLIC_CLOUDINARY_CLOUD_NAME) {
 }
 
 export default defineConfig({
-  site: 'https://oscar-garcia.dev',
+  site: 'https://oscardev.co',
   trailingSlash: 'always',
   compressHTML: true,
   integrations: [icon()],
