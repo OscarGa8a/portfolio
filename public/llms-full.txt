@@ -9,8 +9,8 @@ Oscar Dev es la marca profesional de Oscar García, desarrollador de software y 
 - **Experiencia**: Más de 5 años en desarrollo web, móvil y plataformas empresariales (desde 2019).
 - **Alcance Geográfico**: Colombia y Estados Unidos.
 - **Canales Oficiales**:
-  - Web: https://oscar-garcia.dev/
-  - Web en Inglés: https://oscar-garcia.dev/en/
+  - Web: https://oscardev.co/
+  - Web en Inglés: https://oscardev.co/en/
   - LinkedIn: https://www.linkedin.com/in/oscar-garcia-dev/
   - GitHub: https://github.com/OscarGa8a
   - Instagram: https://www.instagram.com/oscargarcia.dev/
@@ -106,4 +106,4 @@ Sí. Cuento con experiencia desarrollando proyectos para negocios tanto en Colom
 - **Instagram**: https://www.instagram.com/oscargarcia.dev/
 - **TikTok**: https://www.tiktok.com/@oscargarcia.dev
 - **Facebook**: https://www.facebook.com/oscardev.co
-- **Página principal**: https://oscar-garcia.dev/
+- **Página principal**: https://oscardev.co/

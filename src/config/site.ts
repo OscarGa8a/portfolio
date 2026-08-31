@@ -1,4 +1,4 @@
-export const siteUrl = 'https://oscar-garcia.dev';
+export const siteUrl = 'https://oscardev.co';
 
 export const whatsappShortLink = 'https://wa.me/message/YXFZES54VJ2IK1';
 
