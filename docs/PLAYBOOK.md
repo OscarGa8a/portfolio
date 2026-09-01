@@ -1,7 +1,7 @@
-# 🚀 PLAYBOOK MAESTRO: INGENIERÍA WEB DE ALTO RENDIMIENTO, MOTION & AI-SEO
+# 🚀 PLAYBOOK MAESTRO: INGENIERÍA WEB DE ALTO RENDIMIENTO, MOTION, ANALYTICS & AI-SEO
 
 > **Documento de Ingeniería Universal y Agnóstico de Entorno.**  
-> Esta guía documenta el estándar técnico completo para auditar, rediseñar, optimizar y certificar cualquier sitio web o aplicación web con una puntuación de **100/100 en Google Lighthouse**, posicionamiento en Google Tradicional e indexación en motores de Inteligencia Artificial (ChatGPT, Claude, Gemini, Perplexity).
+> Esta guía documenta el estándar técnico completo para auditar, rediseñar, optimizar y certificar cualquier sitio web o aplicación web con una puntuación de **100/100 en Google Lighthouse**, posicionamiento en Google Tradicional (Search Console), analítica sin penalización de CPU (GTM + GA4) e indexación en motores de Inteligencia Artificial (ChatGPT, Claude, Gemini, Perplexity).
 
 ---
 
@@ -14,8 +14,10 @@
 5. [Fase 4: Estrategia Integral de SEO y AI-SEO / AEO (`ai-seo` + `seo` + `seo-audit`)](#fase-4-estrategia-integral-de-seo-y-ai-seo--aeo)
 6. [Fase 5: Grafo de Entidades, E-E-A-T y Canales de Conversión](#fase-5-grafo-de-entidades-e-e-a-t-y-canales-de-conversión)
 7. [Fase 6: Infraestructura, Cabeceras de Seguridad y Caché Inmutable](#fase-6-infraestructura-cabeceras-de-seguridad-y-caché-inmutable)
-8. [Fase 7: Suite de Auditoría Google Lighthouse y Certificación 100/100 (`accessibility`)](#fase-7-suite-de-auditoría-google-lighthouse-y-certificación-100100)
-9. [Checklist Final de Lanzamiento a Producción](#9-checklist-final-de-lanzamiento-a-producción)
+8. [Fase 7: Analítica de Alta Conversión: Google Tag Manager (GTM) + GA4 con Carga Diferida (Zero-TBT)](#fase-7-analítica-de-alta-conversión-google-tag-manager-gtm--ga4-con-carga-diferida-zero-tbt)
+9. [Fase 8: Google Search Console, Verificación y Monitoreo de Indexación](#fase-8-google-search-console-verificación-y-monitoreo-de-indexación)
+10. [Fase 9: Suite de Auditoría Google Lighthouse y Certificación 100/100 (`accessibility`)](#fase-9-suite-de-auditoría-google-lighthouse-y-certificación-100100)
+11. [Checklist Final de Lanzamiento a Producción](#11-checklist-final-de-lanzamiento-a-producción)
 
 ---
 
@@ -41,7 +43,7 @@ npx skills add <autor/repositorio@nombre-skill> -g -y
 | **`redesign-existing-projects`** | `skills.sh` | `npx skills find redesign-existing-projects` | Metodología de auditoría previa antes de tocar código, preservando la identidad comercial del cliente mientras se eleva la calidad técnica. |
 | **`emil-design-eng`** | `skills.sh` | `npx skills find emil-design-eng` | Encodificación de los principios de diseño de Emil Kowalski: cero rebotes (*zero spring-bounce*), velocidad y desaceleración monótona. |
 | **`find-animation-opportunities`** | `skills.sh` | `npx skills find find-animation-opportunities` | Análisis de qué elementos justifican movimiento (micro-interacciones) y cuáles deben permanecer estáticos para evitar *layout shifts*. |
-| **`ai-seo`** | `skills.sh` | `npx skills find ai-seo` | Implementación del estándar internacional [llmstxt.org](https://llmstxt.org) (`llms.txt` y `llms-full.txt`) para motores de IA. |
+| **`ai-seo`** | `skills.sh` | `npx skills find ai-seo` | Implementación del estándar internacional [llmstxt.org](https://llmstxt.org) (`llms.txt` y `llms-full.txt`) para motores de IA y navegación agéntica. |
 | **`seo` & `seo-audit`** | `skills.sh` / `anthropics/skills` | `npx skills find seo` | Generación del grafo Schema.org JSON-LD (`Person`, `ProfessionalService`, `WebSite`, `FAQPage`), OpenGraph y directivas de rastreo. |
 | **`accessibility`** | `skills.sh` / `anthropics/skills` | `npx skills find accessibility` | Auditoría y remediación estricta de normas internacionales WCAG 2.2 (ratios de contraste > 4.5:1 y coincidencia de nombres accesibles). |
 | **`astro`** | `skills.sh` | `npx skills find astro` | Arquitectura de islas (*Islands Architecture*), compilación SSG estática a cero JavaScript en el cliente donde no se requiere. |
@@ -179,36 +181,41 @@ Para garantizar que los componentes no se rompan ni generen saltos visuales:
 ### 🧠 Skills: `ai-seo`, `seo`, `seo-audit`
 
 ### 1. Estándar `llms.txt` y `llms-full.txt` (llmstxt.org):
-Los modelos de lenguaje (LLMs) rastrean la web para alimentar sus respuestas. Creamos dos archivos en la carpeta pública:
+Los motores de IA (ChatGPT, Claude, Perplexity, Gemini) y los agentes autónomos de compra leen estos archivos directamente. Para obtener una calificación de **3/3 en Navegación Agéntica (Agentic Readiness)**, los archivos DEBEN cumplir estrictamente la especificación [llmstxt.org](https://llmstxt.org):
+- **Encabezado principal H1** obligatorio.
+- **Bloque de resumen / blockquote** (`> ...`) en el encabezado.
+- **Enlaces Markdown canónicos estructurados**: Cada recurso debe ser un enlace con la sintaxis `- [Nombre del Recurso](URL): Descripción detallada`.
+- ❌ *Error común*: Colocar URLs huérfanas en texto plano (`https://...`), lo que provoca el error *"El archivo no contiene ningún enlace"* en herramientas de evaluación agéntica como Vercel Is-Agentic o Frase.
 
-#### A. `/public/llms.txt` (Resumen estructurado para contexto rápido de IA):
+#### A. `/public/llms.txt` (Resumen estructurado para contexto de IA):
 ```markdown
-# [Nombre del Proyecto / Profesional]
+# [Nombre del Proyecto / Profesional] — [Especialidad o Propuesta de Valor]
 
-> [Propuesta de valor en una sola oración clara y directa]
+> [Resumen ejecutivo en 1-2 oraciones que define la entidad, público objetivo y diferencial técnico].
 
-## Especialidades Principales
-- [Especialidad 1]: [Descripción de alcance y solución técnica]
-- [Especialidad 2]: [Descripción de alcance y solución técnica]
+## Páginas Principales
 
-## Casos de Estudio Reales
-- [Proyecto A]: [Problema resuelto, métricas de rendimiento y stack]
-- [Proyecto B]: [Problema resuelto, métricas de rendimiento y stack]
+- [[Nombre del Sitio (ES)]](https://tudominio.com/): Portafolio principal con propuesta de valor, casos de estudio y contacto.
+- [[Nombre del Sitio (EN)]](https://tudominio.com/en/): Official English version featuring architecture stack and case studies.
 
-## Stack Tecnológico y Criterio de Selección
-- [Framework Web]: [Por qué se elige según el tipo de proyecto]
-- [Framework Mobile]: [Por qué se elige según el tipo de proyecto]
+## Casos de Estudio y Proyectos
 
-## Canales Oficiales y Enlaces
-- Web: https://tudominio.com
-- WhatsApp Directo: https://wa.me/...
-- Email: contacto@tudominio.com
-- LinkedIn: https://linkedin.com/in/...
-- GitHub: https://github.com/...
+- [Proyecto Alpha (Cliente EE. UU.)](https://proyectoalpha.com/): Landing comercial de alto rendimiento con reserva directa.
+- [Plataforma Beta (Colombia)](https://app.proyectobeta.co/): Plataforma web integral para gestión operativa en tiempo real.
+
+## Canales de Contacto y Perfiles Profesionales
+
+- [WhatsApp Oficial](https://wa.me/message/...): Canal directo de atención y cotización.
+- [LinkedIn Profesional](https://linkedin.com/in/...): Perfil y trayectoria profesional.
+- [GitHub](https://github.com/...): Repositorios y código abierto.
+
+## Documentación y Enlaces Opcionales
+
+- [Dossier Completo (llms-full.txt)](https://tudominio.com/llms-full.txt): Archivo exhaustivo con toda la información técnica, E-E-A-T, metodología de trabajo y FAQ.
 ```
 
 #### B. `/public/llms-full.txt` (Dossier completo de autoridad):
-Contiene la totalidad de casos de estudio, métricas comerciales, justificaciones técnicas profundas y la lista completa de Preguntas Frecuentes (FAQ) con sus respuestas bilingües.
+Contiene la totalidad de casos de estudio detallados (problema, solución, stack, métricas), justificaciones arquitectónicas, políticas comerciales y la lista completa de Preguntas Frecuentes (FAQ) con enlaces canónicos a cada recurso.
 
 ---
 
@@ -322,6 +329,8 @@ Sitemap: https://tudominio.com/sitemap.xml
      - **Canales del Grafo de Entidad**: Incluir todos (incluso Facebook) dentro del `sameAs` del JSON-LD para que los motores de búsqueda conecten todas tus presencias sin fugar tráfico en la UI.
 2. **Enrutamiento Directo a WhatsApp**:
    - Usar shortlinks directos de WhatsApp Business (`https://wa.me/message/TU_ID_SHORTLINK`) que ya traen mensaje predeterminado para eliminar pasos intermedios.
+3. **Widget Flotante de Conversión**:
+   - Botón flotante accesible (`aria-label`, `role="tooltip"`, `focus-visible`), indicador pulsante de estado activo y atributos semánticos de medición (`data-event="whatsapp_click"`, `data-event-location="floating_widget"`).
 
 ---
 
@@ -403,36 +412,127 @@ Para proteger el sitio contra vulnerabilidades (Clickjacking, XSS, MIME Sniffing
 }
 ```
 
-### 3. Plantilla para Netlify (`netlify.toml`):
-```toml
-[build]
-  publish = "dist"
-  command = "pnpm build"
+---
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    X-XSS-Protection = "1; mode=block"
+## Fase 7: Analítica de Alta Conversión: Google Tag Manager (GTM) + GA4 con Carga Diferida (Zero-TBT)
 
-[[headers]]
-  for = "/_astro/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+### ⚠️ El Problema de Rendimiento con GTM Tradicional:
+Cuando el script oficial de Google Tag Manager (`gtm.js`) se carga de forma síncrona en el `<head>`, el navegador detiene el renderizado inicial para descargar, parsear y ejecutar el contenedor. En auditorías móviles con CPU estrangulada (throttling 4x en Moto G Power), esto genera una penalización de **600 a 2000 ms de Total Blocking Time (TBT)**, reduciendo la puntuación de rendimiento de 100 a 60-80.
 
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+### 🛡️ Arquitectura de Carga Diferida de Alto Rendimiento (Deferred GTM Loader):
+
+Esta arquitectura garantiza **100/100 en Performance móvil** y al mismo tiempo **captura el 100% de las conversiones sin pérdida de datos**:
+
+1. **Buffer Inmediato (`dataLayer`)**: `window.dataLayer = window.dataLayer || [];` se declara de inmediato en el `<head>`. Cualquier evento enviado antes de que cargue el script de GTM queda almacenado en memoria.
+2. **Carga Diferida por Idle / Temporizador**: La descarga del script pesado se posterga mediante `requestIdleCallback` o tras 2.5 segundos de inactividad.
+3. **Carga por Primer Gesto del Usuario**: Si el usuario toca la pantalla, hace scroll o presiona una tecla antes del tiempo de inactividad, GTM se inyecta de inmediato (`{ once: true, passive: true }`).
+4. **Respuesta Instantánea a Clics de Conversión**: Si el usuario hace clic inmediatamente en un botón de WhatsApp o Email, el despachador central invoca `window._loadGTM()` al instante y procesa los eventos encolados.
+
+#### Implementación en el Layout Principal (`BaseLayout.astro`):
+```astro
+{gtmId && (
+  <!-- Google Tag Manager (High-Performance Deferred Loading) -->
+  <script is:inline define:vars={{ gtmId }}>
+    window.dataLayer = window.dataLayer || [];
+    window._loadGTM = function() {
+      if (window._gtmLoaded) return;
+      window._gtmLoaded = true;
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',gtmId);
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function() { setTimeout(window._loadGTM, 2500); });
+    } else {
+      setTimeout(window._loadGTM, 3000);
+    }
+
+    ['pointerdown', 'touchstart', 'scroll', 'keydown', 'click'].forEach(function(evt) {
+      window.addEventListener(evt, window._loadGTM, { once: true, passive: true });
+    });
+  </script>
+  <!-- End Google Tag Manager -->
+)}
 ```
+
+#### Despachador Centralizado de Eventos (`Analytics.astro`):
+Por arquitectura limpia, los componentes de interfaz solo declaran atributos semánticos (`data-event`, `data-event-location`). `Analytics.astro` escucha globalmente y mapea al evento estándar `portfolio_cta_click`:
+
+```html
+<script is:inline>
+  document.addEventListener('click', (event) => {
+    const origin = event.target;
+    if (!(origin instanceof Element)) return;
+
+    const target = origin.closest('[data-event]');
+    if (!(target instanceof HTMLAnchorElement)) return;
+
+    const ctaType = target.dataset.event;
+    const location = target.dataset.eventLocation;
+    const label = target.textContent?.trim();
+    const destination = target instanceof HTMLAnchorElement ? target.href : '';
+
+    const detail = {
+      event: ctaType,
+      location,
+      label,
+      destination,
+    };
+
+    window.dispatchEvent(new CustomEvent('oscar-dev:event', { detail }));
+
+    // Buffer en dataLayer con nombre de evento unificado para GTM/GA4
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'portfolio_cta_click',
+      cta_type: ctaType,
+      location,
+      label,
+      destination,
+    });
+
+    // Carga inmediata de GTM si el usuario interactuó antes del temporizador
+    if (typeof window._loadGTM === 'function') {
+      window._loadGTM();
+    }
+  });
+</script>
+```
+
+#### Configuración en Google Tag Manager (GTM):
+1. **Activador (Trigger)**: Tipo *Evento Personalizado* con Nombre del Evento: `portfolio_cta_click`.
+2. **Variables de Capa de Datos (Data Layer Variables)**:
+   - `location` -> Nombre en capa de datos: `location`
+   - `label` -> Nombre en capa de datos: `label`
+   - `destination` -> Nombre en capa de datos: `destination`
+   - `cta_type` -> Nombre en capa de datos: `cta_type`
+3. **Etiqueta GA4 Event**: Se dispara con el activador `portfolio_cta_click` y envía los parámetros de evento a Google Analytics 4.
 
 ---
 
-## Fase 7: Suite de Auditoría Google Lighthouse y Certificación 100/100
+## Fase 8: Google Search Console, Verificación y Monitoreo de Indexación
+
+### 1. Verificación por Metaetiqueta Limpia:
+Para verificar la propiedad del dominio en Google Search Console sin acoplar claves secretas en el repositorio:
+1. En `src/layouts/BaseLayout.astro`:
+   ```astro
+   {import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && (
+     <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />
+   )}
+   ```
+2. Configurar la variable de entorno `PUBLIC_GOOGLE_SITE_VERIFICATION` en el panel de Cloudflare Pages / Vercel / Netlify con el token proporcionado por Search Console.
+
+### 2. Monitoreo Post-Despliegue:
+- Enviar el mapa del sitio `https://tudominio.com/sitemap.xml` en Google Search Console.
+- Solicitar indexación de las URLs canónicas principales (`/` y `/en/`).
+- Verificar que `robots.txt` devuelva código de estado HTTP `200 OK` y no bloquee recursos esenciales.
+
+---
+
+## Fase 9: Suite de Auditoría Google Lighthouse y Certificación 100/100
 
 ### 🧠 Skills & Herramientas: `accessibility`, `lighthouse`, `playwright-core`
 
@@ -538,13 +638,15 @@ runAudit().catch(console.error);
 
 ---
 
-## 9. Checklist Final de Lanzamiento a Producción
+## 11. Checklist Final de Lanzamiento a Producción
 
 - [x] **Diseño Anti-Slop**: Bento Grid modular, tipografía intencional y cero clichés de IA.
 - [x] **Motion Emil Kowalski**: Acordeones y micro-interacciones con WAAPI y cero rebotes.
 - [x] **Pruebas Automatizadas**: Playwright validando cinemática y consistencia visual en Chromium.
-- [x] **AI-SEO**: Archivos `llms.txt` y `llms-full.txt` desplegados en `/public`.
+- [x] **Navegación Agéntica (AI-SEO 3/3)**: Archivos `llms.txt` y `llms-full.txt` con enlaces Markdown estructurados bajo la especificación [llmstxt.org](https://llmstxt.org).
 - [x] **Schema.org**: JSON-LD con `Person`, `ProfessionalService`, `WebSite` y `FAQPage`.
 - [x] **Robots.txt & Sitemap**: Permisos explícitos para rastreadores de IA y referencia al mapa del sitio.
+- [x] **Google Search Console**: Verificación limpia por variable de entorno sin acoplar secretos.
+- [x] **GTM + GA4 Carga Diferida (Zero-TBT)**: Inyección diferida de `gtm.js` por interacción/idle con buffer inmediato de `dataLayer`.
 - [x] **Seguridad & Caché**: Cabeceras HSTS, `X-Frame-Options: DENY` y caché inmutable de 1 año para `/_astro/*`.
 - [x] **Google Lighthouse**: Certificación de **100/100** en Rendimiento, Accesibilidad, Buenas Prácticas y SEO.
